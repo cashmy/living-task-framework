@@ -1,17 +1,36 @@
 #!/usr/bin/env bash
-# Pre-commit: tidy Markdown and run markdownlint if available.
+# Pre-commit: auto-fix and lint Markdown files.
 set -euo pipefail
 
 echo "[pre-commit] Preparing Markdown changes…"
 
-# 1) Autotidy: trim trailing spaces and ensure newline-at-EOF on staged Markdown files
+# 1) Get staged Markdown files
 STAGED_MD=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(md|mdx)$' || true)
 
 if [ -n "${STAGED_MD}" ]; then
+  # 2) Auto-fix common linting issues with Fix-MarkdownLint.ps1
+  echo "[pre-commit] Auto-fixing markdown linting issues…"
+  echo "${STAGED_MD}" | while read -r file; do
+    [ -f "$file" ] || continue
+    
+    # Run Fix-MarkdownLint.ps1 in-place
+    if command -v pwsh >/dev/null 2>&1; then
+      pwsh -NoProfile -Command "& './tools/scripts/Fix-MarkdownLint.ps1' -FilePath '$file' -InPlace" 2>/dev/null || {
+        echo "  ⚠ Warning: Could not auto-fix $file (Fix-MarkdownLint.ps1 failed)"
+      }
+      # Re-stage the file after auto-fixing
+      git add "$file"
+      echo "  • auto-fixed: $file"
+    else
+      echo "  ⚠ Warning: pwsh not found, skipping auto-fix for $file"
+    fi
+  done
+  
+  # 3) Autotidy: trim trailing spaces and ensure newline-at-EOF
+  echo "[pre-commit] Final tidy pass…"
   echo "${STAGED_MD}" | while read -r file; do
     [ -f "$file" ] || continue
     # Trim trailing spaces and ensure EOF newline (in-place, POSIX-friendly)
-    # Note: Use perl for cross-platform editing reliability
     perl -0777 -pe 's/[ \t]+(\r?\n)/\1/g; END{ if(substr($_,-1) !~ /\n/) { $_ .= "\n" } }' "$file" > "$file.__tmp__"
     if ! cmp -s "$file" "$file.__tmp__"; then
       mv "$file.__tmp__" "$file"
@@ -22,22 +41,26 @@ if [ -n "${STAGED_MD}" ]; then
     fi
   done
 else
-  echo "[pre-commit] No staged Markdown files to tidy."
+  echo "[pre-commit] No staged Markdown files to process."
 fi
 
-# 2) Run markdownlint if available (markdownlint-cli2 preferred)
-if command -v markdownlint-cli2 >/dev/null 2>&1; then
-  echo "[pre-commit] Running markdownlint-cli2…"
-  markdownlint-cli2 "**/*.md" || {
-    echo "[x] markdownlint issues detected. Fix and re-stage."; exit 1;
-  }
-elif command -v markdownlint >/dev/null 2>&1; then
-  echo "[pre-commit] Running markdownlint…"
-  markdownlint "**/*.md" || {
-    echo "[x] markdownlint issues detected. Fix and re-stage."; exit 1;
-  }
+# 4) Run markdownlint ONLY on staged files if available
+if [ -n "${STAGED_MD}" ]; then
+  if command -v markdownlint-cli2 >/dev/null 2>&1; then
+    echo "[pre-commit] Running markdownlint-cli2 on staged files…"
+    echo "${STAGED_MD}" | xargs markdownlint-cli2 || {
+      echo "[x] markdownlint issues detected in staged files. Fix and re-stage."; exit 1;
+    }
+  elif command -v markdownlint >/dev/null 2>&1; then
+    echo "[pre-commit] Running markdownlint on staged files…"
+    echo "${STAGED_MD}" | xargs markdownlint || {
+      echo "[x] markdownlint issues detected in staged files. Fix and re-stage."; exit 1;
+    }
+  else
+    echo "[pre-commit] Skipping lint: markdownlint not installed."
+  fi
 else
-  echo "[pre-commit] Skipping lint: markdownlint not installed."
+  echo "[pre-commit] No staged Markdown files to lint."
 fi
 
 echo "[pre-commit] OK."
