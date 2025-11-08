@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CIP + VS Evolution</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6fb;
+            margin: 0;
+            padding: 48px;
+            display: flex;
+            justify-content: center;
+        }
+        .table-wrapper {
+            background: #ffffff;
+            border-radius: 14px;
+            box-shadow: 0 18px 36px rgba(15, 23, 42, 0.12);
+            padding: 40px 48px;
+            max-width: 1100px;
+            width: 100%;
+        }
+        h1 {
+            margin: 0;
+            font-size: 30px;
+            text-align: center;
+            color: #111827;
+        }
+        p.subtitle {
+            text-align: center;
+            margin-top: 12px;
+            color: #4b5563;
+            font-size: 16px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 28px;
+            font-size: 15px;
+        }
+        th, td {
+            border: 1px solid #d1d5db;
+            padding: 18px 22px;
+            text-align: left;
+            vertical-align: top;
+            line-height: 1.5;
+        }
+        th {
+            background-color: #f1f5f9;
+            color: #0f172a;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+        tbody tr:nth-child(even) td {
+            background-color: #f9fafb;
+        }
+        tbody tr:nth-child(odd) td {
+            background-color: #ffffff;
+        }
+        td strong {
+            color: #0f172a;
+        }
+        em {
+            font-style: italic;
+            color: #1f2937;
+        }
+    </style>
+</head>
+<body>
+    <div class="table-wrapper">
+        <h1>CIP + VS Integration Flywheel</h1>
+        <p class="subtitle">Context Inference Prompting and Verbalized Sampling working in tandem across adoption stages.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Stage</th>
+                    <th>How Context Inference Prompting (CIP) Works Here</th>
+                    <th>How Verbalized Sampling (VS) Works Here</th>
+                    <th>Outcome</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>1. Augment &mdash; &ldquo;Help Me Think&rdquo;</strong></td>
+                    <td>CIP begins as <em>situational scaffolding</em>: humans feed descriptive context (task briefs, personas, or goals) so the AI can infer intent. Example: pasting a milestone summary before asking for next steps.</td>
+                    <td>VS expands the single-answer model into multiple perspectives, recovering creative diversity. Example: &ldquo;Give me 5 ideas with probabilities.&rdquo;</td>
+                    <td><strong>Human + AI Co-Discovery:</strong> Clarity from context, creativity from distribution.</td>
+                </tr>
+                <tr>
+                    <td><strong>2. Automate &mdash; &ldquo;Make It Consistent&rdquo;</strong></td>
+                    <td>CIP formalizes repeatable success patterns into reusable <em>context templates</em> &mdash; Markdown briefs, design notes, or code commentary the model can interpret.</td>
+                    <td>VS standardizes sampling as a tool for <em>variation management</em>: controlled diversity within boundaries (e.g., top-3 safe but distinct options).</td>
+                    <td><strong>Patterned Intelligence:</strong> Reliable outcomes without monotony.</td>
+                </tr>
+                <tr>
+                    <td><strong>3. Orchestrate &mdash; &ldquo;Make Them Work Together&rdquo;</strong></td>
+                    <td>CIP now bridges systems: the same context layer informs multiple tools (IDE, docs, chat). Shared context = continuity of cognition.</td>
+                    <td>VS becomes a <em>multi-agent coordination mechanism</em>: each agent samples from a different part of the problem space, merging results.</td>
+                    <td><strong>Collaborative Cognition:</strong> AI components that understand <em>shared context</em> and <em>diverse reasoning paths.</em></td>
+                </tr>
+                <tr>
+                    <td><strong>4. Systemize &mdash; &ldquo;Make It Sustainable&rdquo;</strong></td>
+                    <td>CIP evolves into <em>knowledge architecture</em>: context is versioned, structured, and embedded in workflows (ADR docs, RAG indexes, or vector DBs).</td>
+                    <td>VS integrates into pipelines: automated sampling for idea generation, test variation, and decision analysis.</td>
+                    <td><strong>Cognitive Infrastructure:</strong> Prompts become APIs for thought &mdash; stable, traceable, and improvable.</td>
+                </tr>
+                <tr>
+                    <td><strong>5. Innovate &mdash; &ldquo;Let It Adapt&rdquo;</strong></td>
+                    <td>CIP becomes <em>self-updating</em>: the system infers fresh context from evolving inputs (docs, user history, telemetry).</td>
+                    <td>VS becomes <em>adaptive sampling</em>: the AI dynamically adjusts sampling depth and diversity based on confidence, risk, or novelty needs.</td>
+                    <td><strong>Adaptive Intelligence:</strong> AI systems that not only understand context but evolve with it.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
