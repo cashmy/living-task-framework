@@ -1,0 +1,6 @@
+[submodule "projects/ai-thought-capture"]
+	path = projects/ai-thought-capture
+	url = https://github.com/cashmy/AI-Thought-Capture.git
+[submodule "projects/ehr-consent-platform"]
+	path = projects/ehr-consent-platform
+	url = https://github.com/cashmy/ehr-consent-platform.git
