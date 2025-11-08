@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+# Pre-push guard: ensure submodules are initialized, clean, and committed.
+set -euo pipefail
+
+echo "[pre-push] Checking submodule status…"
+
+# 1) Ensure submodules are initialized (no leading '-' in status)
+NEEDS_INIT=$(git submodule status --recursive | awk '/^-/{print $2}')
+if [ -n "${NEEDS_INIT}" ]; then
+  echo "[x] Uninitialized submodules detected:"
+  echo "${NEEDS_INIT}" | sed 's/^/   • /'
+  echo "    Run: git submodule update --init --recursive"
+  echo "    Or: pwsh ./tools/scripts/Update-Submodules.ps1"
+  exit 1
+fi
+
+# 2) Ensure submodule pointers are up-to-date (no leading '+' in status)
+NEEDS_COMMIT=$(git submodule status --recursive | awk '/^\+/{print $2}')
+if [ -n "${NEEDS_COMMIT}" ]; then
+  echo "[x] Submodules have new commits not recorded in superproject:"
+  echo "${NEEDS_COMMIT}" | sed 's/^/   • /'
+  echo "    Fix: commit the pointer bumps:"
+  echo "    git add <submodule-paths> && git commit -m \"chore: bump submodule pointers\""
+  echo "    Or: pwsh ./tools/scripts/Update-Submodules.ps1 -Push"
+  exit 1
+fi
+
+# 3) Ensure no dirty working trees inside submodules
+DIRTY_PATHS=$(
+  git submodule foreach --recursive '
+    if ! git diff --quiet || ! git diff --cached --quiet; then
+      echo $path
+    fi
+  ' | sed '/^Entering /d'
+)
+
+if [ -n "${DIRTY_PATHS}" ]; then
+  echo "[x] Dirty submodules detected (uncommitted changes):"
+  echo "${DIRTY_PATHS}" | sed 's/^/   • /'
+  echo "    Commit or stash changes inside these submodules, then re-run."
+  exit 1
+fi
+
+echo "[pre-push] OK: submodules are initialized, clean, and pointers are committed."
+exit 0

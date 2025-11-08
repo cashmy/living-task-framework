@@ -1,0 +1,13 @@
+[
+  {"name": "concept:cip-e", "color": "0366d6", "description": "Contextual Intent Prompting (Extended)"},
+  {"name": "concept:dmp", "color": "0e8a16", "description": "Directive + Meta Prompting"},
+  {"name": "concept:vs", "color": "5319e7", "description": "Verbalized Sampling"},
+  {"name": "concept:vsyn", "color": "1d76db", "description": "Variable Synchronicity"},
+  {"name": "concept:vcs", "color": "a33ea1", "description": "Vector Co-Synthesis"},
+  {"name": "type:guide", "color": "c2e0c6", "description": "Education & guides"},
+  {"name": "type:app", "color": "bfd4f2", "description": "Deployable applications"},
+  {"name": "type:research", "color": "fef2c0", "description": "Whitepapers & studies"},
+  {"name": "status:proposal", "color": "d4c5f9", "description": "Proposed / RFC"},
+  {"name": "status:active", "color": "28a745", "description": "In progress"},
+  {"name": "status:paused", "color": "e99695", "description": "Paused / parked"}
+]
