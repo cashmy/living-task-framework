@@ -1,0 +1,28 @@
+framework:
+  name: Living Task Framework
+  version: 0.91
+  principles: [CIP-E, DMP, VS, VSyn, VcS, Reflective Checkpoints]
+  description: Unified architecture for human–AI collaboration.
+
+modules:
+  - id: ai-thought-capture
+    type: app
+    repo: https://github.com/cashmy/AI-Thought-Capture
+    path: projects/ai-thought-capture
+    depends_on: [core, analytics]
+    concepts: [CIP-E, DMP, VS, VSyn]
+
+  - id: ehr-consent-platform
+    type: app
+    repo: https://github.com/cashmy/ehr-consent-platform
+    path: projects/ehr-consent-platform
+    depends_on: [core, analytics]
+    concepts: [CIP-E, DMP, VcS]
+
+documents:
+  - path: core/architecture/LTF_Concept_Map_v0.91.md
+    tags: [architecture, overview]
+  - path: education/DMP_Communication_Styles_Guide.md
+    tags: [education, prompting]
+  - path: analytics/Semantic_Linkage_Graph_Design_Note.md
+    tags: [analytics, visualization]

@@ -1,0 +1,18 @@
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+*.swp
+__pycache__/
+*.pyc
+.venv/
+node_modules/
+dist/
+coverage/
+sandbox/
+assets/media/*
+assets/diagrams/*.sketch
+assets/diagrams/*.fig
+# prevent accidental vendoring if submodules not yet added
+projects/ai-thought-capture/*
+projects/ehr-consent-platform/*

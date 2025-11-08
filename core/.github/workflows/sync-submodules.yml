@@ -1,0 +1,21 @@
+name: Sync Submodules
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+jobs:
+  update-submodules:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - name: Update submodules
+        run: |
+          git submodule update --init --recursive
+          git submodule foreach git pull origin main || true
+      - name: Commit updated submodules
+        run: |
+          git add .
+          git -c user.name="automation" -c user.email="bot@example.com" commit -m "chore: sync submodules" || echo "no changes"
+          git push || true
