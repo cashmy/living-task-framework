@@ -1,0 +1,342 @@
+# LTF Session State
+# Generated: 2025-11-09_161214
+# Version: 2.1 (Reference-based with enhanced naming)
+
+---
+session_metadata:
+  timestamp: "2025-11-09_161214"
+  snapshot_name: "2025-11-09_161214-resume-ltf-cross-session-transfer-validated"
+  snapshot_type: "resume"
+  snapshot_label: "cross-session-transfer-validated"
+  project: "living-task-framework"
+  project_type: "research"
+  repository: "https://github.com/cashmy/living-task-framework"
+  branch: "main"
+  notes: "🎉 MAJOR MILESTONE: RESUME snapshot achieves 100% cross-session transfer success with ChatGPT-5. AI autonomously applied LTF frameworks (CIP-E, DMP, VSyn). Perfect scope understanding. Zero scope creep. Phase 2 work_context postponed - RESUME alone is sufficient. Production-ready feature validated."
+  
+  # Snapshot type
+  capture_mode: "reference-based"  # Not file-copy
+  dry_compliant: true
+
+# =============================================================================
+# INFLUENCERS (Cognitive Anchors)
+# =============================================================================
+influencers:
+    architecture:
+    - path: "core/architecture/pivotal-moment-capture-design.md"
+      github_url: "https://github.com/cashmy/living-task-framework/blob/main/core/architecture/pivotal-moment-capture-design.md"
+      local_path: "D:\\@living-task-framework\\core\\architecture\\pivotal-moment-capture-design.md"
+      last_modified: "2025-11-09"
+      source: "manual"
+  concept:
+    - path: "core/architecture/LTF_Concept_Map_v0.91.md"
+      github_url: "https://github.com/cashmy/living-task-framework/blob/main/core/architecture/LTF_Concept_Map_v0.91.md"
+      local_path: "D:\\@living-task-framework\\core\\architecture\\LTF_Concept_Map_v0.91.md"
+      last_modified: "2025-11-08"
+      source: "manual"
+    - path: "core/DMP_Communication_Styles_Guide.md"
+      github_url: "https://github.com/cashmy/living-task-framework/blob/main/core/DMP_Communication_Styles_Guide.md"
+      local_path: "D:\\@living-task-framework\\core\\DMP_Communication_Styles_Guide.md"
+      last_modified: "2025-11-08"
+      source: "manual"
+    - path: "core/LTF_Prompt_Collection.md"
+      github_url: "https://github.com/cashmy/living-task-framework/blob/main/core/LTF_Prompt_Collection.md"
+      local_path: "D:\\@living-task-framework\\core\\LTF_Prompt_Collection.md"
+      last_modified: "2025-11-08"
+      source: "manual"
+    - path: "README.md"
+      github_url: "https://github.com/cashmy/living-task-framework/blob/main/README.md"
+      local_path: "D:\\@living-task-framework\\README.md"
+      last_modified: "2025-11-08"
+      source: "manual"
+    - path: "CONTRIBUTING.md"
+      github_url: "https://github.com/cashmy/living-task-framework/blob/main/CONTRIBUTING.md"
+      local_path: "D:\\@living-task-framework\\CONTRIBUTING.md"
+      last_modified: "2025-11-08"
+      source: "manual"
+  documentation:
+    - path: "core/PROJECT_MNEMONICS.md"
+      github_url: "https://github.com/cashmy/living-task-framework/blob/main/core/PROJECT_MNEMONICS.md"
+      local_path: "D:\\@living-task-framework\\core\\PROJECT_MNEMONICS.md"
+      last_modified: "2025-11-09"
+      source: "manual"
+    - path: "tools/context/How_to_use.md"
+      github_url: "https://github.com/cashmy/living-task-framework/blob/main/tools/context/How_to_use.md"
+      local_path: "D:\\@living-task-framework\\tools\\context\\How_to_use.md"
+      last_modified: "2025-11-08"
+      source: "manual"
+    - path: "core/LTF_Operational_Plan_v1.md"
+      github_url: "https://github.com/cashmy/living-task-framework/blob/main/core/LTF_Operational_Plan_v1.md"
+      local_path: "D:\\@living-task-framework\\core\\LTF_Operational_Plan_v1.md"
+      last_modified: "2025-11-08"
+      source: "auto-detect"
+      priority: "medium"
+      rule_pattern: "core/**/*.md"
+    - path: "core/PROJECT_MANIFESTS_STATUS.md"
+      github_url: "https://github.com/cashmy/living-task-framework/blob/main/core/PROJECT_MANIFESTS_STATUS.md"
+      local_path: "D:\\@living-task-framework\\core\\PROJECT_MANIFESTS_STATUS.md"
+      last_modified: "2025-11-09"
+      source: "auto-detect"
+      priority: "medium"
+      rule_pattern: "core/**/*.md"
+    - path: "core/WORK_CONTEXT_DESIGN.md"
+      github_url: "https://github.com/cashmy/living-task-framework/blob/main/core/WORK_CONTEXT_DESIGN.md"
+      local_path: "D:\\@living-task-framework\\core\\WORK_CONTEXT_DESIGN.md"
+      last_modified: "2025-11-09"
+      source: "auto-detect"
+      priority: "medium"
+      rule_pattern: "core/**/*.md"
+    - path: "core/architecture/LTF_Concept Map_v0.9.md"
+      github_url: "https://github.com/cashmy/living-task-framework/blob/main/core/architecture/LTF_Concept Map_v0.9.md"
+      local_path: "D:\\@living-task-framework\\core\\architecture\\LTF_Concept Map_v0.9.md"
+      last_modified: "2025-11-08"
+      source: "auto-detect"
+      priority: "medium"
+      rule_pattern: "core/**/*.md"
+    - path: "core/architecture/LTF_Concept_Corrective_Direction.md"
+      github_url: "https://github.com/cashmy/living-task-framework/blob/main/core/architecture/LTF_Concept_Corrective_Direction.md"
+      local_path: "D:\\@living-task-framework\\core\\architecture\\LTF_Concept_Corrective_Direction.md"
+      last_modified: "2025-11-09"
+      source: "auto-detect"
+      priority: "medium"
+      rule_pattern: "core/**/*.md"
+    - path: "core/prompts/EXAMPLE_WORKFLOW.md"
+      github_url: "https://github.com/cashmy/living-task-framework/blob/main/core/prompts/EXAMPLE_WORKFLOW.md"
+      local_path: "D:\\@living-task-framework\\core\\prompts\\EXAMPLE_WORKFLOW.md"
+      last_modified: "2025-11-09"
+      source: "auto-detect"
+      priority: "medium"
+      rule_pattern: "core/**/*.md"
+    - path: "core/prompts/README.md"
+      github_url: "https://github.com/cashmy/living-task-framework/blob/main/core/prompts/README.md"
+      local_path: "D:\\@living-task-framework\\core\\prompts\\README.md"
+      last_modified: "2025-11-09"
+      source: "auto-detect"
+      priority: "medium"
+      rule_pattern: "core/**/*.md"
+    - path: "core/prompts/transfer-prompt-enhanced.template.md"
+      github_url: "https://github.com/cashmy/living-task-framework/blob/main/core/prompts/transfer-prompt-enhanced.template.md"
+      local_path: "D:\\@living-task-framework\\core\\prompts\\transfer-prompt-enhanced.template.md"
+      last_modified: "2025-11-09"
+      source: "auto-detect"
+      priority: "medium"
+      rule_pattern: "core/**/*.md"
+  prompts:
+    - path: "core/prompts/context-transfer-full.txt"
+      github_url: "https://github.com/cashmy/living-task-framework/blob/main/core/prompts/context-transfer-full.txt"
+      local_path: "D:\\@living-task-framework\\core\\prompts\\context-transfer-full.txt"
+      last_modified: "2025-11-09"
+      source: "auto-detect"
+      priority: "high"
+      rule_pattern: "core/prompts/**/*.txt"
+    - path: "core/prompts/divergent-threads.txt"
+      github_url: "https://github.com/cashmy/living-task-framework/blob/main/core/prompts/divergent-threads.txt"
+      local_path: "D:\\@living-task-framework\\core\\prompts\\divergent-threads.txt"
+      last_modified: "2025-11-09"
+      source: "auto-detect"
+      priority: "high"
+      rule_pattern: "core/prompts/**/*.txt"
+    - path: "core/prompts/dmp-patterns.txt"
+      github_url: "https://github.com/cashmy/living-task-framework/blob/main/core/prompts/dmp-patterns.txt"
+      local_path: "D:\\@living-task-framework\\core\\prompts\\dmp-patterns.txt"
+      last_modified: "2025-11-09"
+      source: "auto-detect"
+      priority: "high"
+      rule_pattern: "core/prompts/**/*.txt"
+    - path: "core/prompts/emotional-state.txt"
+      github_url: "https://github.com/cashmy/living-task-framework/blob/main/core/prompts/emotional-state.txt"
+      local_path: "D:\\@living-task-framework\\core\\prompts\\emotional-state.txt"
+      last_modified: "2025-11-09"
+      source: "auto-detect"
+      priority: "high"
+      rule_pattern: "core/prompts/**/*.txt"
+    - path: "core/prompts/session-summary.txt"
+      github_url: "https://github.com/cashmy/living-task-framework/blob/main/core/prompts/session-summary.txt"
+      local_path: "D:\\@living-task-framework\\core\\prompts\\session-summary.txt"
+      last_modified: "2025-11-09"
+      source: "auto-detect"
+      priority: "high"
+      rule_pattern: "core/prompts/**/*.txt"
+    - path: "core/prompts/vcs-threads.txt"
+      github_url: "https://github.com/cashmy/living-task-framework/blob/main/core/prompts/vcs-threads.txt"
+      local_path: "D:\\@living-task-framework\\core\\prompts\\vcs-threads.txt"
+      last_modified: "2025-11-09"
+      source: "auto-detect"
+      priority: "high"
+      rule_pattern: "core/prompts/**/*.txt"
+    - path: "core/prompts/vsyn-state.txt"
+      github_url: "https://github.com/cashmy/living-task-framework/blob/main/core/prompts/vsyn-state.txt"
+      local_path: "D:\\@living-task-framework\\core\\prompts\\vsyn-state.txt"
+      last_modified: "2025-11-09"
+      source: "auto-detect"
+      priority: "high"
+      rule_pattern: "core/prompts/**/*.txt"
+  taxonomy:
+    - path: "core/taxonomy/DMP_Patterns.md"
+      github_url: "https://github.com/cashmy/living-task-framework/blob/main/core/taxonomy/DMP_Patterns.md"
+      local_path: "D:\\@living-task-framework\\core\\taxonomy\\DMP_Patterns.md"
+      last_modified: "2025-11-09"
+      source: "manual"
+    - path: "core/taxonomy/VS_Family_Guide.md"
+      github_url: "https://github.com/cashmy/living-task-framework/blob/main/core/taxonomy/VS_Family_Guide.md"
+      local_path: "D:\\@living-task-framework\\core\\taxonomy\\VS_Family_Guide.md"
+      last_modified: "2025-11-09"
+      source: "manual"
+    - path: "core/taxonomy/Glossary.md"
+      github_url: "https://github.com/cashmy/living-task-framework/blob/main/core/taxonomy/Glossary.md"
+      local_path: "D:\\@living-task-framework\\core\\taxonomy\\Glossary.md"
+      last_modified: "2025-11-08"
+      source: "manual"
+  tooling:
+    - path: "tools/context/Resume-LTF.ps1"
+      github_url: "https://github.com/cashmy/living-task-framework/blob/main/tools/context/Resume-LTF.ps1"
+      local_path: "D:\\@living-task-framework\\tools\\context\\Resume-LTF.ps1"
+      last_modified: "2025-11-09"
+      source: "auto-detect"
+      priority: "medium"
+      rule_pattern: "tools/**/*.ps1"
+    - path: "tools/context/Save-LTFContext-v2.ps1"
+      github_url: "https://github.com/cashmy/living-task-framework/blob/main/tools/context/Save-LTFContext-v2.ps1"
+      local_path: "D:\\@living-task-framework\\tools\\context\\Save-LTFContext-v2.ps1"
+      last_modified: "2025-11-09"
+      source: "auto-detect"
+      priority: "medium"
+      rule_pattern: "tools/**/*.ps1"
+    - path: "tools/context/Save-LTFContext.ps1"
+      github_url: "https://github.com/cashmy/living-task-framework/blob/main/tools/context/Save-LTFContext.ps1"
+      local_path: "D:\\@living-task-framework\\tools\\context\\Save-LTFContext.ps1"
+      last_modified: "2025-11-08"
+      source: "auto-detect"
+      priority: "medium"
+      rule_pattern: "tools/**/*.ps1"
+    - path: "tools/scripts/Apply-RepoLabels-API.ps1"
+      github_url: "https://github.com/cashmy/living-task-framework/blob/main/tools/scripts/Apply-RepoLabels-API.ps1"
+      local_path: "D:\\@living-task-framework\\tools\\scripts\\Apply-RepoLabels-API.ps1"
+      last_modified: "2025-11-08"
+      source: "auto-detect"
+      priority: "medium"
+      rule_pattern: "tools/**/*.ps1"
+    - path: "tools/scripts/Apply-RepoLabels.ps1"
+      github_url: "https://github.com/cashmy/living-task-framework/blob/main/tools/scripts/Apply-RepoLabels.ps1"
+      local_path: "D:\\@living-task-framework\\tools\\scripts\\Apply-RepoLabels.ps1"
+      last_modified: "2025-11-08"
+      source: "auto-detect"
+      priority: "medium"
+      rule_pattern: "tools/**/*.ps1"
+    - path: "tools/scripts/bootstrap.ps1"
+      github_url: "https://github.com/cashmy/living-task-framework/blob/main/tools/scripts/bootstrap.ps1"
+      local_path: "D:\\@living-task-framework\\tools\\scripts\\bootstrap.ps1"
+      last_modified: "2025-11-08"
+      source: "auto-detect"
+      priority: "medium"
+      rule_pattern: "tools/**/*.ps1"
+    - path: "tools/scripts/Fix markdown steps to use.ps1"
+      github_url: "https://github.com/cashmy/living-task-framework/blob/main/tools/scripts/Fix markdown steps to use.ps1"
+      local_path: "D:\\@living-task-framework\\tools\\scripts\\Fix markdown steps to use.ps1"
+      last_modified: "2025-11-09"
+      source: "auto-detect"
+      priority: "medium"
+      rule_pattern: "tools/**/*.ps1"
+    - path: "tools/scripts/Fix-MarkdownLint.ps1"
+      github_url: "https://github.com/cashmy/living-task-framework/blob/main/tools/scripts/Fix-MarkdownLint.ps1"
+      local_path: "D:\\@living-task-framework\\tools\\scripts\\Fix-MarkdownLint.ps1"
+      last_modified: "2025-11-08"
+      source: "auto-detect"
+      priority: "medium"
+      rule_pattern: "tools/**/*.ps1"
+    - path: "tools/scripts/Install-GitHooks.ps1"
+      github_url: "https://github.com/cashmy/living-task-framework/blob/main/tools/scripts/Install-GitHooks.ps1"
+      local_path: "D:\\@living-task-framework\\tools\\scripts\\Install-GitHooks.ps1"
+      last_modified: "2025-11-08"
+      source: "auto-detect"
+      priority: "medium"
+      rule_pattern: "tools/**/*.ps1"
+    - path: "tools/scripts/Make.ps1"
+      github_url: "https://github.com/cashmy/living-task-framework/blob/main/tools/scripts/Make.ps1"
+      local_path: "D:\\@living-task-framework\\tools\\scripts\\Make.ps1"
+      last_modified: "2025-11-08"
+      source: "auto-detect"
+      priority: "medium"
+      rule_pattern: "tools/**/*.ps1"
+    - path: "tools/scripts/Update-Submodule.ps1"
+      github_url: "https://github.com/cashmy/living-task-framework/blob/main/tools/scripts/Update-Submodule.ps1"
+      local_path: "D:\\@living-task-framework\\tools\\scripts\\Update-Submodule.ps1"
+      last_modified: "2025-11-08"
+      source: "auto-detect"
+      priority: "medium"
+      rule_pattern: "tools/**/*.ps1"
+    - path: "tools/scripts/Update-Submodules.ps1"
+      github_url: "https://github.com/cashmy/living-task-framework/blob/main/tools/scripts/Update-Submodules.ps1"
+      local_path: "D:\\@living-task-framework\\tools\\scripts\\Update-Submodules.ps1"
+      last_modified: "2025-11-08"
+      source: "auto-detect"
+      priority: "medium"
+      rule_pattern: "tools/**/*.ps1"
+
+# =============================================================================
+# COGNITIVE STATE (DMP/VSyn/VcS)
+# =============================================================================
+
+# TODO: Phase 2 - Extract using core/prompts/ templates
+# - DMP patterns detected
+# - VSyn state (emotional, pattern, permission, process, temporal)
+# - VcS semantic threads (persistent, evolved, emergent, deprecated)
+
+dmp_patterns: []
+vsyn_state: {}
+vcs_threads: {}
+
+# =============================================================================
+# PIVOTAL MOMENTS
+# =============================================================================
+# Phase 3: Approved pivotal moments will be linked here
+pivotal_moments: []
+
+# =============================================================================
+# DIVERGENT THREADS
+# =============================================================================
+
+# TODO: Track spinoff ideas
+divergent_threads: []
+
+# =============================================================================
+# NEXT SESSION PREPARATION
+# =============================================================================
+next_session:
+  recommended_start_prompt: |
+    CONTEXT RESTORATION:
+    
+    Session: living-task-framework
+    Timestamp: 2025-11-09_161214
+    
+    Key influencers for this project:    - core/architecture/LTF_Concept_Map_v0.91.md
+    - core/DMP_Communication_Styles_Guide.md
+    - core/LTF_Prompt_Collection.md
+    - README.md
+    - CONTRIBUTING.md
+    
+    Full context available at GitHub: https://github.com/cashmy/living-task-framework
+    
+    Resume work from where we left off.
+  
+  continuation_ready: true
+
+# =============================================================================
+# META
+# =============================================================================
+snapshot_meta:
+  version: "2.0"
+  architecture: "reference-based (influencer model)"
+  eliminates: "DRY violations (no file copying)"
+  
+  improvements_over_v1:
+    - "References files via GitHub URLs instead of copying"
+    - "Reads .ltf-influencers.yaml for cognitive anchors"
+    - "Captures session state (DMP/VSyn/VcS)"
+    - "Buffers pivotal moments for review"
+    - "Generates AI-ready transfer prompt"
+  
+  file_size_comparison:
+    v1_typical: "50MB (bloated with copies)"
+    v2_typical: "5-10KB (references only)"
+    reduction: "99.9%"

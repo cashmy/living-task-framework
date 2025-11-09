@@ -1,0 +1,34 @@
+# AI Collaboration Whitepaper - LTF Influencer Manifest
+
+project:
+  name: "ai-collaboration-whitepaper"
+  mnemonic: "accr"  # AI Collaboration & Cognitive Rise
+  type: "whitepaper"
+  repo: "https://github.com/cashmy/living-task-framework"
+  branch: "main"
+  lifecycle: "archived"  # Whitepaper completed
+
+influencers:
+  # Core manuscript (cleaned/final versions)
+  manuscript:
+    - "research/whitepapers/AI_Collaboration_and_the_Rise_of_Cognitive_Creation_CLEANED.md"
+    - "research/whitepapers/AI_Collaboration_and_the_Rise_of_Cognitive_Creation_FINAL.docx"
+  
+  # Planning & structure
+  planning:
+    - "research/whitepapers/Outline.md"
+    - "research/whitepapers/Citation Map.md"
+  
+  # Working drafts (for historical context)
+  drafts:
+    - "research/whitepapers/AI_Colaboration_and_the_Rise_of_Cognitive_Creation.md"
+    - "research/whitepapers/AI_Collaboration_and_the_Rise_of_Cognitive_Creation_REPAIRED.md"
+
+auto_detect:
+  enabled: false  # Archived project, manual control preferred
+
+lifecycle_config:
+  archived:
+    snapshot_frequency: "none"
+    cognitive_depth: "none"
+    note: "Whitepaper completed - snapshots only for reference/retrospective"

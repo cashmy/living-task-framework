@@ -1,0 +1,50 @@
+Analyze our conversation for VcS (Vector Co-Synthesis) semantic threads - the key concepts and their evolution.
+
+Reference the VS Family Guide at: core/taxonomy/VS_Family_Guide.md (Section IV on VcS)
+
+Identify:
+
+1. **Persistent Threads**: Core concepts used consistently throughout (e.g., "consent", "HIPAA")
+2. **Evolved Threads**: Concepts that changed meaning or refined over time
+   - Original term
+   - New term or refined meaning
+   - Reason for evolution
+   - When it happened
+3. **Emergent Threads**: New concepts that appeared during conversation
+   - When introduced
+   - Context of introduction
+   - How they relate to existing threads
+4. **Deprecated Threads**: Concepts we stopped using or explicitly moved away from
+   - What was deprecated
+   - Why
+   - When
+
+Format your response as YAML:
+
+```yaml
+vcs_threads:
+  persistent:
+    - "[Core concept 1]"
+    - "[Core concept 2]"
+    - "[Core concept 3]"
+  
+  evolved:
+    - from: "[Original term]"
+      to: "[New term or refined meaning]"
+      reason: "[Why this evolution happened]"
+      session_point: "[When in conversation]"
+      artifact: "[Related file/document if applicable]"
+  
+  emergent:
+    - concept: "[New concept]"
+      introduced: "[When]"
+      context: "[Why/how it came up]"
+      related_to: ["[existing concept 1]", "[existing concept 2]"]
+  
+  deprecated:
+    - concept: "[Deprecated concept]"
+      reason: "[Why no longer relevant]"
+      deprecated_at: "[When]"
+```
+
+Be precise: Only include threads with clear evidence from our conversation.

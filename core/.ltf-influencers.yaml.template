@@ -1,0 +1,65 @@
+# LTF Project Influencer Manifest Template
+# Copy this to your project root as .ltf-influencers.yaml
+
+project:
+  name: "your-project-name"
+  mnemonic: "xyz"  # 3-6 char project code (e.g., "ltf", "epe", "ehrc")
+  type: "app"  # app, book, article, research, course, etc.
+  repo: "https://github.com/your-org/your-repo"
+  branch: "main"
+  lifecycle: "active"  # burst, active, maintenance, archived
+
+# Influencers: Key files that represent cognitive anchors
+# These are reference-only (not copied to snapshots)
+influencers:
+  # Architecture/design documents
+  architecture:
+    - "docs/architecture/system-design.md"
+    - "docs/architecture/data-model.md"
+  
+  # Core concept/vision files
+  concept:
+    - "README.md"
+    - "docs/vision.md"
+    - "CONTRIBUTING.md"
+  
+  # Project-specific taxonomy/glossary
+  taxonomy:
+    - "docs/glossary.md"
+    - "docs/api-reference.md"
+  
+  # Recent work logs/reflections
+  recent_reflections:
+    max_age_days: 14
+    path_pattern: "docs/logs/*.md"
+  
+  # Code-level influencers (for development projects)
+  core_modules:
+    - "src/core/**/*.ts"
+    - "src/models/**/*.ts"
+
+# Auto-detection rules (optional)
+auto_detect:
+  enabled: true
+  rules:
+    - pattern: "**/*.contract.sol"
+      category: "smart_contracts"
+      priority: high
+    - pattern: "docs/spec-*.md"
+      category: "specifications"
+      priority: high
+
+# Lifecycle-aware behavior
+lifecycle_config:
+  burst:
+    snapshot_frequency: "high"  # Every major checkpoint
+    cognitive_depth: "deep"     # Full DMP/VSyn/VcS extraction
+  active:
+    snapshot_frequency: "medium"
+    cognitive_depth: "standard"
+  maintenance:
+    snapshot_frequency: "low"
+    cognitive_depth: "minimal"
+  archived:
+    snapshot_frequency: "none"
+    cognitive_depth: "none"

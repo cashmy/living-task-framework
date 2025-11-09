@@ -1,0 +1,54 @@
+Identify any **divergent threads** - creative tangents, spinoff ideas, or side explorations that emerged during our conversation but were not the main focus.
+
+These are valuable insights that should be preserved for future exploration, even though they might have been "bookmarked" or "tabled for later".
+
+For each divergent thread, capture:
+
+1. **Brief Description**: What is the idea/tangent (1-2 sentences)
+2. **Origin**: What triggered it in our conversation
+3. **Relationship to Main Work**: How it connects to current project/focus
+4. **Potential Value**: Why it's worth preserving
+5. **Suggested Action**: What could be done with it
+   - Create new project?
+   - Add to research list?
+   - Merge with existing work?
+   - Just track for now?
+6. **Related Projects/Domains**: What other work it might connect to
+
+Format your response as a structured list:
+
+```markdown
+# Divergent Threads - [Date]
+
+## Thread: [Brief title of idea]
+
+**Description**: [1-2 sentence explanation]
+
+**Origin**: [What triggered this tangent in conversation]
+
+**Connection to Current Work**: [How it relates to what we're doing]
+
+**Potential Value**: [Why this is worth preserving]
+
+**Suggested Action**: [What to do with it - new project, research topic, etc.]
+
+**Related To**: [List related projects, concepts, or domains]
+
+**VcS Context**: [Semantic threads from current work that connect to this]
+
+---
+
+## Thread: [Another divergent idea]
+
+[Same structure]
+
+---
+```
+
+Examples of divergent threads:
+- "This made me think about writing a book on DMP patterns"
+- "Could we use this approach for [different domain]?"
+- "This connects to [other project] in an interesting way"
+- "We should research [related topic] more deeply"
+
+Only include threads that actually emerged - don't invent ideas that weren't mentioned.

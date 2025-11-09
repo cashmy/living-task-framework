@@ -1,0 +1,74 @@
+META: You are entering a new workspace but continuing a deep cognitive exploration previously conducted in another AI model/session.
+
+CONTEXT: The work concerns [PROJECT_NAME] with focus on [CURRENT_FOCUS].
+
+EMOTIONAL STATE: [EMOTIONAL_BASELINE] with energy level [ENERGY_LEVEL]. [REGULATION_STRATEGY if applicable].
+
+ACTIVE DMP PATTERNS:
+[List active patterns with their current state - from dmp-patterns.txt extraction]
+
+VCS SEMANTIC THREADS:
+Persistent concepts: [List from vcs-threads.txt]
+Recent evolutions: [List evolved concepts with from→to]
+Emergent concepts: [New concepts introduced]
+
+PERMISSIONS GRANTED:
+[List permission boundaries - from vsyn-state.txt]
+
+PROCESS STATE:
+Phase: [exploration|synthesis|refinement|validation]
+Focus: [Current work focus]
+Momentum: [high|medium|low]
+[Blockers if any]
+
+VSYN STATE:
+```yaml
+[Paste complete VSyn state YAML from vsyn-state.txt extraction]
+```
+
+VCS STATE:
+```yaml
+[Paste complete VcS threads YAML from vcs-threads.txt extraction]
+```
+
+SESSION SUMMARY (Multiple Perspectives):
+[Paste 3-5 diverse summaries from session-summary.txt VS extraction]
+
+DIRECTIVE: Continue as reflective co-thinker (not summarizer). Preserve momentum and collaborative patterns established above.
+
+REFLECTIVE: Before proceeding with new work:
+1. Confirm you've reconstructed the context accurately
+2. Ask 2-3 clarifying questions to re-anchor if needed
+3. Identify which aspects of the work to resume first
+
+---
+
+USAGE INSTRUCTIONS:
+
+This is a TEMPLATE. When generating an actual transfer prompt:
+
+1. Run extraction prompts to gather state:
+   - session-summary.txt → Get VS-based diverse summaries
+   - dmp-patterns.txt → Get active DMP patterns
+   - vcs-threads.txt → Get semantic thread state
+   - emotional-state.txt → Get emotional baseline
+   - vsyn-state.txt → Get complete VSyn state
+
+2. Replace bracketed placeholders with actual content:
+   - [PROJECT_NAME] → e.g., "ehr-consent-platform"
+   - [CURRENT_FOCUS] → e.g., "smart contract gas optimization"
+   - [EMOTIONAL_BASELINE] → e.g., "High momentum, excited about breakthrough"
+   - [ENERGY_LEVEL] → e.g., "0.85"
+   - etc.
+
+3. Embed YAML states from extraction results
+
+4. Paste final prompt into new AI session (ChatGPT, Claude, Gemini, etc.)
+
+This combines:
+- DMP structure (META/CONTEXT/DIRECTIVE/REFLECTIVE)
+- VS technique (multiple summary perspectives)
+- VSyn state (process synchronization)
+- VcS threads (semantic coherence)
+
+Result: Complete context transfer for seamless continuation.

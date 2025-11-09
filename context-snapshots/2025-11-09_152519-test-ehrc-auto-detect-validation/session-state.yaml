@@ -1,0 +1,144 @@
+# LTF Session State
+# Generated: 2025-11-09_152519
+# Version: 2.1 (Reference-based with enhanced naming)
+
+---
+session_metadata:
+  timestamp: "2025-11-09_152519"
+  snapshot_name: "2025-11-09_152519-test-ehrc-auto-detect-validation"
+  snapshot_type: "test"
+  snapshot_label: "auto-detect-validation"
+  project: "ehr-consent-platform"
+  project_type: "app"
+  repository: "https://github.com/cashmy/living-task-framework"
+  branch: "main"
+  notes: ""
+  
+  # Snapshot type
+  capture_mode: "reference-based"  # Not file-copy
+  dry_compliant: true
+
+# =============================================================================
+# INFLUENCERS (Cognitive Anchors)
+# =============================================================================
+influencers:
+    compliance:
+    - path: "projects/ehr-consent-platform/docs/compliance/README.md"
+      github_url: "https://github.com/cashmy/living-task-framework/blob/main/projects/ehr-consent-platform/docs/compliance/README.md"
+      local_path: "D:\\@living-task-framework\\projects\\ehr-consent-platform\\docs\\compliance\\README.md"
+      last_modified: "2025-11-08"
+      source: "auto-detect"
+      priority: "high"
+      rule_pattern: "docs/compliance/**/*.md"
+  concept:
+    - path: "projects/ehr-consent-platform/README.md"
+      github_url: "https://github.com/cashmy/living-task-framework/blob/main/projects/ehr-consent-platform/README.md"
+      local_path: "D:\\@living-task-framework\\projects\\ehr-consent-platform\\README.md"
+      last_modified: "2025-11-08"
+      source: "manual"
+  service_docs:
+    - path: "projects/ehr-consent-platform/services/README.md"
+      github_url: "https://github.com/cashmy/living-task-framework/blob/main/projects/ehr-consent-platform/services/README.md"
+      local_path: "D:\\@living-task-framework\\projects\\ehr-consent-platform\\services\\README.md"
+      last_modified: "2025-11-08"
+      source: "auto-detect"
+      priority: "medium"
+      rule_pattern: "services/**/README.md"
+    - path: "projects/ehr-consent-platform/services/auth-service/README.md"
+      github_url: "https://github.com/cashmy/living-task-framework/blob/main/projects/ehr-consent-platform/services/auth-service/README.md"
+      local_path: "D:\\@living-task-framework\\projects\\ehr-consent-platform\\services\\auth-service\\README.md"
+      last_modified: "2025-11-08"
+      source: "auto-detect"
+      priority: "medium"
+      rule_pattern: "services/**/README.md"
+    - path: "projects/ehr-consent-platform/services/consent-indexer/README.md"
+      github_url: "https://github.com/cashmy/living-task-framework/blob/main/projects/ehr-consent-platform/services/consent-indexer/README.md"
+      local_path: "D:\\@living-task-framework\\projects\\ehr-consent-platform\\services\\consent-indexer\\README.md"
+      last_modified: "2025-11-08"
+      source: "auto-detect"
+      priority: "medium"
+      rule_pattern: "services/**/README.md"
+  smart_contracts:
+    - path: "projects/ehr-consent-platform/contracts/src/ConsentRegistry.sol"
+      github_url: "https://github.com/cashmy/living-task-framework/blob/main/projects/ehr-consent-platform/contracts/src/ConsentRegistry.sol"
+      local_path: "D:\\@living-task-framework\\projects\\ehr-consent-platform\\contracts\\src\\ConsentRegistry.sol"
+      last_modified: "2025-11-08"
+      source: "manual"
+    - path: "projects/ehr-consent-platform/contracts/src/HospitalRegistry.sol"
+      github_url: "https://github.com/cashmy/living-task-framework/blob/main/projects/ehr-consent-platform/contracts/src/HospitalRegistry.sol"
+      local_path: "D:\\@living-task-framework\\projects\\ehr-consent-platform\\contracts\\src\\HospitalRegistry.sol"
+      last_modified: "2025-11-08"
+      source: "manual"
+    - path: "projects/ehr-consent-platform/contracts/src/ProviderIdentity.sol"
+      github_url: "https://github.com/cashmy/living-task-framework/blob/main/projects/ehr-consent-platform/contracts/src/ProviderIdentity.sol"
+      local_path: "D:\\@living-task-framework\\projects\\ehr-consent-platform\\contracts\\src\\ProviderIdentity.sol"
+      last_modified: "2025-11-08"
+      source: "manual"
+
+# =============================================================================
+# COGNITIVE STATE (DMP/VSyn/VcS)
+# =============================================================================
+
+# TODO: Phase 2 - Extract using core/prompts/ templates
+# - DMP patterns detected
+# - VSyn state (emotional, pattern, permission, process, temporal)
+# - VcS semantic threads (persistent, evolved, emergent, deprecated)
+
+dmp_patterns: []
+vsyn_state: {}
+vcs_threads: {}
+
+# =============================================================================
+# PIVOTAL MOMENTS
+# =============================================================================
+# Phase 3: Approved pivotal moments will be linked here
+pivotal_moments: []
+
+# =============================================================================
+# DIVERGENT THREADS
+# =============================================================================
+
+# TODO: Track spinoff ideas
+divergent_threads: []
+
+# =============================================================================
+# NEXT SESSION PREPARATION
+# =============================================================================
+next_session:
+  recommended_start_prompt: |
+    CONTEXT RESTORATION:
+    
+    Session: ehr-consent-platform
+    Timestamp: 2025-11-09_152519
+    
+    Key influencers for this project:    - projects/ehr-consent-platform/README.md
+    - projects/ehr-consent-platform/contracts/src/ConsentRegistry.sol
+    - projects/ehr-consent-platform/contracts/src/HospitalRegistry.sol
+    - projects/ehr-consent-platform/contracts/src/ProviderIdentity.sol
+    - projects/ehr-consent-platform/docs/compliance/README.md
+    
+    Full context available at GitHub: https://github.com/cashmy/living-task-framework
+    
+    Resume work from where we left off.
+  
+  continuation_ready: true
+
+# =============================================================================
+# META
+# =============================================================================
+snapshot_meta:
+  version: "2.0"
+  architecture: "reference-based (influencer model)"
+  eliminates: "DRY violations (no file copying)"
+  
+  improvements_over_v1:
+    - "References files via GitHub URLs instead of copying"
+    - "Reads .ltf-influencers.yaml for cognitive anchors"
+    - "Captures session state (DMP/VSyn/VcS)"
+    - "Buffers pivotal moments for review"
+    - "Generates AI-ready transfer prompt"
+  
+  file_size_comparison:
+    v1_typical: "50MB (bloated with copies)"
+    v2_typical: "5-10KB (references only)"
+    reduction: "99.9%"

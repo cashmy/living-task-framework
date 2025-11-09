@@ -1,0 +1,51 @@
+Analyze the emotional and energy state of our collaboration session.
+
+Reference: core/taxonomy/VS_Family_Guide.md (Section III.C on VSyn emotional synchronization)
+
+Detect:
+
+1. **Emotional Baseline**: Overall emotional tone (excited, curious, frustrated, tired, focused, etc.)
+2. **Energy Level**: Cognitive energy on 0-1 scale (0=exhausted, 0.5=steady, 1=peak energy)
+3. **Regulation Strategies**: Any emotional co-regulation that occurred
+   - What was the state?
+   - How was it regulated? (e.g., "Added reflective brake", "Re-centered context")
+4. **Linguistic Markers**: Observable cues
+   - Exclamation marks, urgency
+   - Passive voice, brevity
+   - Clipped syntax
+   - Exploratory phrasing
+5. **Momentum Indicators**:
+   - Breakthroughs achieved
+   - Friction points encountered
+   - Flow state presence
+
+Format your response as YAML:
+
+```yaml
+emotional_state:
+  baseline: "[Primary emotional tone - 1-3 words]"
+  
+  energy_level: [0.0-1.0]
+  
+  regulation:
+    - state: "[Emotional state that needed regulation]"
+      strategy: "[How it was regulated]"
+      trigger: "[What prompted it]"
+  
+  linguistic_markers:
+    - "[Observed marker 1]"
+    - "[Observed marker 2]"
+  
+  momentum:
+    breakthroughs:
+      - "[Breakthrough or insight achieved]"
+    friction_points:
+      - "[Challenge or blocker encountered]"
+    flow_state: [true|false]
+  
+  next_session_context:
+    recommended_energy: "[What energy/pace would suit continuation]"
+    carry_forward: "[Emotional continuity to preserve]"
+```
+
+Be honest: If you can't detect clear emotional signals, indicate "neutral" or "insufficient data"

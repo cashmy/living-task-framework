@@ -1,0 +1,70 @@
+# Living Task Framework - Core Framework Influencer Manifest
+# Use this when working on LTF tooling/framework development itself
+
+project:
+  name: "living-task-framework"
+  mnemonic: "ltf"
+  type: "framework"
+  repo: "https://github.com/cashmy/living-task-framework"
+  branch: "main"
+  lifecycle: "burst"  # Active development
+
+influencers:
+  # Core architecture
+  architecture:
+    - "core/architecture/LTF_Concept_Map_v0.91.md"
+    - "core/LTF_Operational_Plan_v1.md"
+  
+  # Manifest system (meta!)
+  manifest_system:
+    - "core/.ltf-influencers.yaml.template"
+    - "core/manifest.yaml"
+    - "core/PROJECT_MANIFESTS_STATUS.md"
+    - "core/PROJECT_MNEMONICS.md"
+  
+  # Tooling (what we're building)
+  tooling:
+    - "tools/context/Save-LTFContext-v2.ps1"
+    - "tools/context/Resume-LTFContext.ps1"
+    - "tools/context/How_to_use.md"
+  
+  # Prompt collection
+  prompts:
+    - "core/prompts/README.md"
+    - "core/prompts/context-transfer-full.txt"
+  
+  # Communication frameworks
+  frameworks:
+    - "core/DMP_Communication_Styles_Guide.md"
+    - "core/taxonomy/DMP_Patterns.md"
+    - "core/taxonomy/VS_Family_Guide.md"
+  
+  # Recent work
+  recent_session:
+    - "reflections/2025-11-09-session-reflection-phase4-to-phase5.md"
+  
+  # Test cases (projects using LTF)
+  test_projects:
+    - "projects/ehr-consent-platform/.ltf-influencers.yaml"
+    - "projects/ai-thought-capture/.ltf-influencers.yaml"
+
+auto_detect:
+  enabled: true
+  rules:
+    - pattern: "tools/context/**/*.ps1"
+      category: "tooling"
+      priority: high
+    - pattern: "core/prompts/**/*.txt"
+      category: "prompts"
+      priority: medium
+    - pattern: "core/architecture/**/*.md"
+      category: "architecture"
+      priority: high
+    - pattern: "projects/*/.ltf-influencers.yaml"
+      category: "test_projects"
+      priority: low
+
+lifecycle_config:
+  burst:
+    snapshot_frequency: "high"
+    cognitive_depth: "deep"

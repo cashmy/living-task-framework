@@ -1,0 +1,61 @@
+# Living Task Framework - Root Influencer Manifest
+
+project:
+  name: "living-task-framework"
+  mnemonic: "ltf"
+  type: "research"
+  repo: "https://github.com/cashmy/living-task-framework"
+  branch: "main"
+  lifecycle: "active"
+
+influencers:
+  # Core concept & vision
+  concept:
+    - "core/architecture/LTF_Concept_Map_v0.91.md"
+    - "core/DMP_Communication_Styles_Guide.md"
+    - "core/LTF_Prompt_Collection.md"
+    - "README.md"
+    - "CONTRIBUTING.md"
+  
+  # Taxonomy & definitions
+  taxonomy:
+    - "core/taxonomy/DMP_Patterns.md"
+    - "core/taxonomy/VS_Family_Guide.md"
+    - "core/taxonomy/Glossary.md"
+  
+  # Architecture & design
+  architecture:
+    - "core/architecture/LTF_Concept_Map_v0.91.md"
+    - "core/architecture/pivotal-moment-capture-design.md"
+  
+  # Documentation
+  documentation:
+    - "core/PROJECT_MNEMONICS.md"
+    - "tools/context/How_to_use.md"
+  
+  # Recent reflections & pivotal moments
+  recent_reflections:
+    max_age_days: 14
+    path_pattern: "reflections/logs/*.md"
+  
+  pivotal_moments:
+    path_pattern: "reflections/pivotal-moments/*.yaml"
+
+auto_detect:
+  enabled: true
+  rules:
+    - pattern: "core/prompts/**/*.txt"
+      category: "prompts"
+      priority: high
+    - pattern: "tools/**/*.ps1"
+      category: "tooling"
+      priority: medium
+    - pattern: "core/**/*.md"
+      category: "documentation"
+      priority: medium
+
+lifecycle_config:
+  active:
+    snapshot_frequency: "medium"
+    cognitive_depth: "deep"  # Framework development benefits from deep cognitive capture
+    note: "Core framework - prioritize pivotal moment detection"

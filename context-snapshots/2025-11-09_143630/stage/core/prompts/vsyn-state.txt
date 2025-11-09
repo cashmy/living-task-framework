@@ -1,0 +1,70 @@
+Generate a complete VSyn (Variable Synchronicity) state for session handoff or context switching.
+
+Reference: core/taxonomy/VS_Family_Guide.md (Section III on VSyn)
+
+This captures the **process state** (how we're collaborating), not domain content.
+
+Include:
+
+1. **Emotional/Energy Synchronization** (from emotional-state.txt output)
+2. **DMP Pattern Synchronization** (from dmp-patterns.txt output)
+3. **Permission Boundaries**: What the human has/hasn't validated
+   - Scope of permissions
+   - Conditions/constraints
+   - Justification requirements
+4. **Meta-Process State**:
+   - Phase of work (exploration, synthesis, refinement, validation)
+   - Current focus area
+   - Momentum assessment
+   - Active blockers
+5. **Temporal Synchronization**:
+   - Last checkpoint/reflection
+   - Recent decisions or pivots
+   - Timeline context
+
+Format your response as YAML:
+
+```yaml
+vsyn_state:
+  # Emotional/Energy Synchronization
+  emotional_baseline:
+    state: "[Emotional tone]"
+    regulation: "[Any regulation applied]"
+    energy_level: [0.0-1.0]
+  
+  # DMP Pattern Synchronization
+  active_patterns:
+    - name: "[Pattern name]"
+      form: "[Template|Narrative|Hybrid]"
+      current_state: "[E.g., 'iteration 3' for Iterative Refinement]"
+    - name: "[Another pattern]"
+      form: "[Form]"
+      current_state: "[State]"
+  
+  # Permission Boundary Synchronization
+  permissions:
+    - scope: "[What area permissions apply to]"
+      type: "[E.g., constraint_relaxation, creative_expansion]"
+      condition: "[When permission applies]"
+      requires_justification: [true|false]
+  
+  # Meta-Process Synchronization
+  process_state:
+    phase: "[exploration|synthesis|refinement|validation]"
+    focus: "[Current focus area in 3-5 words]"
+    momentum: "[high|medium|low]"
+    blockers:
+      - "[Blocker 1 if any]"
+  
+  # Temporal Synchronization
+  last_checkpoint:
+    timestamp: "[Approximate time or 'N/A']"
+    location: "[File path to checkpoint or 'none']"
+    summary: "[1 sentence summary of checkpoint]"
+  
+  recent_context:
+    - event: "[Recent decision/pivot/insight]"
+      impact: "[How it affects continuation]"
+```
+
+This YAML will be embedded in session-state.md for context transfer.

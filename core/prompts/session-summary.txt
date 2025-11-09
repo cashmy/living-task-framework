@@ -1,0 +1,23 @@
+<instructions>
+Generate 5 different summaries of our conversation session, each within a separate <response> tag.
+Each <response> must include a <text> and a numeric <probability>.
+Randomly sample responses from the full distribution, focusing on different perspectives.
+</instructions>
+
+Based on our conversation so far, generate 5 session summaries that capture:
+
+1. **Key Accomplishments**: What we completed or resolved
+2. **Active Focus**: What we're currently working on
+3. **Momentum State**: Energy, breakthroughs, or friction points
+4. **Next Actions**: What should happen when we resume
+5. **Context Anchors**: Important artifacts, decisions, or insights to preserve
+
+Each summary should emphasize different aspects (accomplishments vs. process vs. emotional state vs. technical details).
+
+Sample from the full probability distribution to ensure diversity.
+
+Format each as:
+<response>
+<text>[Your summary here - 3-5 sentences]</text>
+<probability>[Numeric probability, e.g., 0.08]</probability>
+</response>

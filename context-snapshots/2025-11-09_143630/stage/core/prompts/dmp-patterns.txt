@@ -1,0 +1,34 @@
+Based on our conversation, identify which DMP (Directive + Meta Prompting) patterns have been active.
+
+Reference the DMP Pattern Library at: core/taxonomy/DMP_Patterns.md
+
+For each pattern you detect:
+1. Pattern name (from library)
+2. Form used (Template, Narrative, or Hybrid)
+3. Specific instance (quote or paraphrase from conversation)
+4. Impact observed (how it shaped the conversation)
+
+Look for these pattern categories:
+- **Meta-Cognitive**: Emotional Co-Regulation, Context Anchoring, Permission to Break Directive
+- **Directive**: Iterative Refinement Spiral, Socratic Questioning Loop, Constraint Scaffolding
+- **Reflective**: Meta-Observation Request, Drift Detection & Realignment
+- **Integration**: Cross-Project Bridge, VcS Semantic Thread Continuity
+
+Format your response as YAML:
+
+```yaml
+dmp_patterns_active:
+  - name: "[Pattern name]"
+    form: "[Template|Narrative|Hybrid]"
+    instance: "[Quote or paraphrase from our conversation]"
+    impact: "[How it shaped dialogue]"
+    detected_at: "[Approximate timestamp or conversation point]"
+  
+  - name: "[Another pattern]"
+    form: "[Form]"
+    instance: "[Instance]"
+    impact: "[Impact]"
+    detected_at: "[When]"
+```
+
+Note: Only include patterns you actually detected with evidence. Don't invent patterns that weren't present.

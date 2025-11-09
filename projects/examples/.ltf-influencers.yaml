@@ -1,0 +1,34 @@
+# LTF Examples - Influencer Manifest
+
+project:
+  name: "ltf-examples"
+  mnemonic: "ltfex"  # LTF Examples
+  type: "documentation"
+  repo: "https://github.com/cashmy/living-task-framework"
+  branch: "main"
+  lifecycle: "maintenance"
+
+influencers:
+  # Documentation
+  documentation:
+    - "projects/examples/README.md"
+  
+  # Future: example projects will be added here
+  examples:
+    - "projects/examples/**/*.md"
+
+auto_detect:
+  enabled: true
+  rules:
+    - pattern: "**/*.example.md"
+      category: "examples"
+      priority: high
+    - pattern: "**/tutorial-*.md"
+      category: "tutorials"
+      priority: high
+
+lifecycle_config:
+  maintenance:
+    snapshot_frequency: "low"
+    cognitive_depth: "minimal"
+    note: "Examples folder - snapshots only when adding new examples"

@@ -4,5 +4,7 @@
   "no-trailing-punctuation": false,
   "first-line-heading": false,
   "no-duplicate-heading": { "siblings_only": true },
-  "ol-prefix": { "style": "ordered" }
+  "ol-prefix": { "style": "ordered" },
+  "MD004" : { "style": "consistent" },
+  "MD036": false
 }
