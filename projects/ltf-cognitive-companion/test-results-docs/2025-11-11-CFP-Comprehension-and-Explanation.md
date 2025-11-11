@@ -1,6 +1,7 @@
 # CFP Comprehension and Explanation (User Training Overview)
 
 **Date:** 2025-11-11  
+**Updated:** 2025-11-11 (ARS Framework Addition)  
 **Context:** Plain-language explanation of the Core Foundational Primer (CFP) models and their impact on user–AI collaboration.
 
 ---
@@ -10,7 +11,7 @@
 The **Core Foundational Primer (CFP)** is like the *operating system* for how an AI and a human collaborate.  
 It defines **how we think together**, **how context is preserved**, and **how the AI adjusts its behavior** to match your intent, tone, and working style.
 
-There are three main *frameworks* and several *behavioral models* that work together to make the collaboration more natural and productive.
+There are **four main frameworks** and several **behavioral models** that work together to make the collaboration more natural and productive.
 
 ---
 
@@ -76,7 +77,53 @@ Instead of giving you just one answer, the **VS Suite** teaches the AI to explor
 
 ---
 
-## 4. Behavioral Training Protocols
+## 4. ARS (Adaptive Recognition System)
+
+### What it is
+**ARS** is the *meta-framework* that makes the AI **learn your style automatically** — no settings to configure.  
+It watches how you actually work and adapts to match your preferences **without you asking**.
+
+**Core Principle:** *"Infer from behavior, adapt silently, eliminate configuration overhead."*
+
+### How it works
+ARS follows a 4-step cycle:
+
+| Step | What Happens | Example |
+|------|--------------|---------|
+| **1. Observe** | Tracks patterns in how you communicate | You say "capture this" repeatedly (not "/capture") |
+| **2. Infer** | Builds confidence in detected preferences | After 3-5 uses: "Natural language preference detected" |
+| **3. Adapt** | Adjusts recognition sensitivity automatically | AI becomes more sensitive to conversational shortcuts |
+| **4. Override** | Honors explicit statements immediately | You say "Use command syntax" → switches instantly |
+
+### Current applications
+
+| What ARS Learns | How It Adapts | What You Experience |
+|-----------------|---------------|---------------------|
+| **DMP Style** | Detects if you use explicit labels (META:, DIRECTIVE:) or natural language | "It just *gets* whether I want structure or conversation." |
+| **Emotional State** | Recognizes frustration, excitement, flow from your language | "It matches my energy without me saying 'I'm frustrated.'" |
+| **Quick Prompts Style** | Learns if you prefer "analyze this" or "/analyze" | "I can use whichever feels right in the moment." |
+| **Flow State** | Detects rapid ideation ("and another thing", "what if") | "It captures without interrupting when I'm in the zone." |
+
+### Future capabilities (planned)
+- **Verbosity preference**: Learn if you want compact (VS-2) or comprehensive (VS-4) responses
+- **Questioning style**: Detect if you prefer upfront questions or options-first
+- **Technical depth**: Adapt balance of code examples vs architecture diagrams
+- **Session continuity value**: Adjust emphasis on cross-session evolution tracking
+
+### How it changes interaction
+ARS makes CFP feel like it **"just gets you"** because:
+- **Zero configuration** — Start collaborating naturally, AI adapts to your actual style
+- **Graceful evolution** — As you become more proficient, AI notices and adjusts automatically
+- **Transparent inference** — You can ask: "What have you learned about my style?"
+- **User sovereignty** — Explicit statements override learned preferences instantly
+
+**What makes this powerful:**  
+Traditional AI tools ask you to configure preferences upfront ("Choose your communication style...").  
+CFP with ARS **observes how you actually work** and adapts without interrupting you.
+
+---
+
+## 5. Behavioral Training Protocols
 
 These are the **habits and safety rails** the AI uses to keep collaboration efficient and aligned.
 
@@ -96,14 +143,17 @@ These are the **habits and safety rails** the AI uses to keep collaboration effi
 Imagine the collaboration like this:
 
 ```
-CIP-E → Defines WHY we’re working together
-DMP   → Keeps the conversation stable and context-aware
-VS    → Explores the best paths forward
-Behavioral Protocols → Ensure safety, clarity, and flow
+CIP-E → Defines WHY we're working together (foundation)
+DMP   → Keeps the conversation stable and context-aware (execution)
+VS    → Explores the best paths forward (exploration)
+ARS   → Learns your style automatically (adaptation)
+Behavioral Protocols → Ensure safety, clarity, and flow (behaviors)
 ```
 
 The result:
-> You get **purposeful, emotionally intelligent collaboration** instead of a series of isolated Q&A turns.
+> You get **purposeful, emotionally intelligent, self-adapting collaboration** instead of a series of isolated Q&A turns.
+
+**Key insight:** ARS is what makes CFP feel like it **"learns you"** over time. The other frameworks provide capabilities; ARS makes them feel natural by adapting to your actual working style without configuration overhead.
 
 ---
 
@@ -111,10 +161,28 @@ The result:
 
 | Model | Think of it as... | What You Experience |
 |--------|-------------------|--------------------|
-| **CIP-E** | Reading between the lines | “It gets what I *mean*, not just what I *say*.” |
-| **DMP** | Holding focus | “It doesn’t lose track when we switch topics.” |
-| **VS Suite** | Brainstorming partner | “I get multiple great options, not one generic answer.” |
-| **Behavioral Protocols** | Good conversation habits | “It checks before assuming and keeps me in flow.” |
+| **CIP-E** | Reading between the lines | "It gets what I *mean*, not just what I *say*." |
+| **DMP** | Holding focus | "It doesn't lose track when we switch topics." |
+| **VS Suite** | Brainstorming partner | "I get multiple great options, not one generic answer." |
+| **ARS** | Learning your style automatically | "It adapts to me without me configuring anything." |
+| **Behavioral Protocols** | Good conversation habits | "It checks before assuming and keeps me in flow." |
+
+---
+
+## 🎯 The Competitive Difference
+
+**Traditional AI frameworks:**  
+"Configure your preferences... Set your communication style... Choose your verbosity level..."  
+→ Requires upfront expertise, creates onboarding friction, settings become stale as you evolve
+
+**CFP with ARS:**  
+"Just start working. I'll adapt to how you actually collaborate."  
+→ Zero-friction onboarding, graceful evolution as expertise grows, feels "natural" without knowing why
+
+**This is platform behavior, not tool behavior:**  
+- **Tools** require you to configure them
+- **Platforms** configure themselves by learning from actual usage
+- **CFP** is a platform that enables capabilities beyond original design through recursive self-improvement
 
 ---
 

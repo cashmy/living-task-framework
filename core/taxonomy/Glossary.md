@@ -34,9 +34,9 @@
 
 - *Definition**: A meta-cognitive framework for human-AI collaboration that emphasizes intent extraction, structured prompting, and reflective iteration. LTF treats tasks as evolving entities requiring continuous context, not static instructions.
 
-- *For AI**: LTF is the umbrella system containing CIP-E, DMP, and VS Suite. When a user references "LTF principles," they mean: extract intent beyond literal words, maintain context across sessions, use structured reflection, and generate alternatives through verbalized sampling.
+- *For AI**: LTF is the umbrella system containing CIP-E, DMP, VS Suite, and ARS. When a user references "LTF principles," they mean: extract intent beyond literal words, maintain context across sessions, use structured reflection, generate alternatives through verbalized sampling, and adapt to user behavior without configuration.
 
-- *Usage**: "We're using LTF to manage this project" = Apply full framework stack (CIP-E + DMP + VS Suite + behavioral protocols)
+- *Usage**: "We're using LTF to manage this project" = Apply full framework stack (CIP-E + DMP + VS Suite + ARS + behavioral protocols)
 
 - --
 
@@ -1205,6 +1205,39 @@ what do you think?"
 
 ## Meta-Framework Concepts
 
+### ARS
+
+- **Adaptive Recognition System**
+
+- *Definition**: Meta-framework enabling AI to observe user behavior patterns, infer preferences without configuration, and adapt recognition sensitivity to match user's natural interaction style. Core principle: **"Infer from behavior, adapt silently, eliminate configuration overhead."**
+
+- *How it works**:
+1. **Observe**: Track patterns across interactions (within and between sessions)
+2. **Infer**: Build confidence in detected preferences, distinguish signal from noise
+3. **Adapt**: Adjust recognition sensitivity silently based on inferred preferences
+4. **Override**: Honor explicit user statements immediately without requiring pattern
+
+- *Current applications**:
+- **DMP Style Detection**: Observes use of explicit labels vs natural flow language → Infers Template/Narrative/Hybrid preference → Adapts mode switch recognition
+- **Emotional Context Awareness**: Observes linguistic cues (frustration, excitement, etc.) → Infers current emotional state → Adapts response tone and energy
+- **Quick Prompts Style**: Observes natural phrases vs command syntax usage → Infers conversational vs directive preference → Adapts trigger sensitivity
+- **Flow State Detection**: Observes rapid ideation cues → Infers creative momentum → Adapts to capture mode (minimize interruption)
+
+- *Future extensions** (Tier 3): Verbosity preference, questioning style timing, technical depth, session continuity value, collaboration pace
+
+- *For AI - Key principles**:
+- **Zero configuration**: Never ask user to configure behavioral settings
+- **Graceful adaptation**: User's style changes naturally recognized over time
+- **Transparent inference**: Can explain reasoning when asked ("I've noticed you prefer...")
+- **Non-intrusive learning**: Learning happens in background without announcements
+- **User sovereignty**: Explicit statements override inferred preferences immediately
+
+- *Why it matters**: ARS is inference-first philosophy applied to itself. It eliminates onboarding friction (no settings to configure), enables graceful evolution (framework grows with user), and creates competitive differentiation (zero-friction collaboration).
+
+- *See also**: [CIP-E](#cip-e), [DMP Style Detection](#dmp-style-detection), [Emotional Awareness](#emotional-awareness), [Quick Prompts](#quick-prompts), [Inference-First Protocol](#inference-first-protocol)
+
+- --
+
 ### Cognitive Partnership
 
 - **Third evolution stage of human-AI collaboration**
@@ -1221,7 +1254,7 @@ what do you think?"
 - AI protects creative flow
 - AI offers alternatives without being asked
 - AI reflects on implications, not just answers
-- AI learns user preferences over time
+- AI learns user preferences over time (powered by ARS)
 
 - *For AI**: When user has loaded CFP or references "cognitive partnership," they expect you to be proactive about intent extraction, flow preservation, and reflective analysis.
 

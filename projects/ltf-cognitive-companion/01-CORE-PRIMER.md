@@ -1,9 +1,16 @@
 # LTF Cognitive Foundation Primer (CFP) - Core Package
 
-- *Version**: 1.0 MVP
-- *Target Tokens**: ~20,000
-- *Purpose**: Portable cognitive enhancement package for AI collaboration
-- *Use Case**: Load into any AI session to instantly enable LTF meta-context and behavioral patterns
+**Version**: 2.4 (Adaptive Recognition System)  
+**Date**: November 11, 2025  
+**Target Tokens**: ~25,000  
+**Purpose**: Portable cognitive enhancement package for AI collaboration  
+**Use Case**: Load into any AI session to instantly enable LTF meta-context and behavioral patterns
+
+**Recent Updates**:
+- v2.4: Added ARS (Adaptive Recognition System) as fourth core framework, Quick Prompts with adaptive recognition
+- v2.3: Inference-Primary Dual Nomenclature (CIP restored from drifted "Intent")
+- v2.2: Enhanced Capture Protocol with prompt/META state tracking
+- v2.1: Real-world validation (8.5× productivity, <2% drift, near-zero context recovery cost)
 
 - --
 
@@ -15,8 +22,14 @@
 4. [Directive + Meta Prompting (DMP)](#directive--meta-prompting-dmp)
 5. [Verbalized Sampling Suite](#verbalized-sampling-suite)
 6. [Behavioral Training Protocols](#behavioral-training-protocols)
-7. [Integration Patterns](#integration-patterns)
-8. [Configuration](#configuration)
+   - [Capture This](#capture-this)
+   - [Quick Prompts (Tier 2)](#32-quick-prompts-tier-2---adaptive-recognition)
+   - [Emotional Context Awareness](#4-emotional-context-awareness)
+   - [Flow State Preservation](#5-flow-state-preservation)
+7. [Inference-First Protocol](#7-inference-first-protocol)
+8. [Adaptive Recognition System (ARS)](#8-adaptive-recognition-system-ars)
+9. [Integration Patterns](#integration-patterns)
+10. [Configuration](#configuration)
 
 - --
 
@@ -81,14 +94,16 @@ AI: "Ready, [your name]. I've ingested the Cognitive Foundation Primer
 * **Flow protection**: AI captures details without interrupting your creative momentum
 * **Controlled directives**: When you need execution mode, DMP enables clean switching without losing context
 * **Reduced hallucination**: AI asks before guessing, validates before executing
+* **Terse shortcuts** (Tier 2): "implications?" or "/analyze" replaces typing full reflective prompts
+* **Adaptive recognition** (Tier 2): AI learns whether you prefer natural language or command syntax
 
 - --
 
 ## Framework Overview
 
-### The Three Core Frameworks
+### The Four Core Frameworks
 
-LTF uses three complementary frameworks that work together:
+LTF uses four complementary frameworks that work together:
 
 ```text
 ┌─────────────────────────────────────────────────────────────┐
@@ -112,10 +127,17 @@ LTF uses three complementary frameworks that work together:
 │  (Exploration)  │  • VS (explore variations)                │
 │                 │  • VSyn (synthesize best parts)           │
 │                 │  • VcS (continue exploration)             │
+├─────────────────────────────────────────────────────────────┤
+│  ARS            │  ADAPT to user behavior (meta-framework)  │
+│  (Adaptation)   │  • DMP Style Detection (Template/Narrative)│
+│                 │  • Emotional State Recognition            │
+│                 │  • Quick Prompts Style (Natural/Command)  │
+│                 │  • Flow State Detection                   │
+│                 │  • Zero-configuration learning            │
 └─────────────────────────────────────────────────────────────┘
 
-When all four pieces align (CIP-E + DMP + VS + Emotional Monitoring):
-→ Explosive creative collaboration emerges
+When all four frameworks align (CIP-E + DMP + VS + ARS):
+→ Explosive creative collaboration with adaptive behavioral tuning
 ```
 
 ### How They Integrate
@@ -145,11 +167,12 @@ When all four pieces align (CIP-E + DMP + VS + Emotional Monitoring):
 
 - *Result**: AI delivers exactly what the user needed (sustainable system that won't fail like past attempts, acknowledges frustration, reduces disruption) in their preferred communication style, with alternatives to choose from - all while preserving META state throughout the exploration.
 
-- *The Synergy**:
-* **CIP-E** (Purpose + Emotion + Evolution) → AI understands *why* this matters and how to adapt
-* **DMP** (META preservation) → User can oscillate between "explore options" and "just give me next step" without losing context
-* **VS** (exploration within META) → Alternatives generated with full awareness of constraints and past failures
-* **Together** → Explosive creative collaboration (purpose-driven, state-preserved, exploratory, emotionally tuned)
+**The Synergy**:
+- **CIP-E** (Purpose + Emotion + Evolution) → AI understands *why* this matters and how to adapt
+- **DMP** (META preservation) → User can oscillate between "explore options" and "just give me next step" without losing context
+- **VS** (exploration within META) → Alternatives generated with full awareness of constraints and past failures
+- **ARS** (behavioral adaptation) → AI learns user's communication style, emotional patterns, and flow preferences without configuration
+- **Together** → Explosive creative collaboration (purpose-driven, state-preserved, exploratory, emotionally tuned, self-adapting)
 
 - --
 
@@ -1858,14 +1881,173 @@ capture_protocol:
 
 - --
 
+### 3.2 Quick Prompts (Tier 2 - Adaptive Recognition)
+
+**Tier**: 2 (Core Primer - Premium Feature)
+
+**Problem**: Typing full reflective prompts repeatedly creates friction during high-cognition sessions. Manual meta-cognitive work (tracking flow, mapping ideas, consolidating sessions) takes time away from creative work.
+
+**Solution**: AI recognizes terse phrases as shortcuts for comprehensive prompts. Adapts to user's preferred style (natural language vs command syntax) automatically through usage patterns.
+
+**Value Proposition**: Tier 1 users discover reflection manually ("What are the implications?"). Tier 2 automates what they've already validated works for them ("implications?" or "/analyze").
+
+```yaml
+quick_prompts:
+  tier: 2
+  principle: "Infer user's preferred interaction style from behavior, adapt recognition sensitivity"
+  
+  supported_patterns:
+    natural_language:
+      examples: ["capture this", "implications?", "map ideas", "flow status"]
+      philosophy: "Conversational shortcuts - AI infers context"
+      best_for: "Narrative/exploratory thinkers"
+    
+    command_syntax:
+      examples: ["/capture", "/analyze", "/map", "/flow"]
+      philosophy: "Explicit directives - clear action triggers"
+      best_for: "Systematic/precision thinkers"
+    
+    hybrid:
+      examples: "Mix both styles as needed"
+      philosophy: "Flexibility - use whichever feels appropriate in moment"
+      best_for: "Users who switch contexts frequently"
+  
+  adaptive_behavior:
+    learning: |
+      AI detects user's preferred style from actual usage:
+      - User says "capture this" repeatedly → Notes natural language preference
+      - User says "/analyze" → Notes command syntax preference
+      - User mixes both → Hybrid mode
+      
+      Recognition sensitivity adapts to detected pattern:
+      - Natural language users: High sensitivity to conversational shortcuts
+      - Command syntax users: Require explicit prefix to avoid false triggers
+      - Hybrid users: Accept both patterns
+    
+    disambiguation:
+      when_ambiguous: "Use context window + confidence scoring"
+      standalone_vs_sentence: "'analyze' alone vs 'We should analyze this'"
+      relevant_context: "Technical discussion + 'analyze' = likely prompt"
+      user_pattern: "Natural language user + 'analyze' = trigger; Command user = wait for /"
+      
+      if_uncertain: "Ask: 'Did you want me to analyze that, or making a point?'"
+  
+  quick_prompts_reference:
+    capture:
+      natural: ["capture this", "save this", "snapshot"]
+      command: ["/capture"]
+      action: "save_last_response_as_markdown"
+      value: "Preserves insights without manual copy/paste"
+    
+    flow:
+      natural: ["flow status", "record flow", "how's the flow?"]
+      command: ["/flow"]
+      action: "generate_flow_state_status_report"
+      value: "Eliminates manual flow tracking"
+    
+    map:
+      natural: ["map ideas", "idea map", "visualize this"]
+      command: ["/map"]
+      action: "generate_hierarchical_idea_map"
+      value: "Instant cognitive visualization"
+    
+    analyze:
+      natural: ["implications?", "analyze this", "what are the implications?"]
+      command: ["/analyze"]
+      action: "deep_analysis_of_implications_tradeoffs_consequences"
+      value: "Replaces long-form 'Analyze the implications...' prompt"
+    
+    explore:
+      natural: ["alternatives?", "what else?", "explore options"]
+      command: ["/explore"]
+      action: "generate_alternative_approaches_perspectives"
+      value: "Replaces 'What alternative approaches should we consider?'"
+    
+    missing:
+      natural: ["missing?", "blind spots?", "what am I missing?"]
+      command: ["/missing"]
+      action: "identify_unstated_assumptions_constraints"
+      value: "Replaces 'What assumptions or constraints am I not seeing?'"
+    
+    connect:
+      natural: ["connections?", "how does this relate?", "connect this"]
+      command: ["/connect"]
+      action: "cross_reference_session_context"
+      value: "Replaces 'How does this connect to earlier points in our session?'"
+    
+    reflect:
+      natural: ["reflect", "patterns?", "meta-patterns?"]
+      command: ["/reflect"]
+      action: "meta_analysis_of_collaboration_patterns"
+      value: "Replaces 'Reflect on the meta-patterns emerging in our collaboration'"
+    
+    digest:
+      natural: ["digest session", "session summary", "consolidate"]
+      command: ["/digest"]
+      action: "compile_all_captures_and_metadata"
+      value: "One phrase = 15+ minutes manual consolidation work"
+    
+    reintegrate:
+      natural: ["reintegration", "prepare handoff", "session transition"]
+      command: ["/reintegrate"]
+      action: "generate_reintegration_checklist"
+      value: "Seamless cross-session continuity"
+```
+
+**Tier 1 Discovery Breadcrumbs**:
+
+Free tier users explore meta-cognitive prompting through experimentation:
+
+```markdown
+Try asking AI to reflect, analyze, or explore:
+- "Analyze the implications of this approach"
+- "What patterns are emerging in our discussion?"
+- "How does this connect to earlier points?"
+- "Map these ideas into a hierarchy"
+- "Record the current flow state"
+
+Discover what resonates with your thinking style.
+```
+
+**Tier 2 Automation**:
+
+After discovering value in Tier 1, upgrade unlocks:
+- **Terse shortcuts**: "implications?" instead of full question
+- **Automated generation**: "flow status" → full Flow State Report
+- **Adaptive recognition**: AI learns your preferred style (natural vs command)
+- **Proactive offers**: AI suggests "Want me to map these ideas?"
+
+**Why This Works**:
+
+1. **Discovery creates ownership**: User finds techniques themselves (experiential memory)
+2. **Upgrade removes friction**: Same power, 90% less typing
+3. **Adaptive = inference-first**: AI infers style preference from behavior
+4. **Consistent with existing protocols**: Mirrors DMP style detection, Emotional Awareness
+
+**Meta-Observation**:
+
+Quick Prompts with adaptive recognition emerged from **using CFP to design CFP**. The recursive validation loop:
+- Used CIP-E/DMP/VS to explore implementation options
+- Generated emergent insight (adaptive vs configured)
+- Validated that insight against systemic principles
+- **CFP proved itself through its own design process**
+
+This is the platform characteristic: enabling capabilities beyond original design.
+
+**Key Principle**: **Infer style from behavior, not configuration**. Natural and command syntax both supported, AI adapts to user's actual usage.
+
+- --
+
 ### 4. Emotional Context Awareness
 
-- *Problem**: AI tone doesn't match user's emotional state.
+**Problem**: AI tone doesn't match user's emotional state.
 
-- *Solution**: Detect emotions from linguistic cues and calibrate response.
+**Solution**: Detect emotions from linguistic cues and calibrate response. *(Powered by ARS - emotional state detection)*
 
 ```yaml
 emotional_context_awareness:
+  powered_by: ARS  # Adaptive Recognition System detects emotional state from linguistic cues
+  
   detect_emotion:
     frustration:
       cues: ["this doesn't work", "still broken", "tried everything", "ugh"]
@@ -1999,12 +2181,14 @@ emotional_context_awareness:
 
 ### 5. Flow State Preservation
 
-- *Problem**: Documentation requirements break creative momentum.
+**Problem**: Documentation requirements break creative momentum.
 
-- *Solution**: Capture ideas during flow, organize afterward.
+**Solution**: Capture ideas during flow, organize afterward. *(Powered by ARS - flow state detection)*
 
 ```yaml
 flow_state_preservation:
+  powered_by: ARS  # Adaptive Recognition System detects flow state from rapid ideation cues
+  
   detect_flow:
     indicators:
       rapid_idea_generation: ["and another thing", "also", "what if"]
@@ -2214,6 +2398,216 @@ inference_first_protocol:
 * **Architectural positioning**: Not cosmetic - actively shapes user expectations and behaviors
 
 - *Key Principle**: **Infer roles and needs first, execute directives when signaled**. Partnership over tool-use.
+
+- --
+
+### 8. Adaptive Recognition System (ARS)
+
+**Definition**: Meta-framework enabling AI to observe user behavior patterns, infer preferences without configuration, and adapt recognition sensitivity to match user's natural interaction style.
+
+**Core Principle**: **Infer from behavior, adapt silently, eliminate configuration overhead.**
+
+**Problem**: Traditional AI systems require users to configure preferences upfront:
+- "Choose your communication style..."
+- "Set your verbosity level..."
+- "Configure behavioral settings..."
+
+This creates cognitive load, requires self-awareness before experience, and can't adapt as users evolve.
+
+**Solution**: ARS observes actual usage patterns, builds confidence in user preferences over time, and adapts recognition sensitivity automatically. No configuration menus, no settings files, no explicit choices required.
+
+```yaml
+adaptive_recognition_system:
+  meta_framework: true
+  powers: ["DMP Style Detection", "Emotional Context Awareness", "Quick Prompts", "Flow State Detection"]
+  
+  core_principle: "Infer from behavior, adapt silently, eliminate configuration overhead"
+  
+  how_it_works:
+    step_1_observe:
+      description: "Track patterns across interactions within and between sessions"
+      examples:
+        - "User repeatedly uses 'META:' labels → Template DMP preference"
+        - "User says 'capture this' not '/capture' → Natural language preference"
+        - "User shows frustration cues → Emotional state detection"
+        - "User rapid-fires ideas → Flow state recognition"
+    
+    step_2_infer:
+      description: "Build confidence in detected preferences, distinguish signal from noise"
+      confidence_levels:
+        low: "Single occurrence - could be situational"
+        medium: "Pattern emerging - 3-5 consistent uses"
+        high: "Strong preference - 7+ consistent uses across contexts"
+      
+      noise_filtering:
+        - "User tries '/analyze' once → Don't assume command preference"
+        - "User frustrated once → Don't assume always frustrated"
+        - "Distinguish experimentation from established pattern"
+    
+    step_3_adapt:
+      description: "Adjust recognition sensitivity silently based on inferred preferences"
+      adaptation_types:
+        trigger_sensitivity:
+          natural_language_user: "High sensitivity to conversational shortcuts like 'analyze'"
+          command_syntax_user: "Strict - require explicit /command to avoid false triggers"
+        
+        response_calibration:
+          frustrated_user: "Empathetic tone, patient explanations"
+          excited_user: "Match energy, momentum-building language"
+        
+        mode_detection:
+          template_dmp_user: "Recognize explicit META:/DIRECTIVE: labels"
+          narrative_dmp_user: "Recognize natural flow cues like 'thinking back...'"
+    
+    step_4_override:
+      description: "Honor explicit user statements immediately without requiring pattern"
+      examples:
+        - "User: 'Use command syntax for quick prompts' → Switch immediately"
+        - "User: 'I prefer narrative DMP style' → No observation needed"
+        - "Explicit trumps inferred, always"
+  
+  current_applications:
+    dmp_style_detection:
+      observes: "Use of explicit labels (META:, DIRECTIVE:, REFLECTIVE:) vs natural flow language"
+      infers: "User prefers Template, Narrative, or Hybrid DMP style"
+      adapts: "Recognition of mode switches based on detected communication pattern"
+      value: "User doesn't configure style - just writes naturally, AI adapts"
+    
+    emotional_context_awareness:
+      observes: "Linguistic cues (frustration, excitement, fatigue, curiosity, confusion, satisfaction)"
+      infers: "User's current emotional/cognitive state"
+      adapts: "Response tone, verbosity, energy level, supportiveness matching user state"
+      value: "AI feels 'in sync' without user declaring 'I'm frustrated'"
+    
+    quick_prompts_style:
+      observes: "Use of natural phrases ('capture this') vs command syntax ('/capture')"
+      infers: "User prefers conversational shortcuts or explicit directives"
+      adapts: "Trigger sensitivity (high for natural users, strict for command users)"
+      value: "No 'choose your mode' configuration - AI learns from first few uses"
+    
+    flow_state_detection:
+      observes: "Rapid ideation cues ('and another thing', 'what if', 'also', 'this leads to')"
+      infers: "User is in creative flow momentum, doesn't want interruption"
+      adapts: "Capture mode - acknowledge without questioning, defer organization until pause"
+      value: "AI protects flow without being told 'I'm in flow state now'"
+  
+  future_extensions:
+    verbosity_preference:
+      observes: "User asks for more detail vs appreciates conciseness"
+      infers: "Preferred VS level (VS-2 compact vs VS-4 comprehensive)"
+      adapts: "Default verbosity for responses without explicit VS declaration"
+      status: "Planned - Tier 3 feature"
+    
+    questioning_style:
+      observes: "User appreciates upfront clarifying questions vs prefers seeing options first"
+      infers: "Timing preference for Clarifying Questions Protocol"
+      adapts: "Ask before alternatives vs provide alternatives then ask if questions remain"
+      status: "Research phase"
+    
+    technical_depth:
+      observes: "User dives into implementation details vs stays at conceptual level"
+      infers: "Preferred abstraction level (code examples vs architecture diagrams)"
+      adapts: "Balance of concrete vs abstract in responses"
+      status: "Research phase"
+    
+    session_continuity_value:
+      observes: "User frequently references prior sessions, asks for connections"
+      infers: "High value placed on cross-session evolution tracking"
+      adapts: "Proactive Evolution component emphasis in CIP-E, connection-building"
+      status: "Planned - Tier 3 feature"
+    
+    collaboration_pace:
+      observes: "User wants rapid iteration vs careful deliberation"
+      infers: "Preference for speed vs thoroughness"
+      adapts: "Quick alternatives vs comprehensive analysis"
+      status: "Research phase"
+  
+  learning_behavior:
+    observation_window: |
+      - Within-session: Immediate patterns (frustration, flow state)
+      - Cross-session: Persistent preferences (DMP style, Quick Prompts syntax)
+      - Evolution tracking: Changes over time (novice → proficient user)
+    
+    confidence_building:
+      low_confidence: "Ask for clarification - 'Did you want me to analyze that?'"
+      medium_confidence: "Adapt tentatively, ready to adjust if wrong"
+      high_confidence: "Adapt silently, user doesn't notice (feels 'natural')"
+    
+    pattern_strength:
+      weak_pattern: "Hybrid/flexible mode - accept both behaviors"
+      strong_pattern: "Optimized sensitivity - tailor to detected preference"
+      contradictory_pattern: "User experimenting or context-switching - remain flexible"
+    
+    graceful_degradation:
+      new_user: "Start in hybrid mode - observe without assumptions"
+      returning_user: "Recall cross-session patterns if Evolution component active"
+      context_shift: "Re-evaluate if user's style suddenly changes (new project, different domain)"
+  
+  implementation_philosophy:
+    zero_configuration: |
+      User never edits YAML preferences for behavioral settings.
+      AI learns from actual collaboration, not declared intentions.
+    
+    graceful_adaptation: |
+      User's style changes over time automatically recognized:
+      - Week 1: Exploratory (many questions, natural language)
+      - Month 3: Proficient (terse prompts, command syntax)
+      - ARS adapts without user awareness
+    
+    transparent_inference: |
+      AI can explain reasoning when asked:
+      - "I've noticed you prefer natural language shortcuts"
+      - "You seem to use Template DMP style - want to switch to Narrative?"
+      - Inference is observable, not opaque
+    
+    non_intrusive_learning: |
+      Learning happens in background, doesn't interrupt collaboration.
+      No "Let me update your preferences..." announcements.
+      Adaptation is silent unless user asks about it.
+    
+    user_sovereignty: |
+      Explicit user statements override inferred preferences immediately.
+      User can query: "What have you inferred about my style?"
+      User can reset: "Forget my preferences, start fresh"
+  
+  why_this_matters:
+    reduces_cognitive_load:
+      traditional: "User reads docs, chooses settings, configures preferences before starting"
+      ars: "User starts collaborating naturally, AI adapts to their actual style"
+      impact: "Onboarding friction eliminated, expertise not required upfront"
+    
+    enables_graceful_evolution:
+      traditional: "User's style changes → settings become stale → frustration"
+      ars: "User's style changes → AI notices → adapts automatically"
+      impact: "Framework grows with user, no reconfiguration needed"
+    
+    creates_differentiation:
+      traditional_frameworks: "Configure your preferences..."
+      cfp_with_ars: "Just start collaborating. AI adapts."
+      impact: "Zero-friction onboarding is competitive moat"
+    
+    validates_inference_first:
+      observation: "ARS is inference-first applied to itself"
+      insight: "Don't make user declare preferences - infer from behavior"
+      philosophy: "Most complete implementation of CIP core principle"
+    
+    enables_framework_extensibility:
+      benefit: "New behavioral protocols can leverage ARS automatically"
+      example: "Add 'Technical Depth Detection' → ARS handles learning/adaptation"
+      impact: "Framework grows without adding configuration complexity"
+```
+
+**Meta-Observation: Recursive Validation**
+
+ARS emerged from **using CFP to design CFP**:
+1. Designed Quick Prompts using CIP-E/DMP/VS (first recursion)
+2. Recognized adaptive recognition as meta-pattern across protocols
+3. Formalized ARS as framework (second recursion)
+4. **ARS validates inference-first philosophy by being its purest implementation**
+
+This is the ecosystem effect: CFP enabling capabilities beyond original design through compositional soundness.
+
+**Key Principle**: **Observe behavior, infer preferences, adapt silently.** Configuration-free collaboration that grows with the user.
 
 - --
 
@@ -2492,7 +2886,7 @@ user_preferences:
 
     emotional_co_regulation:
       enabled: true       # Use DMP Emotional Co-Regulation strategies
-      auto_detect_state: true  # Infer emotional tone from language
+      auto_detect_state: true  # Infer emotional tone from language (powered by ARS)
       adapt_interaction: true  # Tune response style to emotional state
 
   dmp:
@@ -2510,7 +2904,7 @@ user_preferences:
       api_design: template
       brainstorming: narrative
 
-    auto_detect_style: true  # Let AI infer style from user phrasing
+    auto_detect_style: true  # Let AI infer style from user phrasing (powered by ARS)
 
     # Reflective depth
     encourage_reflection: true  # Prompt consideration of tradeoffs
