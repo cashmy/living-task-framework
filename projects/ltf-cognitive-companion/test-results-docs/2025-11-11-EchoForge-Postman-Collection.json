@@ -1,0 +1,210 @@
+{
+  "info": {
+    "name": "EchoForge v1 \u2013 ATC API",
+    "_postman_id": "e2d6a2b0-4b1c-4e0c-9f90-echo-forge",
+    "description": "Postman collection for EchoForge (AI Thought Capture) draft REST API. Includes ingestion, process, export, and query endpoints.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Environment Setup",
+      "item": [
+        {
+          "name": "Set Variables (local)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/health",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "health"
+              ]
+            },
+            "description": "Use this to verify {{base_url}} is reachable. Set environment vars: base_url, session_id, project."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Ingestion",
+      "item": [
+        {
+          "name": "Ingest: Text",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"session_id\": \"{{session_id}}\",\n  \"project\": \"{{project}}\",\n  \"channel\": \"text\",\n  \"payload\": \"Third idea: document the current execution of interactive 'capture mode'...\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/v1/ingest",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "v1",
+                "ingest"
+              ]
+            },
+            "description": "Ingest freeform text into the capture pipeline."
+          }
+        },
+        {
+          "name": "Ingest: Voice/File (URI)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"session_id\": \"{{session_id}}\",\n  \"project\": \"{{project}}\",\n  \"channel\": \"voice\",\n  \"payload\": \"file:///watcher/inbox/audio_2025-11-11_1501.wav\",\n  \"options\": {\n    \"stt\": \"whisper\",\n    \"language\": \"en\",\n    \"diarization\": false,\n    \"transcription_hint\": \"brainstorm notes\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/v1/ingest",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "v1",
+                "ingest"
+              ]
+            },
+            "description": "Ingest a file URI captured by your watcher. Server resolves, transcribes (if configured), and proceeds."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Processing",
+      "item": [
+        {
+          "name": "Process: Summarize + Classify + Tag",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"session_id\": \"{{session_id}}\",\n  \"ops\": [\n    \"summarize\",\n    \"classify\",\n    \"tag\",\n    \"export:md\"\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/v1/process",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "v1",
+                "process"
+              ]
+            },
+            "description": "Batch operations for last ingested capture or pending queue."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Export",
+      "item": [
+        {
+          "name": "Export: Artifact(s)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"artifact_ids\": [\n    \"{{artifact_id}}\"\n  ],\n  \"format\": \"md\",\n  \"destination\": \"local\",\n  \"options\": {\n    \"folder\": \"/EchoForge/{{date_folder}}\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/v1/export",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "v1",
+                "export"
+              ]
+            },
+            "description": "Export artifacts in selected format and destination."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Query",
+      "item": [
+        {
+          "name": "Query: Tags + Project",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"q\": \"tags:FlowState AND project:{{project}}\",\n  \"limit\": 50\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/v1/query",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "v1",
+                "query"
+              ]
+            },
+            "description": "Search artifacts by tag and project."
+          }
+        }
+      ]
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:5173"
+    },
+    {
+      "key": "session_id",
+      "value": "sess-2025-11-11-A"
+    },
+    {
+      "key": "project",
+      "value": "EchoForge"
+    },
+    {
+      "key": "artifact_id",
+      "value": "idea-2025-11-11-03"
+    },
+    {
+      "key": "date_folder",
+      "value": "2025-11-11"
+    }
+  ]
+}

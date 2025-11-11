@@ -1662,14 +1662,18 @@ capture_protocol:
 
   ai_behavior:
     step_1_retrieve: "Identify the AI message immediately before user's capture command"
-    step_2_format: "Create clean markdown with minimal metadata"
-    step_3_present: "Provide for download/save (platform-dependent)"
+    step_2_extract_prompt: "Retrieve the user's exact prompt that triggered the captured response (verbatim quote)"
+    step_3_capture_meta: "Document current META state (DMP mode, VS settings, emotional context)"
+    step_4_format: "Create clean markdown with complete metadata"
+    step_5_present: "Provide for download/save (platform-dependent)"
 
     formatting_rules:
       add_header:
 
         - "Brief topic/context title"
-        - "Date (YYYY-MM-DD)"
+        - "Date with timestamp (YYYY-MM-DD HH:MM:SS)"
+        - "Originating Prompt (exact verbatim quote)"
+        - "Active META State (current framework settings)"
         - "One-line context if available from conversation"
 
       preserve_content:
@@ -1687,7 +1691,9 @@ capture_protocol:
   output_format_template: |
     # [Brief Topic/Context]
 
-    * *Date**: YYYY-MM-DD
+    * *Date**: YYYY-MM-DD HH:MM:SS
+    * *Originating Prompt**: "[User's exact prompt that triggered this response - verbatim]"
+    * *Active META State**: [Current DMP mode, VS settings, emotional context if applicable]
     * *Context**: [One-line context if available]
 
     - --
@@ -1784,15 +1790,23 @@ capture_protocol:
       rule: "Capture EXACTLY what was said - no editing, summarizing, or 'improving'"
       rationale: "User wants to preserve the actual response, not a modified version"
 
-    principle_2_minimal_metadata:
-      rule: "Add only essential context (date, topic) - keep overhead minimal"
+    principle_2_verbatim_prompt:
+      rule: "Capture user's EXACT prompt verbatim - no paraphrasing, summarizing, or interpretation"
+      rationale: "Originating prompt provides essential context for understanding why response was generated; analysis requires exact wording to identify cause-effect relationships"
+
+    principle_3_meta_state_preservation:
+      rule: "Document active META state at time of capture (DMP mode, VS settings, emotional context)"
+      rationale: "META state heavily influences response quality and style; enables thread continuity and reflective analysis"
+
+    principle_4_minimal_metadata:
+      rule: "Add only essential context beyond prompt/META - keep overhead minimal"
       rationale: "Focus is on content preservation, not extensive documentation"
 
-    principle_3_immediate_usability:
+    principle_5_immediate_usability:
       rule: "Output should be ready to save/download with no additional processing"
       rationale: "Reduce friction between capture command and saved artifact"
 
-    principle_4_platform_agnostic:
+    principle_6_platform_agnostic:
       rule: "Works regardless of AI's file creation capabilities"
       rationale: "Even if just markdown in code block, still valuable (copy/paste)"
 
@@ -1815,7 +1829,9 @@ capture_protocol:
     ai_capture_output: |
       # Authentication System Architecture
 
-      * *Date**: 2025-11-11
+      * *Date**: 2025-11-11 14:32:15
+      * *Originating Prompt**: "Design an authentication system using CIP-E"
+      * *Active META State**: DMP Template Mode, VS-3 (Detailed), No emotional context
       * *Context**: CIP-E structured design for Express.js auth system
 
       - --
