@@ -2,6 +2,42 @@
 
 To create a snapshot of the current state of the repository, follow these steps:
 
+## Where Files Are Created
+
+* *Understanding the file structure**:
+
+| File Type | Location | Example |
+|-----------|----------|---------|
+| **Context Snapshots** | `context-snapshots/YYYY-MM-DD_HHMMSS-*/` | `context-snapshots/2025-11-10_151722-pivotal-ltf-cfp-validated-need-expansion-v2/` |
+| **Pivotal Moments** | `reflections/pivotal-moments/` | `reflections/pivotal-moments/2025-11-10-cfp-validated-need-and-expansion.md` |
+| **Session Buffers** | `temp/session-buffers/` | `temp/session-buffers/session-2025-11-10_151722.yaml` |
+
+* *Folder Structure**:
+
+```text
+@living-task-framework/
+├── context-snapshots/          # Snapshot packages (upload to new AI)
+│   └── 2025-11-10_HHMMSS-*/
+│       ├── transfer-prompt.md
+│       ├── session-state.yaml
+│       └── RESUME_README.md
+│
+├── reflections/
+│   └── pivotal-moments/        # Detailed pivotal moment documents
+│       └── 2025-11-10-*.md
+│
+└── temp/
+    └── session-buffers/        # Temporary moment detection buffers
+        └── session-*.yaml
+```
+
+* *What goes where**:
+* **Snapshots** (`context-snapshots/`): Reference packages for AI handoff
+* **Pivotal Moments** (`reflections/`): Detailed markdown documents with full context
+* **Buffers** (`temp/`): Temporary storage for moment detection (before finalizing)
+
+- --
+
 ## Create a Context Snapshot
 
 ### PowerShell (Windows, Mac, Linux)

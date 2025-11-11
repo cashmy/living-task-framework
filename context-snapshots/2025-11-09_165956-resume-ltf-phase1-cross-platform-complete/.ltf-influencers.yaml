@@ -27,9 +27,6 @@ influencers:
   architecture:
     - "core/architecture/LTF_Concept_Map_v0.91.md"
     - "core/architecture/pivotal-moment-capture-design.md"
-    - "projects/ltf-cognitive-companion/architecture/"
-    - "reflections/pivotal-moments/2025-11-10-cfp-validated-need-and-expansion.md"
-    - "reflections/pivotal-moments/2025-11-09-foundation-primer-reeling-response.md"
   
   # Documentation
   documentation:
@@ -43,9 +40,6 @@ influencers:
   
   pivotal_moments:
     path_pattern: "reflections/pivotal-moments/*.yaml"
-    critical:
-      - "reflections/pivotal-moments/2025-11-10-cfp-validated-need-and-expansion.md"
-      - "reflections/pivotal-moments/2025-11-09-foundation-primer-reeling-response.md"
 
 auto_detect:
   enabled: true

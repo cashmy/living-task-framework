@@ -230,7 +230,7 @@ function Get-PivotalMomentBuffer {
   
   # Look for any buffer files (most recent first)
   $bufferFiles = Get-ChildItem $bufferDir -Filter "*.yaml" -ErrorAction SilentlyContinue | 
-                 Sort-Object LastWriteTime -Descending
+  Sort-Object LastWriteTime -Descending
   
   if ($bufferFiles) {
     # Return most recent buffer
@@ -454,7 +454,7 @@ function Show-PivotalMomentReview {
       Write-Host "  [✓] Buffer cleared" -ForegroundColor Green
       
       $approvedMoments += @{
-        file = $savedFile
+        file  = $savedFile
         count = $momentCount
       }
     }
@@ -495,25 +495,25 @@ function ConvertFrom-InfluencerManifest {
   if (-not $ManifestPath -or -not (Test-Path $ManifestPath)) {
     # Return default structure for LTF framework
     return @{
-      project = @{
-        name = "living-task-framework"
+      project     = @{
+        name     = "living-task-framework"
         mnemonic = "ltf"
-        type = "research"
-        repo = "https://github.com/cashmy/living-task-framework"
-        branch = "main"
+        type     = "research"
+        repo     = "https://github.com/cashmy/living-task-framework"
+        branch   = "main"
       }
       influencers = @{
-        concept = @(
+        concept            = @(
           "core/architecture/LTF_Concept_Map_v0.91.md",
           "core/DMP_Communication_Styles_Guide.md",
           "core/LTF_Prompt_Collection.md"
         )
-        taxonomy = @(
+        taxonomy           = @(
           "core/taxonomy/DMP_Patterns.md",
           "core/taxonomy/VS_Family_Guide.md",
           "core/taxonomy/Glossary.md"
         )
-        architecture = @(
+        architecture       = @(
           "core/architecture/LTF_Concept_Map_v0.91.md",
           "core/architecture/pivotal-moment-capture-design.md"
         )
@@ -540,16 +540,16 @@ function ConvertFrom-InfluencerManifest {
     # Convert YAML structure to expected hashtable format
     # The YAML parser returns OrderedDictionary, convert to hashtables
     $result = @{
-      project = @{
-        name = $manifest.project.name
-        mnemonic = $manifest.project.mnemonic
-        type = $manifest.project.type
-        repo = $manifest.project.repo
-        branch = $manifest.project.branch
+      project          = @{
+        name      = $manifest.project.name
+        mnemonic  = $manifest.project.mnemonic
+        type      = $manifest.project.type
+        repo      = $manifest.project.repo
+        branch    = $manifest.project.branch
         lifecycle = $manifest.project.lifecycle
       }
-      influencers = @{}
-      auto_detect = @{
+      influencers      = @{}
+      auto_detect      = @{
         enabled = $false
       }
       lifecycle_config = @{}
@@ -576,13 +576,13 @@ function ConvertFrom-InfluencerManifest {
     if ($manifest.auto_detect) {
       $result.auto_detect = @{
         enabled = [bool]$manifest.auto_detect.enabled
-        rules = @()
+        rules   = @()
       }
       
       if ($manifest.auto_detect.rules) {
         foreach ($rule in $manifest.auto_detect.rules) {
           $result.auto_detect.rules += @{
-            pattern = $rule.pattern
+            pattern  = $rule.pattern
             category = $rule.category
             priority = $rule.priority
           }
@@ -596,7 +596,7 @@ function ConvertFrom-InfluencerManifest {
         $config = $manifest.lifecycle_config[$lifecycle]
         $result.lifecycle_config[$lifecycle] = @{
           snapshot_frequency = $config.snapshot_frequency
-          cognitive_depth = $config.cognitive_depth
+          cognitive_depth    = $config.cognitive_depth
         }
         if ($config.note) {
           $result.lifecycle_config[$lifecycle].note = $config.note
@@ -656,13 +656,15 @@ function Resolve-GlobPattern {
     
     $searchBase = if ($baseParts.Count -gt 0) {
       Join-Path $BasePath ($baseParts -join '/')
-    } else {
+    }
+    else {
       $BasePath
     }
     
     $fileFilter = if ($filterParts.Count -gt 0) {
       $filterParts -join '/'
-    } else {
+    }
+    else {
       '*'
     }
     
@@ -671,10 +673,10 @@ function Resolve-GlobPattern {
       # Get all files recursively, then filter by full relative path
       if (Test-Path $searchBase) {
         Get-ChildItem -Path $searchBase -Recurse -File -ErrorAction SilentlyContinue |
-          Where-Object {
-            $relativePath = $_.FullName.Substring($searchBase.Length).TrimStart('\', '/')
-            $relativePath -like ($fileFilter -replace '/', '\')
-          }
+        Where-Object {
+          $relativePath = $_.FullName.Substring($searchBase.Length).TrimStart('\', '/')
+          $relativePath -like ($fileFilter -replace '/', '\')
+        }
       }
     }
     else {
@@ -742,10 +744,10 @@ function Invoke-AutoDetectRules {
       
       foreach ($file in $matchedFiles) {
         $discovered += @{
-          file = $file
-          category = $category
-          priority = $priority
-          source = "auto-detect"
+          file         = $file
+          category     = $category
+          priority     = $priority
+          source       = "auto-detect"
           rule_pattern = $pattern
         }
       }
@@ -784,8 +786,8 @@ function Build-InfluencerReferences {
         
         # Resolve pattern to actual files
         $resolvedFiles = Get-ChildItem -Path $pattern -ErrorAction SilentlyContinue |
-          Where-Object { $_.LastWriteTime -gt $cutoffDate } |
-          Sort-Object LastWriteTime -Descending
+        Where-Object { $_.LastWriteTime -gt $cutoffDate } |
+        Sort-Object LastWriteTime -Descending
         
         foreach ($file in $resolvedFiles) {
           $relativePath = Resolve-Path -Relative $file.FullName
@@ -793,12 +795,12 @@ function Build-InfluencerReferences {
           
           if (-not $addedPaths.ContainsKey($relativePath)) {
             $references += @{
-              category = $category
-              path = $relativePath
-              github_url = Get-GitHubBlobUrl -Repo $repo -Branch $branch -Path $relativePath
-              local_path = $file.FullName
+              category      = $category
+              path          = $relativePath
+              github_url    = Get-GitHubBlobUrl -Repo $repo -Branch $branch -Path $relativePath
+              local_path    = $file.FullName
               last_modified = $file.LastWriteTime.ToString("yyyy-MM-dd")
-              source = "manual"
+              source        = "manual"
             }
             $addedPaths[$relativePath] = $true
           }
@@ -813,12 +815,12 @@ function Build-InfluencerReferences {
           
           if (-not $addedPaths.ContainsKey($relativePath)) {
             $references += @{
-              category = $category
-              path = $relativePath
-              github_url = Get-GitHubBlobUrl -Repo $repo -Branch $branch -Path $relativePath
-              local_path = $fullPath.Path
+              category      = $category
+              path          = $relativePath
+              github_url    = Get-GitHubBlobUrl -Repo $repo -Branch $branch -Path $relativePath
+              local_path    = $fullPath.Path
               last_modified = (Get-Item $item).LastWriteTime.ToString("yyyy-MM-dd")
-              source = "manual"
+              source        = "manual"
             }
             $addedPaths[$relativePath] = $true
           }
@@ -844,14 +846,14 @@ function Build-InfluencerReferences {
       # Only add if not already in manual list
       if (-not $addedPaths.ContainsKey($relativePath)) {
         $references += @{
-          category = $detected.category
-          path = $relativePath
-          github_url = Get-GitHubBlobUrl -Repo $repo -Branch $branch -Path $relativePath
-          local_path = $file.FullName
+          category      = $detected.category
+          path          = $relativePath
+          github_url    = Get-GitHubBlobUrl -Repo $repo -Branch $branch -Path $relativePath
+          local_path    = $file.FullName
           last_modified = $file.LastWriteTime.ToString("yyyy-MM-dd")
-          source = "auto-detect"
-          priority = $detected.priority
-          rule_pattern = $detected.rule_pattern
+          source        = "auto-detect"
+          priority      = $detected.priority
+          rule_pattern  = $detected.rule_pattern
         }
         $addedPaths[$relativePath] = $true
       }
@@ -964,7 +966,8 @@ vcs_threads: {}
 
 "@
     }
-  } else {
+  }
+  else {
     $state += "# Phase 3: Approved pivotal moments will be linked here`n"
     $state += "pivotal_moments: []`n"
   }
@@ -1051,9 +1054,9 @@ function Test-ExtractionResults {
   
   # Look for extraction result keys (non-empty)
   $hasExtractionResults = $stateContent -match 'dmp_patterns:\s*-' -or
-                         $stateContent -match 'emotional_state:\s+baseline:' -or
-                         $stateContent -match 'vcs_threads:\s*-' -or
-                         $stateContent -match 'vsyn_state:\s+emotional:'
+  $stateContent -match 'emotional_state:\s+baseline:' -or
+  $stateContent -match 'vcs_threads:\s*-' -or
+  $stateContent -match 'vsyn_state:\s+emotional:'
   
   return $hasExtractionResults
 }
@@ -1068,10 +1071,10 @@ function Get-ExtractionResultsFromState {
   # TODO: Full YAML parser for complex nested structures
   
   $results = @{
-    dmp_patterns = @()
+    dmp_patterns    = @()
     emotional_state = ""
     vcs_threads_raw = ""
-    vsyn_state = ""
+    vsyn_state      = ""
   }
   
   # Extract sections between markers
@@ -1140,7 +1143,8 @@ function Expand-EnhancedTemplate {
         $dmpPatternsText += "- $pattern`n"
       }
     }
-  } else {
+  }
+  else {
     $dmpPatternsText = "- None detected yet (first session or no extraction run)"
   }
   $template = $template -replace '\[List active patterns.*?\]', $dmpPatternsText.Trim()
@@ -1150,7 +1154,8 @@ function Expand-EnhancedTemplate {
   if ($ExtractionResults.vcs_threads_raw) {
     # Parse and format VCS threads
     $vcsThreadsText = "From extraction results:`n$($ExtractionResults.vcs_threads_raw)"
-  } else {
+  }
+  else {
     $vcsThreadsText = "- No threads extracted yet (run vcs-threads.txt extraction)"
   }
   $template = $template -replace 'Persistent concepts:.*?\n', "Persistent concepts:`n$vcsThreadsText`n"
@@ -1161,7 +1166,8 @@ function Expand-EnhancedTemplate {
   if ($ExtractionResults.vsyn_state) {
     $vsynYaml = $ExtractionResults.vsyn_state
     $template = $template -replace '\[Paste complete VSyn state YAML.*?\]', $vsynYaml
-  } else {
+  }
+  else {
     $template = $template -replace '\[Paste complete VSyn state YAML.*?\]', "# No VSyn state extracted yet"
   }
   
@@ -1169,7 +1175,8 @@ function Expand-EnhancedTemplate {
   if ($ExtractionResults.vcs_threads_raw) {
     $vcsYaml = $ExtractionResults.vcs_threads_raw
     $template = $template -replace '\[Paste complete VcS threads YAML.*?\]', $vcsYaml
-  } else {
+  }
+  else {
     $template = $template -replace '\[Paste complete VcS threads YAML.*?\]', "# No VcS threads extracted yet"
   }
   
@@ -1233,7 +1240,8 @@ function New-TransferPrompt {
     Write-Host "  ✓ Cognitive extraction results detected" -ForegroundColor Green
     $extractionResults = Get-ExtractionResultsFromState -SessionStatePath $SessionStatePath
     $useEnhancedTemplate = $true
-  } else {
+  }
+  else {
     Write-Host "  ℹ No cognitive extraction results - using simple template" -ForegroundColor Yellow
   }
   
@@ -1251,7 +1259,8 @@ function New-TransferPrompt {
         -Timestamp $Timestamp
       
       return $prompt
-    } else {
+    }
+    else {
       Write-Host "  ⚠ Enhanced template not found, falling back to simple" -ForegroundColor Yellow
     }
   }
@@ -1421,18 +1430,22 @@ Write-Host "  Repo: $($manifest.project.repo)" -ForegroundColor Gray
 $projectSlug = if ($Mnemonic) {
   # User provided mnemonic via CLI (highest priority)
   $Mnemonic.ToLower()
-} elseif ($manifest.project.mnemonic) {
+}
+elseif ($manifest.project.mnemonic) {
   # Mnemonic defined in project manifest
   $manifest.project.mnemonic.ToLower()
-} elseif ($Project -and $Project -ne "living-task-framework") {
+}
+elseif ($Project -and $Project -ne "living-task-framework") {
   # User provided custom project - derive from project name
   ($Project -replace '[^a-zA-Z0-9-]', '-').ToLower()
-} else {
+}
+else {
   # Derive from manifest project name
   $projectName = $manifest.project.name
   if ($projectName -eq "living-task-framework") {
     "ltf"
-  } else {
+  }
+  else {
     ($projectName -replace '[^a-zA-Z0-9-]', '-').ToLower()
   }
 }
@@ -1440,7 +1453,8 @@ $projectSlug = if ($Mnemonic) {
 # Build label slug (kebab-case, auto-generate if not provided)
 $labelSlug = if ($Label) {
   ($Label -replace '[^a-zA-Z0-9-]', '-').ToLower()
-} else {
+}
+else {
   # Auto-generate label from type
   switch ($Type) {
     "test" { "test-snapshot" }
@@ -1534,7 +1548,8 @@ if ($bufferFile -and $ReviewMoments) {
     $sessionState | Set-Content -Path $sessionStatePath -Encoding UTF8
     Write-Host "  ✓ Session state updated" -ForegroundColor Green
   }
-} else {
+}
+else {
   $approvedMoments = @()
 }
 

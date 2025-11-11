@@ -11,6 +11,7 @@ Project mnemonics are 3-6 character codes that make snapshot directory names sho
 - `epe` - Evolution of Prompt Engineering (book)
 - `atc` - AI Thought Capture
 - `rdash` - Reflective Dashboard
+- `cfp` - Cognitive Foundation Primer (LTF Cognitive Companion)
 
 ## Priority Order
 
@@ -131,6 +132,7 @@ Result: `2025-11-09_HHMMSS-burst-wp-label`
 | App | ehr-consent-platform | `ehrc` | EHR + Consent |
 | Book | evolution-prompt-engineering | `epe` | Title acronym |
 | Article | ai-thought-capture | `atc` | Clear abbrev |
+| Product | ltf-cognitive-companion | `cfp` | Cognitive Foundation Primer |
 | Course | advanced-typescript | `adts` | Subject code style |
 | Research | cognitive-architecture-study | `cas` | Lab notation style |
 
@@ -169,7 +171,7 @@ You can manually rename old snapshots in File Explorer using F2.
 
 - --
 
-* *See also:**
+- **See also:**
 - `core/.ltf-influencers.yaml.template` - Full manifest template
 - `projects/ehr-consent-platform/.ltf-influencers.yaml` - Real example
 - `tools/context/Save-LTFContext-v2.ps1` - Implementation

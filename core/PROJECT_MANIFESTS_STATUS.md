@@ -1,7 +1,7 @@
 # Project Manifests Created
 
-* *Date**: 2025-11-09
-* *Status**: Structure complete, awaiting YAML parsing implementation
+- *Date**: 2025-11-09
+- *Status**: Structure complete, awaiting YAML parsing implementation
 
 - --
 
@@ -13,8 +13,8 @@
 * *Mnemonic**: `ltf`
 * *Type**: research
 * *Lifecycle**: active
-
 * *Influencers**:
+
 - Concept: LTF Concept Map, DMP Guide, Prompt Collection, README, CONTRIBUTING
 - Taxonomy: DMP Patterns, VS Family Guide, Glossary
 - Architecture: Concept Map, Pivotal Moment Design
@@ -22,74 +22,74 @@
 - Recent reflections: 14 days
 - Pivotal moments: All YAML files
 
-* *Auto-detect**: Enabled (prompts, tooling, documentation)
+- *Auto-detect**: Enabled (prompts, tooling, documentation)
 
 - --
 
 ### 2. EHR Consent Platform - `ehrc`
 
-* *Location**: `projects/ehr-consent-platform/.ltf-influencers.yaml`
-* *Mnemonic**: `ehrc`
-* *Type**: app
-* *Lifecycle**: active
+- *Location**: `projects/ehr-consent-platform/.ltf-influencers.yaml`
+- *Mnemonic**: `ehrc`
+- *Type**: app
+- *Lifecycle**: active
 
-* *Influencers**:
+- *Influencers**:
 - Architecture: System architecture, blockchain integration
 - Concept: README, vision
 - Smart contracts: ConsentRegistry, HospitalRegistry, ProviderIdentity
 - Specifications: API specs
 - Recent reflections: 14 days
 
-* *Auto-detect**: Enabled (smart contracts, compliance docs, service docs)
+- *Auto-detect**: Enabled (smart contracts, compliance docs, service docs)
 
 - --
 
 ### 3. AI Thought Capture - `atc`
 
-* *Location**: `projects/ai-thought-capture/.ltf-influencers.yaml`
-* *Mnemonic**: `atc`
-* *Type**: app
-* *Lifecycle**: active
+- *Location**: `projects/ai-thought-capture/.ltf-influencers.yaml`
+- *Mnemonic**: `atc`
+- *Type**: app
+- *Lifecycle**: active
 
-* *Influencers**:
+- *Influencers**:
 - Concept: Concept, Problem description, Brand analysis
 - Architecture: Architecture diagram
 - Planning: High level tasks, Actual steps, Current CIP
 - Technical: Watcher README, Purpose doc
 - Core modules: watcher.py, watcher_core.py, stt_stub.py
 
-* *Auto-detect**: Enabled (watcher code, documentation, tests)
+- *Auto-detect**: Enabled (watcher code, documentation, tests)
 
 - --
 
 ### 4. AI Collaboration Whitepaper - `accr`
 
-* *Location**: `research/whitepapers/.ltf-influencers.yaml`
-* *Mnemonic**: `accr` (AI Collaboration & Cognitive Rise)
-* *Type**: whitepaper
-* *Lifecycle**: archived
+- *Location**: `research/whitepapers/.ltf-influencers.yaml`
+- *Mnemonic**: `accr` (AI Collaboration & Cognitive Rise)
+- *Type**: whitepaper
+- *Lifecycle**: archived
 
-* *Influencers**:
+- *Influencers**:
 - Manuscript: Cleaned MD, Final DOCX
 - Planning: Outline, Citation map
 - Drafts: Working versions (historical)
 
-* *Auto-detect**: Disabled (archived project)
+- *Auto-detect**: Disabled (archived project)
 
 - --
 
 ### 5. LTF Examples - `ltfex`
 
-* *Location**: `projects/examples/.ltf-influencers.yaml`
-* *Mnemonic**: `ltfex`
-* *Type**: documentation
-* *Lifecycle**: maintenance
+- *Location**: `projects/examples/.ltf-influencers.yaml`
+- *Mnemonic**: `ltfex`
+- *Type**: documentation
+- *Lifecycle**: maintenance
 
-* *Influencers**:
+- *Influencers**:
 - Documentation: README
 - Examples: All markdown files (future)
 
-* *Auto-detect**: Enabled (example files, tutorials)
+- *Auto-detect**: Enabled (example files, tutorials)
 
 - --
 
@@ -113,7 +113,7 @@
 | ai-collaboration-whitepaper | accr | 84% |
 | ltf-examples | ltfex | 50% |
 
-* *Average**: 75% shorter project identifiers
+- *Average**: 75% shorter project identifiers
 
 - --
 
@@ -135,7 +135,7 @@
 2025-11-09_140000-test-atc-watcher-refactor
 ```
 
-* *Result**: ~30 characters shorter, fits in narrow IDE panels
+- *Result**: ~30 characters shorter, fits in narrow IDE panels
 
 - --
 
@@ -143,9 +143,9 @@
 
 ### Phase 5: YAML Parsing Implementation
 
-* *Current state**: Manifests created but not read
-* *Blocker**: ConvertFrom-InfluencerManifest uses hardcoded defaults
-* *Solution options**:
+- *Current state**: Manifests created but not read
+- *Blocker**: ConvertFrom-InfluencerManifest uses hardcoded defaults
+- *Solution options**:
 
 1. **powershell-yaml module** (recommended)
 
@@ -165,7 +165,7 @@
    - Parse JSON in PowerShell
    - Adds dependency
 
-* *Recommended**: Option 1 (powershell-yaml module) - robust, maintainable
+- *Recommended**: Option 1 (powershell-yaml module) - robust, maintainable
 
 - --
 
@@ -179,7 +179,7 @@ Once YAML parsing is implemented:
 .\tools\context\Save-LTFContext-v2.ps1 -Type test -Label "yaml-parse-test"
 ```
 
-* *Expected**: Reads `.ltf-influencers.yaml`, uses `ltf` mnemonic, includes pivotal_moments influencers
+- *Expected**: Reads `.ltf-influencers.yaml`, uses `ltf` mnemonic, includes pivotal_moments influencers
 
 ### Test 2: EHR project
 
@@ -187,7 +187,7 @@ Once YAML parsing is implemented:
 .\tools\context\Save-LTFContext-v2.ps1 -Project ehr-consent-platform -Type test
 ```
 
-* *Expected**: Uses `ehrc` mnemonic, includes smart contract influencers
+- *Expected**: Uses `ehrc` mnemonic, includes smart contract influencers
 
 ### Test 3: CLI override
 
@@ -195,7 +195,7 @@ Once YAML parsing is implemented:
 .\tools\context\Save-LTFContext-v2.ps1 -Project ai-thought-capture -Mnemonic "xyz"
 ```
 
-* *Expected**: Overrides `atc` with `xyz`, still reads other manifest fields
+- *Expected**: Overrides `atc` with `xyz`, still reads other manifest fields
 
 ### Test 4: Archived project
 
@@ -203,7 +203,7 @@ Once YAML parsing is implemented:
 .\tools\context\Save-LTFContext-v2.ps1 -Project ../research/whitepapers
 ```
 
-* *Expected**: Uses `accr`, notes archived lifecycle, minimal snapshot
+- *Expected**: Uses `accr`, notes archived lifecycle, minimal snapshot
 
 - --
 
@@ -217,7 +217,7 @@ Once YAML parsing is implemented:
 6. `projects/examples/.ltf-influencers.yaml` - Examples (maintenance)
 7. `core/PROJECT_MNEMONICS.md` - Mnemonic documentation
 
-* *Total**: 7 files, ~400 lines of YAML/markdown
+- *Total**: 7 files, ~400 lines of YAML/markdown
 
 - --
 
@@ -232,11 +232,11 @@ Once YAML parsing is implemented:
 ✅ Resume script with filtering
 ✅ Documentation complete
 
-* *Remaining**: YAML parsing implementation (Phase 5)
+- *Remaining**: YAML parsing implementation (Phase 5)
 
 - --
 
-* *See also**:
+- *See also**:
 - `core/PROJECT_MNEMONICS.md` - Mnemonic usage guide
 - `core/.ltf-influencers.yaml.template` - Blank template
 - `tools/context/Save-LTFContext-v2.ps1` - Implementation (TODO: YAML parsing)
