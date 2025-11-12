@@ -16,3 +16,5 @@ assets/diagrams/*.fig
 # prevent accidental vendoring if submodules not yet added
 projects/ai-thought-capture/*
 projects/ehr-consent-platform/*
+# context snapshots are working files, not source code
+context-snapshots/
