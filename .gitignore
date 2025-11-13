@@ -10,6 +10,7 @@ node_modules/
 dist/
 coverage/
 sandbox/
+temp/
 assets/media/*
 assets/diagrams/*.sketch
 assets/diagrams/*.fig
