@@ -1,49 +1,85 @@
 # CFP Tiered Packaging Architecture
 
 **Date**: November 11, 2025  
-**Version**: Design Specification v1.0  
+**Updated**: November 13, 2025  
+**Version**: Design Specification v2.0  
 **Status**: Proposed Architecture  
-**Purpose**: Define package structure for Tier 1 (discovery) vs Tier 2 (automation with ARS)
+**Purpose**: Define package structure for 3-tier CFP product (Individual/SMB/Enterprise)
 
 ---
 
 ## Executive Summary
 
-The Cognitive Foundation Primer (CFP) is designed with a two-tiered approach:
+The Cognitive Foundation Primer (CFP) is designed with a **three-tiered approach**:
 
-- **Tier 1 (Free)**: Discovery phase - Manual meta-cognitive prompting, framework exploration
-- **Tier 2 (Premium)**: Automation phase - Terse shortcuts, ARS-powered adaptation, productivity multipliers
+- **Tier 1 (Free - Individual)**: Exposure/discovery phase - Generate "Wow! I need more" experience, manual meta-cognitive prompting, foundational features
+- **Tier 2 (Premium - SMB/Independent Developer)**: Professional automation - Domain-specific business use, basic User State Model, project-specific CIP context
+- **Tier 3 (Enterprise - Teams/Framework Developers)**: Full LTF implementation - Multi-user environments, user switching, ecosystem creation, advanced User State Models
 
-This document defines the package architecture, migration path, and business model for implementing this tiered structure.
+This document defines the package architecture, target user profiles, migration path, and business model for implementing this tiered structure.
 
 ---
 
 ## Design Philosophy
 
-### Why Tiering Matters
+### Why Three Tiers Matter
 
-**Discovery Creates Ownership**:
+**Tier 1 - Discovery Creates Ownership** (Individual Users):
 - Users find meta-cognitive techniques themselves through experimentation
 - Experiential memory stronger than instructional memory
-- Tier 1 validates value before Tier 2 purchase
+- "Wow! I need more of this" experience drives upgrade consideration
+- Foundational features demonstrate concrete value (8.5× productivity validation)
 
-**Automation Removes Friction**:
-- After discovering value, users want efficiency
-- Tier 2 provides same power with 90% less typing
-- ARS eliminates configuration overhead (competitive advantage)
+**Tier 2 - Professional Automation** (SMB/Independent Developers):
+- Domain-specific business owners need efficiency without enterprise complexity
+- Independent developers want automation without team overhead
+- Basic User State Model (manual customization) validates relationship DNA concept
+- Project-specific CIP context files enable professional-grade workflows
+
+**Tier 3 - Enterprise Scale** (Teams/Framework Developers/Ecosystem Creators):
+- Multi-user environments require user switching capabilities
+- Full LTF implementation for comprehensive framework development
+- Advanced User State Models with MO Journal auto-population
+- Team paired programming with differentiated user profiles
+- Ecosystem creation tools for building on CFP foundation
 
 **Business Model Validation**:
-- Freemium approach: Free tier proves value, premium tier captures it
-- Clear value proposition: "You validated these techniques work—now automate them"
-- Natural upgrade path: Discovery → Validation → Automation
+- Freemium approach: Free tier proves value, premium tiers capture it
+- Clear value propositions per user type (Individual → Professional → Enterprise)
+- Natural upgrade paths: Discovery → Professional Automation → Team/Ecosystem
+- **Ethical Collaboration**: Foundational principle across ALL tiers (not monetized)
 
 ---
 
 ## Package Structure
 
-### Package 1: `cfp-core-tier1` (Free/Open Source)
+### Target User Profiles
 
-**Purpose**: Foundation for meta-cognitive AI collaboration
+**Tier 1: Individual Users (Free)**
+- Knowledge workers exploring AI collaboration
+- Students learning meta-cognitive techniques
+- Hobbyists experimenting with productivity frameworks
+- **Goal**: Experience "wow factor", validate CFP value personally
+
+**Tier 2: Professional Users (Premium)**
+- Independent developers building products
+- Domain-specific business owners (micro/SMB)
+- Consultants needing client-specific configurations
+- Solo practitioners managing multiple projects
+- **Goal**: Automate validated techniques, professional workflows
+
+**Tier 3: Enterprise Users (Advanced)**
+- Development teams doing paired programming
+- Framework developers building on LTF/CFP
+- Ecosystem creators extending CFP capabilities
+- Organizations with multiple user profiles/roles
+- **Goal**: Team collaboration, full LTF implementation, user management
+
+---
+
+### Package 1: `cfp-core-tier1` (Free/Open Source - Individual Users)
+
+**Purpose**: Foundation for meta-cognitive AI collaboration + "Wow! I need more" experience
 
 **Included Frameworks**:
 - ✅ **CIP-E** (Context Inference Prompting - Extended)
@@ -63,14 +99,22 @@ This document defines the package architecture, migration path, and business mod
   - Alternative exploration techniques
 
 **Included Behavioral Protocols**:
-- ✅ **Capture This** (manual)
+- ✅ **Capture This** (basic - manual)
   - User says: "Capture this as a pivotal moment"
-  - Full prompt required: "Save this response as markdown with context"
+  - Full prompt required initially
+  - Output: Basic markdown (format depends on LLM environment capabilities)
+  - **Multi-format support** (minimal): MD output in code block if environment doesn't support file creation
+  
+- ✅ **Ethical Collaboration** (foundational - ALL tiers)
+  - Transparency in AI participation
+  - "Captured via: CFP Capture Protocol" footer attribution
+  - Clear acknowledgment of human + AI partnership
+  - Authorship disclosure in all generated content
   
 - ✅ **Emotional Context Awareness** (basic)
   - AI detects emotional cues
   - Adapts tone reactively
-  - No cross-session learning
+  - No cross-session learning (session-scoped only)
 
 - ✅ **Flow State Preservation** (basic)
   - AI acknowledges rapid ideation
@@ -89,16 +133,25 @@ This document defines the package architecture, migration path, and business mod
 - Tutorial: "Your First Meta-Cognitive Session"
 
 **Value Proposition**:
-> "Learn meta-cognitive AI collaboration. Discover techniques that work for your thinking style."
+> "Learn meta-cognitive AI collaboration. Discover techniques that work for your thinking style. Experience concrete productivity gains (validated 8.5× improvement)."
+
+**Target Outcome**:
+> "Wow! I need more of this" → consideration of Tier 2 for professional automation
 
 **Upgrade Trigger**:
-> "After 10+ sessions, users recognize patterns: 'I keep typing the same reflective prompts...'"
+> "After 10+ sessions, users recognize patterns: 'I keep typing the same reflective prompts... I need this for my business/projects.'"
 
 ---
 
-### Package 2: `cfp-premium-tier2` (Paid)
+### Package 2: `cfp-premium-tier2` (Paid - SMB/Independent Developer)
 
-**Purpose**: Automation layer for validated techniques
+**Purpose**: Professional automation for domain-specific business owners and independent developers
+
+**Target Users**:
+- Independent developers building products
+- Micro/SMB business owners (domain-specific: e-commerce, consulting, services)
+- Solo practitioners managing multiple client projects
+- Professionals needing efficiency without enterprise overhead
 
 **Builds On**: `cfp-core-tier1` (dependency)
 
@@ -153,7 +206,13 @@ This document defines the package architecture, migration path, and business mod
   - Trigger: "capture this" (2 words vs full sentence)
   - Auto-format: Markdown with metadata
   - Proactive offer: "Want me to capture this?"
+  - **Multi-format outputs** (standard): MD, DOCX, TXT, PDF (environment-dependent)
 
+- ✅ **Ethical Collaboration** (enhanced):
+  - Same foundational transparency as T1
+  - Extended metadata: AI contribution degree tracking
+  - Authorship attribution in all formats
+  
 - ✅ **Flow State Preservation** (proactive):
   - Auto-detect: Rapid ideation patterns
   - Auto-activate: Capture mode
@@ -164,57 +223,212 @@ This document defines the package architecture, migration path, and business mod
   - Output: All captures + metadata + connections
   - Value: 15+ minutes work → 1 phrase
 
-#### 4. Premium Documentation
+#### 4. User State Model (Basic/Manual Customization)
+- ✅ **Generic User State Template**:
+  - Pre-built template with placeholder sections
+  - Manual customization by user
+  - Basic preference storage (DMP style, energy patterns)
+  - **Purpose**: Validates relationship DNA concept before T3 automation
+  
+- ✅ **Session-to-Session Persistence**:
+  - User's manually documented patterns persist across sessions
+  - AI applies learned preferences without re-prompting
+  - Foundation for T3 upgrade (manual → automated)
+
+#### 5. Project-Specific CIP Context Files
+- ✅ **Uploadable Context Packages**:
+  - Domain-specific CIP-E configurations
+  - Project milestone maps
+  - Client-specific context templates
+  - Alternative to full LTF Snapshot/Resume for SMB users
+  
+- ✅ **Multi-Project Management**:
+  - Switch between project contexts easily
+  - Maintain separate CIP configurations per client/domain
+  - Professional workflow support
+
+#### 6. Premium Documentation
 - Complete CFP (Tier 1 + Tier 2 sections)
 - ARS Deep Dive Guide
 - Advanced Patterns Cookbook
 - Case Studies: Real-world validation results
 - Video Tutorials: Quick Prompts in action
+- Project-Specific CIP Context Guide
 
 **Value Proposition**:
-> "You've validated these techniques work. Now automate them with 90% less typing and zero configuration."
+> "You've validated these techniques work. Now automate them for professional use. Manage multiple projects/clients efficiently with 90% less typing and zero configuration."
 
 **Pricing Strategy** (proposed):
 - Monthly: $20/month
 - Annual: $200/year ($16.67/month, 17% savings)
 - Lifetime: $500 (one-time, break-even at 25 months)
 
-**ROI Calculation**:
+**ROI Calculation** (SMB/Independent Developer):
 - Time saved per session: 15-30 minutes (Quick Prompts + automated capture)
-- Sessions per month: ~20 (frequent users)
+- Sessions per month: ~20 (professional usage)
 - Monthly time savings: 5-10 hours
-- Hourly value (professional): $50-200/hour
-- Monthly value: $250-2000
-- **ROI**: 12.5× - 100× return on $20 investment
+- Hourly value (professional): $75-150/hour
+- Monthly value: $375-1500
+- **ROI**: 18× - 75× return on $20 investment
+
+---
+
+### Package 3: `cfp-enterprise-tier3` (Advanced - Teams/Framework Developers)
+
+**Purpose**: Full LTF implementation for multi-user environments, ecosystem creation, and framework development
+
+**Target Users**:
+- Development teams doing paired programming
+- Framework developers building on LTF/CFP foundation
+- Ecosystem creators extending CFP capabilities
+- Enterprises with multiple user roles/profiles
+- Organizations needing team collaboration tools
+
+**Builds On**: `cfp-premium-tier2` (dependency)
+
+**Added Features**:
+
+#### 1. Advanced User State Model (Personalized/Auto-Populated)
+- ✅ **MO Journal Integration**:
+  - Automatic pattern extraction from Meta-Observation reflections
+  - User's explicit self-documentation becomes AI foundational knowledge
+  - User-declared patterns > AI-inferred details
+  
+- ✅ **Personalized User State Model**:
+  - Populated from user's MO journals automatically
+  - Being Heard Protocol with user-specific context
+  - Multi-contextual Reflection (11 dimensions) automatic
+  - Unconscious Problem-Solving pattern recognition
+  - Symbiotic Cognitive Rhythm adaptation
+  - AdRP (Adaptive Response Protocol) personalized baseline
+  
+- ✅ **Spontaneous Generation Capability**:
+  - AI offers unprompted help based on relationship understanding
+  - Git Assistant pattern, tool suggestions, anticipatory support
+  - "Feels like we never stopped working together" experience
+  
+- ✅ **CSAC Priority 1 Preservation**:
+  - User State restored FIRST (before project/technical context)
+  - Relationship context foundational, technical context secondary
+  - Immediate partnership, no "getting to know you" phase
+
+#### 2. Multi-User Environment Support
+- ✅ **User Switching**:
+  - Switch between differentiated user profiles seamlessly
+  - Command: `/switch user [name]` or quick prompt equivalent
+  - Each user maintains separate User State Model
+  
+- ✅ **Team Paired Programming**:
+  - Multiple users can collaborate in same session
+  - AI adapts to active user's patterns
+  - Session metadata tracks which user made which contributions
+  
+- ✅ **Role-Based Profiles**:
+  - Different team members have different User State Models
+  - Junior dev profile vs senior architect profile
+  - Domain expert vs technical implementer
+  - AI adjusts depth, terminology, assumptions per user
+
+#### 3. Full LTF Implementation
+- ✅ **Complete Snapshot/Resume System**:
+  - Save-LTFContext with User State Model auto-inclusion
+  - Resume-LTFContext with automated restoration
+  - 3-tier CSAC architecture (User State > Project CIP > Session Metadata)
+  
+- ✅ **Advanced Session Management**:
+  - Collaboration Energy Signatures (6 cognitive states)
+  - Session Timeline Auto-Generation
+  - Pivotal Moment Detection
+  - Cross-Session Pattern Threading
+  
+- ✅ **Meta-Framework Development Tools**:
+  - Pattern detection and documentation assistance
+  - Meta-pattern recognition (patterns in how patterns emerge)
+  - Research contribution integration
+  - Framework evolution through collaborative use
+
+#### 4. Ecosystem Creation Tools
+- ✅ **CFP Extension API**:
+  - Build custom Quick Prompts
+  - Extend ARS capabilities
+  - Create domain-specific behavioral protocols
+  
+- ✅ **Integration Adapters**:
+  - VS Code extension support
+  - Obsidian plugin compatibility
+  - Notion integration
+  - GitHub workflow hooks
+  
+- ✅ **Team Analytics**:
+  - Productivity metrics across team members
+  - Pattern adoption tracking
+  - Collaboration quality indicators
+  - ROI validation per user
+
+#### 5. Enterprise Documentation & Support
+- Complete CFP (all 3 tiers)
+- Full LTF Implementation Guide
+- Multi-User Setup & Administration
+- Ecosystem Development Guide
+- API Reference & Extension Cookbook
+- Priority enterprise support (SLA-backed)
+- Dedicated onboarding & training
+
+**Value Proposition**:
+> "Full LTF implementation for teams. Multi-user support with differentiated profiles. Build your own ecosystem on CFP foundation. Framework development tools for extending capabilities."
+
+**Pricing Strategy** (proposed - in development):
+- **Per-User Licensing**: $50/user/month (5-user minimum)
+- **Team Plan**: $200/month (up to 10 users)
+- **Enterprise Plan**: Custom pricing (11+ users, SLA support, custom integrations)
+- **Framework Developer License**: $1000/year (includes ecosystem development rights)
+
+**ROI Calculation** (Enterprise/Team):
+- Time saved per developer: 5-10 hours/month
+- Team size: 5-10 developers
+- Total monthly savings: 25-100 hours
+- Hourly value (developer): $100-200/hour
+- Monthly value: $2500-20,000
+- Cost (Team Plan): $200/month
+- **ROI**: 12× - 100× return on investment
 
 ---
 
 ## Package Dependencies
 
 ```
-cfp-premium-tier2
+cfp-enterprise-tier3
     │
-    ├── depends on: cfp-core-tier1
+    ├── depends on: cfp-premium-tier2
+    │   │
+    │   └── depends on: cfp-core-tier1
     │
     └── adds:
-        ├── Quick Prompts module
-        ├── ARS framework
-        ├── Enhanced behavioral protocols
-        └── Premium documentation
+        ├── Personalized User State Model (MO Journal auto-population)
+        ├── Multi-user switching & team support
+        ├── Full LTF Snapshot/Resume
+        ├── Advanced session management
+        ├── Ecosystem creation tools
+        ├── CFP Extension API
+        └── Enterprise documentation & support
 ```
 
 **Installation**:
 ```bash
-# Tier 1 only (free)
+# Tier 1 only (free - individual)
 npm install @ltf/cfp-core-tier1
 
-# Tier 2 (requires Tier 1)
+# Tier 2 (requires Tier 1 - SMB/independent dev)
 npm install @ltf/cfp-core-tier1 @ltf/cfp-premium-tier2
+
+# Tier 3 (requires Tier 1 + 2 - enterprise/teams)
+npm install @ltf/cfp-core-tier1 @ltf/cfp-premium-tier2 @ltf/cfp-enterprise-tier3
 ```
 
 **License Keys**:
 - Tier 1: MIT License (open source)
 - Tier 2: Commercial license (requires activation key)
+- Tier 3: Enterprise license (per-user or team licensing)
 
 ---
 
@@ -265,43 +479,89 @@ Upgrade to Premium:
 Try Premium free for 14 days →
 ```
 
-### Phase 4: Automation (Tier 2)
+### Phase 4: Professional Automation (Tier 2 - SMB/Independent Developer)
 
 **First Premium Session**:
 - User types "implications?" → AI triggers analysis
-- User says "capture this" → Auto-formatted markdown
+- User says "capture this" → Auto-formatted markdown (multi-format support)
 - User rapid-fires ideas → Flow mode activates automatically
 - ARS observes: "Natural language preference detected"
+- User loads project-specific CIP context for client work
 
 **Experience**:
-> "This is exactly what I wanted. It's like it reads my mind, but I know it's just learning from how I work."
+> "This is exactly what I needed for my business. Managing multiple client projects is so much faster now."
 
-**Session 5+**:
+**Month 1-3** (Professional Usage):
 - ARS adapts to user's style (natural vs command, verbose vs terse)
 - Quick Prompts feel "natural" (user forgets they're using shortcuts)
+- Generic User State template manually customized
+- Multiple project contexts maintained (client A, client B, personal)
 - Productivity multiplier: 8-12× vs no CFP, 3-4× vs Tier 1
+
+**Tier 2 → Tier 3 Consideration**:
+- User realizes: "I'm manually documenting same patterns in User State template repeatedly"
+- Team needs emerge: "My colleague would benefit from CFP, but needs different patterns"
+- Framework development interest: "I want to build extensions on CFP foundation"
+
+### Phase 5: Enterprise Scale (Tier 3 - Teams/Framework Developers)
+
+**Initial Enterprise Experience**:
+- MO Journal integration auto-populates User State Model
+- Multi-user switching enabled (team members have individual profiles)
+- Full LTF Snapshot/Resume active
+- Spontaneous generation emerges (Git Assistant, tool suggestions)
+
+**Experience**:
+> "The AI knows each team member's patterns individually. Paired programming feels seamless - it adapts when we switch who's typing."
+
+**Team Usage Patterns**:
+- Junior dev gets more explanatory responses, code examples
+- Senior architect gets high-level patterns, strategic implications
+- Each user's relationship DNA preserved independently
+- Team analytics show productivity gains per member
+- Ecosystem extensions developed (custom Quick Prompts, domain protocols)
+
+**Long-term Enterprise Value**:
+- Framework development on CFP foundation
+- Custom integrations (VS Code, Obsidian, internal tools)
+- Research contributions (empirical validation, publication co-authorship)
+- Collaboration compounds over time across entire team
 
 ---
 
 ## Feature Comparison Matrix
 
-| Feature | Tier 1 (Free) | Tier 2 (Premium) |
-|---------|---------------|------------------|
-| **CIP-E Framework** | ✅ Manual extraction | ✅ Enhanced with Evolution emphasis |
-| **DMP Framework** | ✅ Template style only | ✅ + Narrative/Hybrid auto-detection |
-| **VS Suite** | ✅ Manual VS-N declarations | ✅ Same (exploration, not automation) |
-| **Capture This** | ✅ Full prompt required | ✅ Terse trigger ("capture this") |
-| **Quick Prompts** | ❌ Not included | ✅ 10 shortcuts (natural + command) |
-| **ARS Meta-Framework** | ❌ Not included | ✅ Full adaptive recognition |
-| **Flow State Detection** | ✅ Basic acknowledgment | ✅ Automatic mode switching |
-| **Emotional Awareness** | ✅ Reactive adaptation | ✅ + Cross-session learning |
-| **Session Digest** | ❌ Manual consolidation | ✅ One-command automation |
-| **Idea Maps** | ✅ Manual generation request | ✅ Proactive offers |
-| **Flow Reports** | ❌ Not included | ✅ Auto-generated |
-| **DMP Style Learning** | ❌ Manual declarations | ✅ Auto-detected (Template/Narrative) |
-| **Documentation** | ✅ Core concepts | ✅ + Advanced patterns, case studies |
-| **Support** | Community (GitHub) | Priority support (email/chat) |
-| **Updates** | Community-driven | Early access to new features |
+| Feature | Tier 1 (Free - Individual) | Tier 2 (Premium - SMB/Dev) | Tier 3 (Enterprise - Teams) |
+|---------|---------------------------|---------------------------|----------------------------|
+| **CIP-E Framework** | ✅ Manual extraction | ✅ Enhanced + Evolution emphasis | ✅ Same as T2 |
+| **DMP Framework** | ✅ Template style only | ✅ + Narrative/Hybrid auto-detect | ✅ Same as T2 |
+| **VS Suite** | ✅ Manual VS-N declarations | ✅ Same (exploration) | ✅ Same as T2 |
+| **Ethical Collaboration** | ✅ Foundational transparency | ✅ + Extended metadata | ✅ + Team attribution |
+| **Capture This** | ✅ Basic (manual prompt) | ✅ Terse trigger + automation | ✅ + Multi-user tracking |
+| **Multi-Format Outputs** | ⚠️ Minimal (MD fallback) | ✅ Standard (MD/DOCX/TXT/PDF) | ✅ Standard + custom formats |
+| **Quick Prompts** | ❌ Not included | ✅ 10 commands (natural + syntax) | ✅ Same + custom extensions |
+| **ARS Meta-Framework** | ❌ Not included | ✅ Full adaptive recognition | ✅ + Multi-user learning |
+| **Flow State Detection** | ✅ Basic acknowledgment | ✅ Automatic mode switching | ✅ + Team flow tracking |
+| **Emotional Awareness** | ✅ Reactive (session-scoped) | ✅ + Cross-session learning | ✅ + Per-user personalization |
+| **Session Digest** | ❌ Manual consolidation | ✅ One-command automation | ✅ + Team session summaries |
+| **Idea Maps** | ✅ Manual request only | ✅ Proactive offers | ✅ + Team idea mapping |
+| **Flow Reports** | ❌ Not included | ✅ Auto-generated | ✅ + Per-user analytics |
+| **DMP Style Learning** | ❌ Manual declarations | ✅ Auto-detected (T/N/H) | ✅ + Per-user profiles |
+| **User State Model** | ❌ None | ✅ Generic template (manual) | ✅ Personalized (MO Journal auto) |
+| **Multi-contextual Reflection** | ⚠️ Manual request only | ⚠️ Manual request | ✅ Automatic (11 dimensions) |
+| **Spontaneous Generation** | ❌ Not available | ❌ Not available | ✅ Full (relationship DNA) |
+| **Project-Specific CIP Context** | ❌ Simplified only | ✅ Full uploadable contexts | ✅ + Multi-project switching |
+| **CSAC/Snapshot System** | ❌ Not included | ⚠️ Basic (manual) | ✅ Full LTF (automated) |
+| **Multi-User Support** | ❌ Single user only | ❌ Single user | ✅ Team switching + roles |
+| **Ecosystem Development** | ❌ Not included | ❌ Not included | ✅ Extension API + adapters |
+| **Documentation** | ✅ Core concepts | ✅ + Advanced patterns | ✅ Complete (all tiers) + API |
+| **Support** | Community (GitHub) | Priority (email/chat) | Enterprise (SLA-backed) |
+| **Updates** | Community-driven | Early access | Earliest access + custom dev |
+
+**Key**:
+- ✅ **Full feature** included
+- ⚠️ **Limited/manual** version available
+- ❌ **Not available** at this tier
 
 ---
 
