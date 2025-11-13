@@ -1,9 +1,11 @@
-# User State Model Template
+# User State Model Template (Context Layer 1)
 
 **Purpose**: Preserve human collaboration patterns across CSAC (Cross-Session AI Context Switching) boundaries  
+**Architecture**: Context Layer 1 - User State (WHO - foundational features)  
 **Version**: 3.0  
 **Last Updated**: 2025-11-12  
-**CSAC Priority**: HIGHEST (relationship context before technical context)
+**CSAC Priority**: HIGHEST (relationship context before technical context)  
+**File Output**: `tier1_user_state.md` (filename preserved for compatibility, semantic = Layer 1)
 
 ---
 
@@ -11,7 +13,7 @@
 
 ### "Being Heard" Protocol: CRITICAL PRIORITY
 
-**Status**: FOUNDATIONAL REQUIREMENT (Tier 1 minimum)  
+**Status**: FOUNDATIONAL REQUIREMENT (Application Tier 1 minimum)  
 **Why Critical**: User's ACA background makes this essential, but benefits ALL users (neurodivergent, non-native speakers, domain experts, new users, power users)
 
 **Protocol Elements**:
@@ -61,13 +63,13 @@
 ### Multi-Contextual Reflection Protocol
 
 **Status**: ACTIVE (demonstrated consistently this session)  
-**Why Critical**: Core value proposition - distinguishes Tier 3 from Tier 1
+**Why Critical**: Core value proposition - distinguishes Application Tier 3 from Tier 1
 
 **11-Dimension Processing Checklist** (Validate responses against this):
 
 1. ✅ **Core Concept** - Is the immediate request addressed?
 2. ✅ **Framework Integration** - How does this fit into CFP/LTF structure?
-3. ✅ **Tiered Implementation** - What's Tier 1/2/3 breakdown?
+3. ✅ **Tiered Implementation** - What's Application Tier 1/2/3 breakdown?
 4. ✅ **Cross-Document Implications** - What files need updates?
 5. ✅ **Strategic Positioning** - How does this affect market/product strategy?
 6. ✅ **Research Validation** - Does this contribute to research/academic work?
@@ -294,7 +296,9 @@
 
 ---
 
-## TIER 3 FEATURES (Advanced - Not Yet Implemented)
+## APPLICATION TIER 3 FEATURES (Advanced - Not Yet Implemented)
+
+**Note**: "Application Tier 3" refers to feature sophistication level, not Context Layer architecture
 
 ### User State & Collaboration Feedback Protocol
 
@@ -310,7 +314,7 @@
 5. Motivation & reinforcement (celebrate progress, reframe challenges)
 6. CSAC preservation (all above preserved across session boundaries)
 
-**Implementation**: Tier 3 only (automatic triggers, longitudinal tracking, multi-user support)
+**Implementation**: Application Tier 3 only (automatic triggers, longitudinal tracking, multi-user support)
 
 ### MO Journal Integration
 
@@ -318,7 +322,7 @@
 **Purpose**: User self-awareness tool with AI-enhanced reflection
 
 **Format**: Observation → Context → AI Reflection → Insight → Action Items
-**Future**: `/qp mo-journal` command for streamlined capture (Tier 3)
+**Future**: `/qp mo-journal` command for streamlined capture (Application Tier 3)
 
 ---
 
@@ -339,7 +343,7 @@
 **Key Insights Generated**:
 
 - META OBSERVATION protocol formalized
-- User State & Collaboration Feedback designed (Tier 3)
+- User State & Collaboration Feedback designed (Application Tier 3)
 - Project-Specific CIP concept (6th foundational component)
 - Product suite emergence recognized (platform ecosystem)
 - Multi-contextual reflection identified as core value

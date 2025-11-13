@@ -1,6 +1,7 @@
 # Context Loading Sequence Protocol
 
 **Purpose**: Define what context loads when and why for optimal CSAC resumption  
+**Architecture**: 3-Layer Context Model loading sequence (User State → Project CIP → Session Metadata)  
 **Version**: 3.0  
 **Priority**: Relationship context before technical context (foundation before details)
 
@@ -19,27 +20,29 @@
 - Collaboration quality depends on relationship continuity, not just data continuity
 - User State Model contains the invisible infrastructure that makes collaboration effective
 
-### Three-Tier Architecture
+### Three-Layer Architecture
 
 ```
-TIER 1: CORE CFP (Universal Framework)
+LAYER 1: CORE CFP (Universal Framework)
    ↓
-TIER 2: PROJECT CIP (What We're Building)
+LAYER 2: PROJECT CIP (What We're Building)
    ↓
-TIER 3: USER STATE MODEL (Who We're Collaborating With)
+LAYER 3: USER STATE MODEL (Who We're Collaborating With)
 ```
 
 **Loading Priority** (Reverse order):
 
-1. **User State Model** (WHO - highest priority)
-2. **Project CIP** (WHAT - medium priority)
-3. **CORE CFP** (FRAMEWORK - always available)
+1. **User State Model** (Context Layer 3 - WHO - highest priority)
+2. **Project CIP** (Context Layer 2 - WHAT - medium priority)
+3. **CORE CFP** (Context Layer 1 - FRAMEWORK - always available)
 
 **Rationale**:
 
 - Framework is universal (already loaded in AI base knowledge)
 - Project context is retrievable (task lists, files, decisions)
 - User State Model is fragile (relationship context hardest to reconstruct if lost)
+
+**Note**: Filenames use `tier1/tier2/tier3` for backward compatibility, but semantic meaning is Context Layer 1/2/3
 
 ---
 

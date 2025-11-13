@@ -1,9 +1,10 @@
-# Project-Specific CIP Template
+# Project-Specific CIP Template (Context Layer 2)
 
 **Purpose**: Provide project-specific context layer between CORE CFP (universal framework) and User State Model (human patterns)  
-**Architecture**: 3-Tier Context Model (CORE → Project → User State)  
+**Architecture**: 3-Layer Context Model - Context Layer 2: Project CIP (WHAT - project identity)  
 **Version**: 3.0  
-**Template Version**: 1.0
+**Template Version**: 1.0  
+**File Output**: `tier2_project_cip.md` (filename preserved for compatibility, semantic = Layer 2)
 
 ---
 

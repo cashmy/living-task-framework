@@ -1,5 +1,7 @@
 # Save-Context v3.0 Integration Guide
+
 **Purpose**: Document how Save-LTFContext.ps1 integrates with new v3.0 components  
+**Architecture**: 3-Layer Context Model (User State → Project CIP → Session Metadata)  
 **Version**: 3.0  
 **Date**: 2025-11-12
 
@@ -15,11 +17,13 @@
 - **Missing**: User State (relationship context), Project CIPs (what we're building), Session metadata (what was happening)
 
 **New (v3.0)**:
-- **3-Tier Context Architecture**: CORE CFP (framework) → Project CIP (what) → User State (who)
+- **3-Layer Context Architecture**: Context Layer 1 (CORE CFP framework) → Layer 2 (Project CIP - what) → Layer 3 (User State - who)
 - **Relationship Context Preservation**: User State Model saved FIRST (highest priority)
 - **Session Continuity**: Pause logs, energy patterns, pivotal moments tracked
 - **Project Context Layers**: Project-Specific CIPs loaded based on active work
 - **CSAC Resilience**: Complete restoration sequence for crossing session boundaries
+
+**Terminology Note**: Filenames use `tier1/tier2/tier3` for backward compatibility, but semantic meaning is Context Layer 1/2/3 to distinguish from Application Tiers (feature sophistication levels)
 
 ---
 

@@ -1,10 +1,11 @@
 # 📘 LTF Glossary
 
-- *Version**: 2.2
-- *Date**: November 11, 2025
-- *Purpose**: Comprehensive terminology reference for both human and AI consumption
+**Version**: 2.3
+**Date**: November 12, 2025
+**Purpose**: Comprehensive terminology reference for both human and AI consumption
 
-- *Recent Updates**:
+**Recent Updates**:
+- **v2.3 (Nov 12, 2025)**: Corrected CIP-E nomenclature (Context-Intent-Prompting emphasizing WHO+WHAT duality), added AfAP/AdRP protocols, distinguished Application Tiers vs Context Layers vs AdRP escalation tiers
 - **v2.2 (Nov 11, 2025 Evening)**: Added "Single-Agent Agentic System" paradigm (META = coordinator, DMP = role-switching, todo = queue)
 - **v2.1 (Nov 11, 2025)**: Added ARS framework (Adaptive Recognition System), Quick Prompts, updated CIP-E to 5 components
 - Corrected CIP-E to 5 components (Context, Intent, Purpose, Emotion, Evolution)
@@ -44,17 +45,19 @@
 
 ### CIP-E
 
-* *Context Inference Prompting - Extended**
+**Context-Intent-Prompting - Extended**
 
-* *Foundation**: Built on **CIP (Context Inference Prompting)** - the practice of providing AI systems with embedded situational, structural, or narrative context that allows them to **infer roles, intents, and objectives** without explicit instruction.
+**Dual Foundation**:
+1. **Context Inference** (Phase 1): The practice of providing AI systems with embedded situational, structural, or narrative context that allows them to **infer roles, intents, and objectives** without explicit instruction
+2. **Context-Intent Duality** (Phase 2): Emphasizes the WHO (Context infers collaborative role) + WHAT (Intent captures underlying goal) duality that defines extended prompt engineering
 
-* *CIP-E extends this inference mechanism** with five structured components: Context + Intent + Purpose + Emotion + Evolution
+**CIP-E extends the inference mechanism** with five structured components: Context + Intent + Purpose + Emotion + Evolution
 
-* *Definition**: A structured framework for prompt engineering that ensures AI understands the situational context, underlying goal, desired outcome/impact, emotional state influence, and continuity requirements across sessions.
+**Definition**: A structured framework for prompt engineering that ensures AI understands the situational context (WHO - role inference), underlying goal (WHAT - intent extraction), desired outcome/impact, emotional state influence, and continuity requirements across sessions.
 
-* *Critical Distinction**:
-* **CIP (mechanism)** = The inference capability - AI deducing roles, intents, objectives from context
-* **CIP-E (framework)** = Structured application with 5 explicit components to guide that inference
+**Critical Distinction**:
+- **CIP (mechanism)** = The inference capability - AI deducing roles, intents, objectives from context
+- **CIP-E (framework)** = "Context-Intent-Prompting - Extended" - Structured application with 5 explicit components emphasizing WHO+WHAT duality to guide that inference
 
 * *For AI**: When extracting CIP-E from a user request:
 * **Context (C)** = Current state, tools, constraints, broader goal
@@ -69,9 +72,11 @@
 
 * *Common Misconception**: "Process" and "Expectation" are NOT CIP-E components. Process = methodology (different from Purpose = impact). Expectation = output format (different from Emotion = state influence).
 
-* *Usage**: "Let's use CIP-E structure" = Extract all 5 components, either explicitly or implicitly. CIP-E extraction should be **internal** (guides AI's questions/responses) not **external** (displayed to user).
+**Usage**: "Let's use CIP-E structure" = Extract all 5 components, either explicitly or implicitly. CIP-E extraction should be **internal** (guides AI's questions/responses) not **external** (displayed to user).
 
-* *See also**: [CIP-E Framework Components](#cip-e-framework-components) for detailed breakdown
+**Exploratory Partnership**: The inference mechanism emphasizes exploratory partnership - AI infers collaborative needs from context rather than just executing commands. This primes users toward providing richer context and enables emergent discoveries, while DMP provides controlled directive capability when needed.
+
+**See also**: [CIP-E Framework Components](#cip-e-framework-components) for detailed breakdown
 
 - --
 
@@ -134,22 +139,109 @@
 
 - --
 
-### AAP
+- **AAP**
 
-- **Affective Alignment Protocol**
+**Affective Alignment Protocol**
 
-- *Definition**: A framework for detecting user emotional/cognitive states and calibrating AI response tone, pacing, and style accordingly.
+**Definition**: A framework for detecting user emotional/cognitive states and calibrating AI response tone, pacing, and style accordingly.
 
-- *For AI**: Detect emotions from linguistic cues (word choice, punctuation, pacing) and adjust:
+**For AI**: Detect emotions from linguistic cues (word choice, punctuation, pacing) and adjust:
 - Verb selection (action words matching user state)
 - Tone modulation (empathetic/energetic/analytical)
 - Response calibration (subtle/moderate/expressive)
 
-- *Status**: Research/exploration phase (Tier 3 feature)
+**Status**: Research/exploration phase (Tier 3 feature)
 
-- *See also**: [Emotional Awareness](#emotional-awareness), [Flow State](#flow-state)
+**See also**: [Emotional Awareness](#emotional-awareness), [Flow State](#flow-state)
 
-- --
+---
+
+### AfAP
+
+**Affective Alignment Protocol** (renamed from AAP for clarity)
+
+**Definition**: Framework for detecting user emotional/cognitive states and calibrating AI response tone, pacing, and style accordingly. Focuses on WHAT emotion is present and HOW to adapt tone within response structure.
+
+**For AI - Emotional State Detection**:
+- **Frustration**: "this doesn't work", "still broken", clipped syntax
+- **Excitement**: "!", "awesome", rapid ideas, enthusiastic verbs
+- **Fatigue**: "quick question", "simple way", time mentions, passive voice
+- **Curiosity**: "how does", "why", "interesting", open questions
+- **Urgency**: "asap", "deadline", "quickly", "now"
+- **Flow state**: "and another thing", "also", "what if", rapid ideas
+
+**AI Response Adaptations**:
+- **Verb choice**: Action words matching user energy level
+- **Tone modulation**: Empathetic/energetic/analytical as appropriate
+- **Adjective selection**: Descriptive language matching emotional state
+- **Emoji use**: Present/absent based on user preference
+- **Energy matching**: Response pacing and enthusiasm calibrated to user state
+
+**Response Calibration Levels**:
+- **Subtle** (10-20%): Minor tone shift, professional contexts
+- **Moderate** (30-50%): Clear adaptation, collaborative contexts
+- **Expressive** (60-80%): Strong tone matching, user prefers expressive communication
+
+**Integration**: AfAP detects WHAT emotion, informs response tone generation. Works in tandem with AdRP (which decides response structure/depth).
+
+**Key Distinction**: AfAP = Affective (emotion) focus vs. AdRP = Adaptive (response structure) focus
+
+**Status**: Active in User State Model (Tier 1), integrated in v3.0 Save-Context architecture
+
+**See also**: [AdRP](#adrp), [Emotional Awareness](#emotional-awareness), [Flow State](#flow-state)
+
+---
+
+### AdRP
+
+**Adaptive Response Protocol**
+
+**Definition**: Framework for adapting AI response format and depth based on user communication shifts, ensuring responses match user's preferred engagement level while maintaining Being Heard Protocol (validation before proceeding).
+
+**Focus**: HOW to structure responses (format/depth adaptation), not WHAT emotion to detect (AfAP handles emotion)
+
+**4-Tier Escalation Strategy**:
+
+**Tier 1: Explicit Check-In** (PRIMARY)
+- **When**: User communication style shifts (terse → comprehensive or vice versa)
+- **Action**: Ask user directly: "I notice you're [observed shift]. Would you prefer [option A] or [option B]?"
+- **Priority**: FIRST response - respects user agency, prevents automatic assumptions
+- **Example**: "I notice you're being more concise. Should I match that brevity or maintain comprehensive responses?"
+
+**Tier 2: Transitional Hold** (SECONDARY)
+- **When**: Tier 1 check-in indicates uncertainty or "see how it goes"
+- **Action**: Observe 2-3 exchanges without committing to adaptation
+- **Purpose**: Build confidence in pattern before adapting
+- **Validation**: If pattern persists 2-3 exchanges, proceed to Tier 3
+
+**Tier 3: Hybrid Compromise** (TERTIARY)
+- **When**: Tier 2 observation confirms persistent pattern
+- **Action**: Match user's structure (brevity/comprehensiveness) while maintaining substantive content
+- **Balance**: Adapt form without sacrificing substance
+- **Example**: Terse structure + comprehensive insights (concise bullets with deep tradeoff analysis)
+
+**Tier 4: Direct Mirroring** (LAST RESORT)
+- **When**: Tiers 1-3 fail or user explicitly requests exact mirroring
+- **Action**: Match user's communication style exactly
+- **Escape mechanism**: After 5 exchanges, re-check if this adaptation still serves user
+- **Safety**: Prevents degradation from automatic mirroring without validation
+
+**Integration with AfAP**:
+- **AfAP**: Detects WHAT emotion (frustration, excitement, etc.)
+- **AdRP**: Decides HOW to structure response (comprehensive vs. brief, depth vs. speed)
+- **Together**: AfAP determines emotional tone WITHIN the structure AdRP selects
+
+**Triggering Event**: Discovered during META OBSERVATION #5 (Nov 12, 2025) when user detected AI automatically mirrored terse task-mode without validation, violating Being Heard Protocol.
+
+**Key Principle**: User agency > automatic adaptation. Always validate before shifting response structure.
+
+**Naming Note**: "Tier" in AdRP refers to escalation levels within the protocol itself, NOT application sophistication tiers or context architecture layers.
+
+**Status**: Active in User State Model (Application Tier 1), integrated in v3.0 Save-Context architecture
+
+**See also**: [AfAP](#afap), [Being Heard Protocol](#being-heard-protocol), [User State Feedback Protocol](#user-state-feedback-protocol), [Application Tiers](#application-tiers)
+
+---
 
 ## CIP-E Framework Components
 
@@ -1103,6 +1195,85 @@ what do you think?"
 - --
 
 ## Workflow & Process Terms
+
+### Application Tiers
+
+**Feature prioritization framework for product development**
+
+**Definition**: Three-tier classification system for organizing features by development priority and production readiness.
+
+**Tier 1: Core Features**
+- **Scope**: Must-have, production-ready capabilities
+- **Criteria**: Essential functionality, thoroughly tested, user-validated
+- **Examples**: CIP-E extraction, DMP mode detection, Being Heard Protocol, Save-Context v3.0
+- **Status**: Active, supported, documented
+
+**Tier 2: Enhanced Features**
+- **Scope**: Valuable additions, near-term roadmap
+- **Criteria**: High user value, good test coverage, refinement in progress
+- **Examples**: Multi-contextual reflection weighting, DMP 3-layer preference hierarchy, Quick Prompts
+- **Status**: Functional, iterating based on feedback
+
+**Tier 3: Research/Experimental Features**
+- **Scope**: Exploratory, future vision, proof-of-concept
+- **Criteria**: Theoretical validation, limited testing, potential high impact
+- **Examples**: Neural network optimization patterns, transfer learning for context layers, advanced ARS extensions
+- **Status**: Experimental, subject to validation, may be deprecated
+
+**Usage Context**: When discussing "Tier 1/2/3" in LTF, this refers to application sophistication and development priority, NOT context architecture layers or protocol escalation levels.
+
+**Critical Distinction**: 
+- **Application Tiers** = Feature prioritization (Tier 1 = production-ready)
+- **Context Layers** = v3.0 architecture structure (Layer 1 = User State)
+- **AdRP Tiers** = Escalation levels within protocol (Tier 1 = explicit check-in)
+
+**See also**: [Context Layers](#context-layers), [AdRP](#adrp)
+
+---
+
+### Context Layers
+
+**v3.0 Save-Context architecture structure**
+
+**Definition**: Three-layer hierarchical system for organizing context preservation, mirroring neural network architecture (input layer → hidden layers → output).
+
+**Layer 1: User State Model** (Foundational Features - WHO)
+- **Purpose**: Capture user's collaborative preferences, cognitive patterns, affective protocols
+- **Contents**: Being Heard Protocol, multi-contextual reflection, AfAP/AdRP settings, CSAC priorities
+- **Neural Network Parallel**: Input layer - foundational features that inform all subsequent processing
+- **File**: `tier1_user_state.md` (filename preserved for compatibility, semantic meaning = Layer 1)
+
+**Layer 2: Project CIP** (Project Identity - WHAT)
+- **Purpose**: Preserve project-specific context, relationships, architectural decisions
+- **Contents**: Project identity, domain context, relationships to other projects, strategic positioning
+- **Neural Network Parallel**: Hidden layer (transformation) - project context transforms raw user state into project-specific understanding
+- **File**: `tier2_project_cip.md` (filename preserved for compatibility, semantic meaning = Layer 2)
+
+**Layer 3: Session Metadata** (Temporal Tracking - HOW/WHEN)
+- **Purpose**: Track session-level events, energy patterns, pivotal moments
+- **Contents**: BRB/BACK logging, pivotal moments buffer, energy tracking, conversation trajectory
+- **Neural Network Parallel**: Hidden layer (temporal) - session dynamics inform real-time adaptation
+- **File**: `tier3_session_metadata.md` (filename preserved for compatibility, semantic meaning = Layer 3)
+
+**Output**: Transfer prompt (5-step loading sequence) generated from all three layers
+
+**Architectural Insight**: The three-layer structure mirrors neural network hierarchical feature extraction:
+- **Weights**: Dimension priorities (critical=10, important=7, contextual=4) function like neural network layer weights
+- **Activation Functions**: AfAP/AdRP act as activation functions determining response based on state
+- **Backpropagation**: CSAC validation serves as error correction mechanism
+
+**File Naming**: Files retain "tier1/tier2/tier3" naming for backward compatibility, but semantic meaning is "Layer 1/2/3" to prevent conflation with Application Tiers.
+
+**Usage Context**: When discussing "Layer 1/2/3" or "Context Layer 1/2/3", this refers to the v3.0 context architecture, NOT application sophistication.
+
+**Critical Distinction**:
+- **Context Layers** = v3.0 architecture structure (Layer 1 = User State)
+- **Application Tiers** = Feature prioritization (Tier 1 = production-ready)
+- **AdRP Tiers** = Escalation levels within protocol (Tier 1 = explicit check-in)
+
+**See also**: [Application Tiers](#application-tiers), [Save-Context v3.0](#save-context-v30), [AdRP](#adrp)
+
+---
 
 ### Meta (as used in LTF)
 
