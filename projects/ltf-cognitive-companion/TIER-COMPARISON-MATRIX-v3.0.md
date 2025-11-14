@@ -131,13 +131,26 @@
 - You need model-specific optimizations
 
 **Migration Steps**:
-1. Activate Tier 2 primer
-2. Configure USM (or let auto-populate from usage)
-3. Review ARS settings
-4. Set up project-level CIP
-5. Test mode transitions
+1. Load T2-CORE-PRIMER-v3.0.md into your LLM session
+2. Wait for auto-activation confirmation (<1 second)
+3. (Optional) Configure USM manually, or let auto-populate from usage
+4. (Optional) Review ARS settings
+5. (Optional) Set up project-level CIP
 
-**Migration Time**: ~1 hour
+**Migration Time Breakdown**:
+- **Technical migration** (LLM ingestion + auto-activation): **<5 seconds**
+  - Load file: ~1 second
+  - LLM reads & binds frameworks: ~2 seconds
+  - Activation confirmation: ~1 second
+- **Human learning time** (first-time users): 15-30 minutes
+  - Reading T2 primer header/quick start: 10-15 min
+  - Understanding new features (USM, ARS, CSTMs): 15-30 min
+- **Strategic configuration** (optional): 5-15 minutes
+  - Manual USM configuration (if not using auto-populate): 5-10 min
+  - Project CIP setup: 5-10 min
+
+**Total Time** (first-time user): **20-50 minutes** (mostly human reading/learning)  
+**Total Time** (experienced user): **<5 seconds** (just load file, auto-activates)
 
 **Benefits**:
 - +20% context efficiency
@@ -146,7 +159,7 @@
 
 **Costs**:
 - +10,000 token overhead
-- Slightly slower activation (5-10s vs <5s)
+- Slightly slower activation (5-10s vs <5s for T1)
 
 ---
 
@@ -159,13 +172,30 @@
 - You require enterprise compliance
 
 **Migration Steps**:
-1. Activate Tier 3 primer
-2. Configure MO roster (Coordinator + Participants)
-3. Review governance settings (team/organizational policies)
-4. Test multi-model orchestration
-5. Set up integrations (Slack, GitHub, etc.) if needed
+1. Load T3-CORE-PRIMER-v3.0.md into **ALL** LLMs in your orchestration roster
+2. Wait for auto-activation confirmation (<1 second per LLM)
+3. Configure MO roster (Coordinator + Participants)
+4. (Optional) Review governance settings (team/organizational policies)
+5. (Optional) Test multi-model orchestration with simple task
+6. (Optional) Set up integrations (Slack, GitHub, etc.)
 
-**Migration Time**: ~2-3 hours
+**Migration Time Breakdown**:
+- **Technical migration** (LLM ingestion + auto-activation): **<10 seconds**
+  - Load file into 3 LLMs: ~3 seconds (1s each)
+  - Each LLM registers with MO Kernel: ~5 seconds total
+  - Coordinator confirms roster: ~2 seconds
+- **Human learning time** (first-time users): 30-60 minutes
+  - Reading T3 primer header/quick start: 15-20 min
+  - Understanding multi-model orchestration: 20-30 min
+  - Understanding divergence/reconciliation: 10-15 min
+- **Strategic configuration**: 5-30 minutes
+  - MO roster configuration (which LLMs for which tasks): 5-10 min
+  - Team governance setup (enterprise only): 15-30 min (first time)
+  - Integration setup (Slack/GitHub/Jira): 10-20 min (optional)
+
+**Total Time** (first-time user, enterprise): **45-100 minutes** (mostly human learning + governance setup)  
+**Total Time** (first-time user, solo): **35-70 minutes** (mostly human learning)  
+**Total Time** (experienced user): **<10 seconds** (just load file, auto-activates)
 
 **Benefits**:
 - Multi-model coordination (no conflicts)
@@ -175,8 +205,8 @@
 
 **Costs**:
 - +25,000 token overhead (vs T2)
-- 10-20s activation time
-- Higher learning curve
+- 10-20s activation time (multi-LLM coordination)
+- Higher learning curve (first time only)
 
 ---
 
@@ -188,20 +218,36 @@
 - You need enterprise features immediately
 
 **Migration Steps**:
-1. Activate Tier 3 primer
-2. Configure MO roster
-3. Set up governance (if enterprise)
-4. Configure USM + ARS (auto-populate from usage)
-5. Test orchestration
+1. Load T3-CORE-PRIMER-v3.0.md into **ALL** LLMs in your orchestration roster
+2. Wait for auto-activation confirmation (<1 second per LLM)
+3. Configure MO roster (Coordinator + Participants)
+4. (Optional) Configure USM + ARS (auto-populate from usage)
+5. (Optional) Set up governance (if enterprise)
+6. (Optional) Test orchestration with simple task
 
-**Migration Time**: ~3-4 hours
+**Migration Time Breakdown**:
+- **Technical migration** (LLM ingestion + auto-activation): **<10 seconds**
+  - Same as T2→T3 (T1+T2 embedded within T3)
+- **Human learning time** (first-time users): 45-90 minutes
+  - Reading T3 primer (skipped T2, more to learn): 30-45 min
+  - Understanding multi-model orchestration: 20-30 min
+  - Understanding USM/ARS (new concepts from T2): 15-20 min
+- **Strategic configuration**: 10-40 minutes
+  - MO roster configuration: 5-10 min
+  - USM/ARS baseline setup: 5-10 min (or skip to auto-populate)
+  - Team governance setup (enterprise): 15-30 min (first time)
+
+**Total Time** (first-time user, enterprise): **65-140 minutes** (mostly human learning, steeper curve)  
+**Total Time** (first-time user, solo): **55-100 minutes** (mostly human learning)  
+**Total Time** (experienced user): **<10 seconds** (just load file, auto-activates)
 
 **Benefits**:
 - Immediate multi-model coordination
 - Skip intermediate Tier 2 configuration
 
 **Costs**:
-- Steeper learning curve (no T2 intermediate step)
+- Steeper learning curve (no T2 intermediate step, first time only)
+- More concepts to absorb at once (T1+T2+T3 all at once)
 - Higher token overhead
 
 ---
@@ -416,9 +462,10 @@ Load T3-CORE-PRIMER-v3.0.md into EACH LLM session you want to coordinate
 |-----------|--------------|--------------|--------------|
 | **Primary Use Case** | Universal compatibility | Single-LLM optimization | Multi-model coordination |
 | **User Type** | Casual user, multi-platform | Power user, single LLM | Teams, enterprise, researchers |
-| **Setup Time** | <5 minutes | 30-60 minutes | 2-3 hours |
+| **Setup Time** (first-time) | <5 minutes | 20-50 minutes (mostly learning) | 45-140 minutes (mostly learning + governance) |
+| **Setup Time** (experienced) | <5 seconds (auto-activate) | <5 seconds (auto-activate) | <10 seconds (auto-activate) |
 | **Token Overhead** | ~5K | ~15K | ~40K |
-| **Learning Curve** | Easy | Moderate | Advanced |
+| **Learning Curve** | Easy | Moderate | Advanced (first time only) |
 | **Auto-Learning** | ❌ | ✅ | ✅ (multi-model) |
 | **Orchestration** | ❌ | ❌ | ✅ |
 | **Team Support** | ❌ | ❌ | ✅ |
@@ -427,6 +474,8 @@ Load T3-CORE-PRIMER-v3.0.md into EACH LLM session you want to coordinate
 | **Best For** | Simplicity | Single-model mastery | Multi-model ecosystem |
 
 ---
+
+**Key Insight**: Setup time is **mostly human learning** (first-time users), not technical migration. Once you understand a tier, switching projects to that tier takes **<10 seconds** (just load the file, auto-activates).
 
 **Need help choosing?** Start with **Tier 1**, validate value, then migrate to **Tier 2** (single-LLM) or **Tier 3** (multi-LLM) as needs grow.
 
