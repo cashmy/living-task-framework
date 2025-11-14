@@ -3457,9 +3457,9 @@ For full details, see **Adaptive Quick Prompts → ARS** section above.
 
 ---
 
-For Tier 3 documentation, see **04-TIER3-PRIMER.md** (coming soon).
+For Tier 3 documentation, see **T3-CORE-PRIMER-v3.0.md**.
 
-For quick comparison, see **05-TIER-COMPARISON-MATRIX.md** (coming soon).
+For quick comparison, see **TIER-COMPARISON-MATRIX-v3.0.md**.
 
 **When to upgrade to Tier 3**: Enterprise use cases, multi-LLM workflows, team collaboration, research requiring diverse AI perspectives
 

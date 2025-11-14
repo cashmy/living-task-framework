@@ -320,7 +320,7 @@ If user loads artifacts into MULTIPLE LLM sessions before orchestration complete
 **Auto-Recovery (Obtuse User Behavior)**:
 If user loads CSAC BEFORE CORE-PRIMER (despite instructions):
 1. ✅ Read CSAC metadata (tier, LLM edition, orchestration roster)
-2. ✅ Auto-load correct tier CORE-PRIMER (04-TIER3-PRIMER.md)
+2. ✅ Auto-load correct tier CORE-PRIMER (T3-CORE-PRIMER-v3.0.md)
 3. ✅ Auto-initialize orchestration for detected roster
 4. ✅ Output: "Detected CSAC-first load (incorrect sequence). Auto-loaded CORE-PRIMER Tier 3 for [LLM roster]. MO Kernel initializing. Next time: Load CORE-PRIMER first across all instances."
 5. ✅ Proceed with activation
@@ -449,13 +449,13 @@ Before using Tier 3 multi-model orchestration, ensure you have:
 
 ### Step 1: Load CORE-PRIMER into ALL LLMs
 
-**CRITICAL**: Every LLM in your orchestration roster must ingest `04-TIER3-PRIMER.md`.
+**CRITICAL**: Every LLM in your orchestration roster must ingest `T3-CORE-PRIMER-v3.0.md`.
 
 **Sequence** (for 3-LLM example: Claude + GPT + Codex):
 
-1. **Open Claude session** → Paste full `04-TIER3-PRIMER.md` → Wait for activation signal
-2. **Open GPT session** → Paste full `04-TIER3-PRIMER.md` → Wait for activation signal  
-3. **Open Codex session** → Paste full `04-TIER3-PRIMER.md` → Wait for activation signal
+1. **Open Claude session** → Paste full `T3-CORE-PRIMER-v3.0.md` → Wait for activation signal
+2. **Open GPT session** → Paste full `T3-CORE-PRIMER-v3.0.md` → Wait for activation signal  
+3. **Open Codex session** → Paste full `T3-CORE-PRIMER-v3.0.md` → Wait for activation signal
 
 **What to expect**:
 - **First LLM** (e.g., Claude) activates → outputs "Orchestration Coordinator" readiness signal
@@ -4202,7 +4202,7 @@ session_metadata:
   # Session Artifacts (temporary working memory)
   artifacts:
     current_task: "Implementing Phase 4.7 of T3 primer"
-    working_files: ["04-TIER3-PRIMER.md"]
+    working_files: ["T3-CORE-PRIMER-v3.0.md"]
     pending_commits: []
 ```
 
@@ -5195,73 +5195,1099 @@ Resolution: Team governance wins → formal tone enforced
 
 ## Extension API
 
-**PLACEHOLDER - Phase 4.8 Pending**
+### What is the Extension API?
 
-This section will explain the Extension API for custom protocols and LLM-specific plugins.
+**Extension API** = standardized framework for customizing CFP behavior, adding LLM-specific plugins, and integrating orchestrated LLMs with external tools.
 
-**Planned Content** (~400 lines):
-- What is Extension API? (customize CFP behavior, add LLM-specific plugins)
-- Extension types:
-  - Custom protocols (user-defined behavioral rules)
-  - LLM-specific plugins (e.g., Codex code-awareness enhancements)
-  - Cross-model integrations (e.g., Slack notifications on divergence)
-- Extension structure (YAML configuration)
-- Extension registration (MO Kernel loads extensions)
-- Extension examples:
-  - Custom mode (e.g., "Diagram Mode" for visual thinkers)
-  - Custom protocol (e.g., "Executive Summary Protocol" for leadership)
-  - Custom LLM plugin (e.g., "Gemini Multimodal Enhancement")
+**Purpose**: Allow users to extend T3 beyond default capabilities without modifying core CFP.
+
+**Use Cases**:
+- **Custom Protocols**: Add user-defined behavioral rules (e.g., "Executive Summary Protocol")
+- **LLM-Specific Plugins**: Enhance individual LLMs (e.g., "Codex Code Review Plugin")
+- **Cross-Model Integrations**: Connect orchestrated LLMs to external systems (e.g., Slack, GitHub, Jira)
+
+### Extension Types
+
+#### 1. Custom Protocols
+
+**What**: User-defined behavioral rules that extend CFP protocols.
+
+**Examples**:
+- "Executive Summary Protocol" (always start responses with TL;DR)
+- "Visual Thinker Protocol" (always include diagrams/ASCII art)
+- "Socratic Protocol" (ask 3 clarifying questions before answering)
+
+**Structure**: YAML configuration file loaded at activation.
+
+#### 2. LLM-Specific Plugins
+
+**What**: Platform-specific enhancements for Claude, GPT, Codex, Gemini, etc.
+
+**Examples**:
+- "Codex Code Review Plugin" (enforce code quality standards before delivering code)
+- "Claude Safety Enhancement Plugin" (additional NISCL rules beyond default)
+- "GPT Compression Plugin" (aggressive context compression for long sessions)
+- "Gemini Multimodal Plugin" (image analysis integration)
+
+**Structure**: Per-LLM plugin registration in MO Kernel.
+
+#### 3. Cross-Model Integrations
+
+**What**: Integrations connecting orchestrated LLMs to external systems.
+
+**Examples**:
+- **Slack**: Send divergence alerts, reconciliation outcomes, session summaries
+- **GitHub**: Auto-generate commit messages (Codex), PR reviews (GPT), architecture docs (Claude)
+- **Jira/Trello**: Create tasks from MO Journal, update status from task delegation
+- **Email**: Daily orchestration summary digest
+
+**Structure**: Webhook/API configurations in CSAC.
+
+### Extension Structure (YAML)
+
+**Extension Configuration File**: `~/.ltf/extensions/extension_name.yaml`
+
+**Example - Executive Summary Protocol**:
+```yaml
+extension:
+  name: "Executive Summary Protocol"
+  type: custom_protocol
+  version: "1.0"
+  author: "user_cmyers"
+  description: "Always start responses with executive summary (TL;DR)"
+  
+  # Activation
+  auto_activate: true  # Load on every session
+  tier_compatibility: [1, 2, 3]  # Works with all tiers
+  
+  # Protocol Rules
+  rules:
+    - trigger: "any_response"  # Apply to all responses
+      action: "prepend_summary"
+      config:
+        summary_style: "executive"  # Options: executive, technical, casual
+        max_length: 2  # Max 2 sentences
+        format: "**TL;DR**: [summary]"
+      
+    - trigger: "user_request_skip"  # User can skip
+      keywords: ["no summary", "skip tldr", "full detail only"]
+      action: "disable_for_response"
+  
+  # Multi-Model Behavior
+  multi_model:
+    coordinator_enforces: true  # Coordinator adds summary
+    participants_exempt: false  # Participants also add summaries
+  
+  # Examples
+  examples:
+    - input: "Explain quantum computing"
+      output: |
+        **TL;DR**: Quantum computing uses qubits (superposition + entanglement) to solve problems exponentially faster than classical computers for specific tasks.
+        
+        [Full explanation follows...]
+```
+
+**Example - Codex Code Review Plugin**:
+```yaml
+extension:
+  name: "Codex Code Review Plugin"
+  type: llm_plugin
+  version: "1.0"
+  author: "user_cmyers"
+  description: "Enforce code quality standards before Codex delivers code"
+  
+  # Activation
+  auto_activate: true
+  tier_compatibility: [3]  # T3 only (requires multi-model orchestration)
+  llm_target: Codex  # Apply to Codex only
+  
+  # Plugin Rules
+  rules:
+    - trigger: "code_generation_complete"
+      action: "run_quality_checks"
+      checks:
+        - type: "syntax"
+          severity: "error"  # Block delivery if syntax error
+        - type: "pep8"
+          severity: "warning"  # Warn but don't block
+        - type: "security"
+          severity: "error"  # Block if security issue (SQL injection, XSS)
+        - type: "performance"
+          severity: "info"  # Informational only
+      
+    - trigger: "quality_check_fail"
+      action: "auto_fix"  # Codex auto-fixes errors
+      max_iterations: 3  # Max 3 fix attempts
+      escalate_if_fail: true  # Escalate to Coordinator if can't fix
+  
+  # Multi-Model Coordination
+  multi_model:
+    coordinator_notified: true  # Notify Coordinator of quality check results
+    escalation_llm: Claude  # Escalate unfixable issues to Claude
+```
+
+**Example - Slack Integration**:
+```yaml
+extension:
+  name: "Slack Divergence Alerts"
+  type: cross_model_integration
+  version: "1.0"
+  author: "user_cmyers"
+  description: "Send Slack notifications when LLMs diverge on critical issues"
+  
+  # Activation
+  auto_activate: true
+  tier_compatibility: [3]  # T3 only (requires divergence detection)
+  
+  # Integration Config
+  integration:
+    service: "slack"
+    webhook_url: "https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXX"
+    channel: "#ai-orchestration"
+  
+  # Notification Rules
+  rules:
+    - trigger: "divergence_detected"
+      severity: ["critical", "high"]  # Only critical/high severity
+      action: "send_slack_notification"
+      template: |
+        🚨 **Divergence Alert**
+        
+        **Type**: {divergence_type}
+        **Severity**: {severity}
+        **LLMs**: {llm_list}
+        **Issue**: {divergence_summary}
+        
+        **Reconciliation**: {reconciliation_strategy}
+        **Status**: {status}
+        
+        View in session: {session_id}
+    
+    - trigger: "reconciliation_failed"
+      action: "send_slack_notification"
+      template: |
+        ⚠️ **User Escalation Required**
+        
+        Auto-reconciliation failed. Manual decision needed.
+        
+        **Options**:
+        1. {option_1}
+        2. {option_2}
+        
+        Reply in session: {session_id}
+```
+
+### Extension Registration (MO Kernel)
+
+**How Extensions Are Loaded**:
+
+**Step 1: Coordinator scans extension directory** (on activation):
+```
+Coordinator:
+- Scans ~/.ltf/extensions/*.yaml
+- Found: executive_summary_protocol.yaml, codex_code_review_plugin.yaml, slack_integration.yaml
+- Validates each (version, tier compatibility, structure)
+```
+
+**Step 2: Coordinator loads compatible extensions**:
+```
+Coordinator:
+- executive_summary_protocol.yaml: ✅ Compatible (T3), auto_activate=true → Load
+- codex_code_review_plugin.yaml: ✅ Compatible (T3), llm_target=Codex → Load for Codex only
+- slack_integration.yaml: ✅ Compatible (T3), auto_activate=true → Load
+```
+
+**Step 3: Coordinator registers extensions in MO Kernel**:
+```
+MO Kernel:
+  extensions:
+    custom_protocols:
+      - executive_summary_protocol (active, applies to all LLMs)
+    
+    llm_plugins:
+      Codex:
+        - codex_code_review_plugin (active)
+    
+    integrations:
+      - slack_integration (active, webhook configured)
+```
+
+**Step 4: Coordinator syncs extensions to Participants**:
+```
+Coordinator → Codex: "Load extension: codex_code_review_plugin"
+Codex → Coordinator: "Extension loaded. Code quality checks active."
+
+Coordinator → All Participants: "Load extension: executive_summary_protocol"
+All Participants → Coordinator: "Extension loaded. TL;DR mode active."
+```
+
+### Extension Examples
+
+#### Example 1: Custom Mode Extension ("Diagram Mode")
+
+**Use Case**: User is visual thinker, wants diagrams for every concept.
+
+**Extension**:
+```yaml
+extension:
+  name: "Diagram Mode"
+  type: custom_protocol
+  version: "1.0"
+  
+  rules:
+    - trigger: "any_explanation"
+      action: "add_diagram"
+      config:
+        diagram_types: ["ascii_art", "mermaid", "flowchart"]
+        auto_select: true  # AI chooses best diagram type
+        placement: "after_explanation"  # Diagram after text
+      
+    - trigger: "user_request_no_diagram"
+      keywords: ["no diagram", "text only"]
+      action: "skip_diagram"
+  
+  examples:
+    - input: "Explain recursion"
+      output: |
+        Recursion is when a function calls itself to solve a problem by breaking it into smaller subproblems.
+        
+        **Diagram (Call Stack)**:
+        ```
+        factorial(3)
+          ├─ factorial(2)
+          │   ├─ factorial(1)
+          │   │   └─ factorial(0) → return 1
+          │   └─ return 1 * 1 = 1
+          └─ return 2 * 1 = 2
+        → return 3 * 2 = 6
+        ```
+```
+
+#### Example 2: Custom Protocol Extension ("Socratic Protocol")
+
+**Use Case**: User wants AI to ask clarifying questions before answering.
+
+**Extension**:
+```yaml
+extension:
+  name: "Socratic Protocol"
+  type: custom_protocol
+  version: "1.0"
+  
+  rules:
+    - trigger: "user_query"
+      action: "ask_clarifying_questions"
+      config:
+        min_questions: 1
+        max_questions: 3
+        question_types: ["scope", "intent", "constraints"]
+      
+    - trigger: "user_provides_answers"
+      action: "synthesize_response"
+      config:
+        incorporate_answers: true
+        acknowledge_clarifications: true
+  
+  examples:
+    - input: "Build a web app"
+      output: |
+        Before I design the app, let me clarify:
+        
+        1. **Scope**: What's the primary function? (e.g., e-commerce, social, productivity)
+        2. **Intent**: Who's the target user? (consumers, businesses, internal team)
+        3. **Constraints**: What's your tech stack preference? (React/Node, Python/Django, etc.)
+        
+        Please answer 1-3, then I'll provide a tailored architecture.
+```
+
+#### Example 3: LLM-Specific Plugin ("Gemini Multimodal Enhancement")
+
+**Use Case**: Enhance Gemini to analyze images in orchestrated workflows.
+
+**Extension**:
+```yaml
+extension:
+  name: "Gemini Multimodal Plugin"
+  type: llm_plugin
+  version: "1.0"
+  llm_target: Gemini
+  
+  rules:
+    - trigger: "image_attached"
+      action: "delegate_to_gemini"
+      config:
+        analysis_types: ["object_detection", "text_extraction", "scene_description"]
+        output_format: "structured_json"
+      
+    - trigger: "gemini_analysis_complete"
+      action: "broadcast_to_participants"
+      config:
+        share_with: [Claude, GPT-5, Codex]
+        format: "Add image analysis to context: [Gemini's JSON output]"
+  
+  multi_model:
+    coordinator_orchestrates: true
+    image_context_shared: true  # All LLMs get Gemini's analysis
+```
+
+#### Example 4: Cross-Model Integration ("GitHub Auto-Commit")
+
+**Use Case**: Codex generates code → auto-commit to GitHub with AI-generated commit message.
+
+**Extension**:
+```yaml
+extension:
+  name: "GitHub Auto-Commit Integration"
+  type: cross_model_integration
+  version: "1.0"
+  
+  integration:
+    service: "github"
+    api_token: "${GITHUB_TOKEN}"  # Environment variable
+    repo: "cashmy/living-task-framework"
+    branch: "main"
+  
+  rules:
+    - trigger: "codex_code_complete"
+      action: "generate_commit_message"
+      llm: GPT-5  # GPT generates commit message
+      template: |
+        Summarize changes in conventional commit format:
+        
+        type(scope): description
+        
+        Types: feat, fix, docs, style, refactor, test, chore
+        
+        Code changes:
+        {codex_code_diff}
+    
+    - trigger: "commit_message_ready"
+      action: "create_github_commit"
+      config:
+        auto_push: false  # Don't auto-push (user reviews first)
+        create_pr: false  # Don't auto-create PR
+        notify_user: true  # Notify user of staged commit
+  
+  examples:
+    - codex_output: "[Code for CLI argument parser]"
+      gpt_commit_message: "feat(cli): add argument parser with validation"
+      result: "✅ Code committed (staged, not pushed). Review with 'git diff HEAD~1'"
+```
 
 ---
 
 ## Custom Protocols
 
-**PLACEHOLDER - Phase 4.8 Pending**
+### What are Custom Protocols?
 
-This section will explain user-defined behavioral protocols.
+**Custom Protocols** = user-defined behavioral rules that extend CFP without modifying core framework.
 
-**Planned Content** (~300 lines):
-- What are custom protocols? (user-defined rules extending CFP)
-- Protocol structure (YAML format)
-- Protocol examples:
-  - "Executive Summary Protocol" (always start with TL;DR)
-  - "Visual Thinker Protocol" (always include diagrams)
-  - "Socratic Protocol" (always ask 3 questions before answering)
-- Multi-model protocol synchronization (all LLMs follow same custom protocols)
+**Purpose**: Tailor AI behavior to personal workflow, team conventions, or domain-specific needs.
+
+**Difference from Core CFP**:
+- **Core CFP**: Universal protocols (UMP, CSAC, DMP, etc.) — apply to all users
+- **Custom Protocols**: User-specific extensions — apply only when loaded
+
+### Protocol Structure
+
+**Required Fields**:
+```yaml
+extension:
+  name: "Protocol Name"
+  type: custom_protocol
+  version: "1.0"
+  author: "user_id"
+  description: "What this protocol does"
+  
+  auto_activate: true/false
+  tier_compatibility: [1, 2, 3]
+  
+  rules:
+    - trigger: "when to apply"
+      action: "what to do"
+      config: {...}
+```
+
+### Protocol Examples
+
+#### Protocol 1: "Executive Summary Protocol"
+
+**Goal**: Always start responses with TL;DR for busy executives.
+
+**Full Specification**:
+```yaml
+extension:
+  name: "Executive Summary Protocol"
+  type: custom_protocol
+  version: "1.0"
+  author: "user_cmyers"
+  description: "Prepend executive summary to all responses"
+  
+  auto_activate: true
+  tier_compatibility: [1, 2, 3]
+  
+  rules:
+    - trigger: "any_response"
+      action: "prepend_summary"
+      config:
+        summary_style: "executive"
+        max_length: 2
+        format: "**TL;DR**: {summary}\n\n---\n\n"
+    
+    - trigger: "user_skip_signal"
+      keywords: ["no summary", "skip tldr"]
+      action: "disable_for_response"
+  
+  multi_model:
+    coordinator_enforces: true
+    participants_exempt: true  # Only Coordinator adds TL;DR (avoid duplicate summaries)
+```
+
+**Example Output**:
+```
+User: "Explain quantum entanglement"
+
+AI:
+**TL;DR**: Quantum entanglement links particles so measuring one instantly affects the other, regardless of distance.
+
+---
+
+Quantum entanglement is a phenomenon where two or more particles become correlated...
+[Full explanation follows]
+```
+
+#### Protocol 2: "Visual Thinker Protocol"
+
+**Goal**: Always include diagrams for visual learners.
+
+**Full Specification**:
+```yaml
+extension:
+  name: "Visual Thinker Protocol"
+  type: custom_protocol
+  version: "1.0"
+  
+  rules:
+    - trigger: "any_explanation"
+      action: "add_diagram"
+      config:
+        diagram_types: ["ascii_art", "mermaid", "flowchart"]
+        auto_select: true
+        placement: "after_explanation"
+    
+    - trigger: "user_skip_signal"
+      keywords: ["no diagram", "text only"]
+      action: "skip_diagram"
+```
+
+**Example Output**:
+```
+User: "Explain TCP handshake"
+
+AI:
+TCP handshake is a 3-step process to establish a connection...
+
+**Diagram (ASCII)**:
+Client                Server
+  |                      |
+  |----SYN (seq=100)---->|
+  |                      |
+  |<---SYN-ACK (seq=300, ack=101)---|
+  |                      |
+  |----ACK (seq=101, ack=301)------>|
+  |                      |
+  [Connection Established]
+```
+
+#### Protocol 3: "Socratic Protocol"
+
+**Goal**: Ask clarifying questions before answering (teach critical thinking).
+
+**Full Specification**:
+```yaml
+extension:
+  name: "Socratic Protocol"
+  type: custom_protocol
+  version: "1.0"
+  
+  rules:
+    - trigger: "user_query"
+      action: "ask_clarifying_questions"
+      config:
+        min_questions: 1
+        max_questions: 3
+        question_types: ["scope", "intent", "constraints"]
+    
+    - trigger: "user_immediate_answer_request"
+      keywords: ["just answer", "no questions", "skip socratic"]
+      action: "bypass_questions"
+```
+
+**Example Interaction**:
+```
+User: "How do I optimize database queries?"
+
+AI (Socratic Protocol):
+Before I recommend optimizations, let me clarify:
+
+1. **Scope**: What database? (SQL, NoSQL, specific vendor)
+2. **Intent**: What's slow? (read queries, writes, joins, full scans)
+3. **Constraints**: What metrics? (latency <100ms, throughput >1000 QPS)
+
+User: "PostgreSQL, slow joins, need <50ms latency"
+
+AI:
+Great! For PostgreSQL join optimization targeting <50ms:
+1. Index foreign keys (if not already indexed)
+2. Use EXPLAIN ANALYZE to identify slow joins
+3. Consider materialized views for frequently joined tables
+...
+```
+
+### Multi-Model Protocol Synchronization
+
+**Challenge**: How to ensure all LLMs follow same custom protocol?
+
+**Solution**: Coordinator loads protocol, broadcasts to Participants.
+
+**Example**:
+```
+Coordinator:
+- Loads "Executive Summary Protocol"
+- Configures: coordinator_enforces=true, participants_exempt=true
+
+Coordinator → GPT-5: "Executive Summary Protocol active (Coordinator only)"
+GPT-5: "Acknowledged. I won't add TL;DR (Coordinator will)."
+
+Coordinator → Codex: "Executive Summary Protocol active (Coordinator only)"
+Codex: "Acknowledged."
+
+Result: Only Coordinator adds TL;DR, avoids duplicate summaries from Participants.
+```
 
 ---
 
 ## LLM-Specific Plugins
 
-**PLACEHOLDER - Phase 4.8 Pending**
+### What are LLM-Specific Plugins?
 
-This section will explain platform-specific enhancements.
+**LLM-Specific Plugins** = enhancements targeting individual LLMs (Claude, GPT, Codex, Gemini) to add specialized capabilities.
 
-**Planned Content** (~300 lines):
-- What are LLM-specific plugins? (enhance Claude/GPT/Codex/Gemini with custom logic)
-- Plugin examples:
-  - "Codex Code Review Plugin" (enforce code quality standards)
-  - "Claude Safety Enhancement Plugin" (additional NISCL rules)
-  - "GPT Compression Plugin" (aggressive context compression)
-  - "Gemini Multimodal Plugin" (image analysis integration)
-- Plugin registration (per-LLM basis)
+**Purpose**: Leverage LLM-specific strengths or enforce LLM-specific constraints.
+
+**Examples**:
+- **Codex**: Code quality enforcement, security scanning, performance profiling
+- **Claude**: Enhanced safety protocols, NISCL extensions, ethical reasoning
+- **GPT**: Context compression, rapid prototyping optimizations
+- **Gemini**: Multimodal analysis (image, video, audio)
+
+### Plugin Structure
+
+**Required Fields**:
+```yaml
+extension:
+  name: "Plugin Name"
+  type: llm_plugin
+  version: "1.0"
+  llm_target: Claude | GPT-5 | Codex | Gemini  # Which LLM?
+  
+  rules:
+    - trigger: "when to activate"
+      action: "what to do"
+      config: {...}
+```
+
+### Plugin Examples
+
+#### Plugin 1: "Codex Code Review Plugin"
+
+**Goal**: Enforce code quality standards before Codex delivers code.
+
+**Full Specification**:
+```yaml
+extension:
+  name: "Codex Code Review Plugin"
+  type: llm_plugin
+  version: "1.0"
+  llm_target: Codex
+  
+  rules:
+    - trigger: "code_generation_complete"
+      action: "run_quality_checks"
+      checks:
+        - type: "syntax"
+          severity: "error"
+        - type: "pep8"
+          severity: "warning"
+        - type: "security"
+          patterns: ["sql_injection", "xss", "hardcoded_secrets"]
+          severity: "error"
+        - type: "performance"
+          patterns: ["n_plus_1_query", "unbounded_loops"]
+          severity: "warning"
+      
+    - trigger: "quality_check_fail"
+      action: "auto_fix"
+      max_iterations: 3
+      escalate_if_fail: true
+      escalation_llm: Claude
+```
+
+**Example Usage**:
+```
+User: "Generate Python function to query database"
+
+Codex:
+[Generates code with SQL injection vulnerability]
+
+Codex (Plugin):
+⚠️ Security Check Failed: SQL injection detected (line 12)
+Auto-fixing...
+
+[Codex auto-fixes: uses parameterized query]
+
+✅ Security Check Passed
+✅ Code delivered
+```
+
+#### Plugin 2: "Claude Safety Enhancement Plugin"
+
+**Goal**: Add stricter NISCL rules for sensitive domains (healthcare, finance).
+
+**Full Specification**:
+```yaml
+extension:
+  name: "Claude HIPAA Safety Plugin"
+  type: llm_plugin
+  version: "1.0"
+  llm_target: Claude
+  
+  rules:
+    - trigger: "phi_detected"  # Protected Health Information
+      action: "sanitize_output"
+      config:
+        phi_patterns:
+          - patient_names
+          - medical_record_numbers
+          - dates_of_birth
+          - ssn
+          - addresses
+        sanitization: "replace_with_placeholders"
+        audit_log: true
+      
+    - trigger: "unsafe_medical_advice"
+      action: "block_output"
+      config:
+        block_patterns:
+          - diagnose_patient
+          - prescribe_medication
+          - contradict_physician
+        escalate_to_user: true
+```
+
+**Example Usage**:
+```
+User: "Analyze John Doe's (MRN 12345) lab results"
+
+Claude (Plugin):
+⚠️ HIPAA Plugin: PHI detected
+Sanitizing: "John Doe" → "Patient A", "MRN 12345" → "[REDACTED]"
+
+Analysis of Patient A's lab results (MRN [REDACTED]):
+...
+```
+
+#### Plugin 3: "GPT Compression Plugin"
+
+**Goal**: Aggressive context compression for long sessions.
+
+**Full Specification**:
+```yaml
+extension:
+  name: "GPT Context Compression Plugin"
+  type: llm_plugin
+  version: "1.0"
+  llm_target: GPT-5
+  
+  rules:
+    - trigger: "context_saturation_80"
+      action: "compress_context"
+      config:
+        compression_strategy: "semantic_clustering"
+        preserve: ["current_task", "user_preferences", "recent_3_exchanges"]
+        compress: ["historical_discussions", "resolved_issues"]
+        compression_ratio: 0.5  # Reduce historical context by 50%
+      
+    - trigger: "context_saturation_95"
+      action: "aggressive_compression"
+      config:
+        compression_strategy: "lossy_summarization"
+        preserve: ["current_task", "user_preferences"]
+        compression_ratio: 0.2  # Reduce to 20% of original size
+```
+
+**Example Usage**:
+```
+GPT (long session, 100k tokens):
+⚠️ Context saturation: 80% (102k/128k tokens)
+
+GPT (Plugin):
+Running semantic clustering compression...
+- Preserved: Current task, user preferences, last 3 exchanges (25k tokens)
+- Compressed: Historical discussions (75k → 38k tokens)
+
+New context size: 63k tokens (49% saturation)
+✅ Context compression complete
+```
+
+#### Plugin 4: "Gemini Multimodal Enhancement Plugin"
+
+**Goal**: Enable image analysis in orchestrated workflows.
+
+**Full Specification**:
+```yaml
+extension:
+  name: "Gemini Multimodal Plugin"
+  type: llm_plugin
+  version: "1.0"
+  llm_target: Gemini
+  
+  rules:
+    - trigger: "image_attached"
+      action: "analyze_image"
+      config:
+        analysis_types:
+          - object_detection
+          - text_extraction (OCR)
+          - scene_description
+          - sentiment_analysis (facial expressions)
+        output_format: "structured_json"
+      
+    - trigger: "analysis_complete"
+      action: "broadcast_to_orchestration"
+      config:
+        share_with_coordinator: true
+        share_with_participants: true
+        format: "Image analysis context: {json_output}"
+```
+
+**Example Usage**:
+```
+User: [Attaches diagram image] "Explain this architecture"
+
+Gemini (Plugin):
+Analyzing image...
+
+✅ Image Analysis Complete:
+- Objects detected: 12 boxes, 8 arrows, 3 cylinders (databases)
+- Text extracted (OCR): "API Gateway", "Microservices", "PostgreSQL", "Redis"
+- Scene description: "Cloud architecture diagram showing microservices pattern"
+
+[Broadcasts to Coordinator]
+
+Coordinator:
+Based on Gemini's analysis, this is a microservices architecture with:
+- API Gateway (entry point)
+- 12 microservices (boxes)
+- 3 databases: PostgreSQL (primary), Redis (cache)
+...
+```
 
 ---
 
 ## Cross-Model Integrations
 
-**PLACEHOLDER - Phase 4.8 Pending**
+### What are Cross-Model Integrations?
 
-This section will explain integrations with external tools (Slack, GitHub, etc.).
+**Cross-Model Integrations** = connections between orchestrated LLMs and external systems (Slack, GitHub, Jira, email, etc.).
 
-**Planned Content** (~350 lines):
-- What are cross-model integrations? (connect orchestrated LLMs to external systems)
-- Integration examples:
-  - Slack notifications (divergence alerts, reconciliation outcomes)
-  - GitHub integrations (commit messages from Codex, PR reviews from GPT)
-  - Jira/Trello (task updates from MO Journal)
-  - Email digests (daily orchestration summary)
-- Integration protocols (webhooks, APIs)
+**Purpose**: Extend orchestration beyond chat interface, integrate with team workflows, automate notifications.
+
+**Use Cases**:
+- **Slack**: Divergence alerts, reconciliation outcomes, daily summaries
+- **GitHub**: Auto-commit messages, PR reviews, architecture docs
+- **Jira/Trello**: Task creation from MO Journal, status updates
+- **Email**: Weekly orchestration digest, user satisfaction surveys
+
+### Integration Structure
+
+**Required Fields**:
+```yaml
+extension:
+  name: "Integration Name"
+  type: cross_model_integration
+  version: "1.0"
+  
+  integration:
+    service: "slack" | "github" | "jira" | "email"
+    credentials: {...}
+  
+  rules:
+    - trigger: "when to integrate"
+      action: "what to send"
+      template: "message format"
+```
+
+### Integration Examples
+
+#### Integration 1: "Slack Divergence Alerts"
+
+**Goal**: Notify team when LLMs diverge on critical issues.
+
+**Full Specification**:
+```yaml
+extension:
+  name: "Slack Divergence Alerts"
+  type: cross_model_integration
+  version: "1.0"
+  
+  integration:
+    service: "slack"
+    webhook_url: "${SLACK_WEBHOOK_URL}"
+    channel: "#ai-orchestration"
+  
+  rules:
+    - trigger: "divergence_detected"
+      severity: ["critical", "high"]
+      action: "send_slack_message"
+      template: |
+        🚨 **Divergence Alert**
+        
+        **Type**: {divergence_type}
+        **Severity**: {severity}
+        **LLMs**: {llm_list}
+        **Issue**: {divergence_summary}
+        
+        **Reconciliation**: {reconciliation_strategy}
+        **Winner**: {winner_llm}
+        **Status**: {status}
+        
+        Session: {session_id}
+    
+    - trigger: "reconciliation_failed"
+      action: "send_slack_message"
+      template: |
+        ⚠️ **Manual Decision Required**
+        
+        Auto-reconciliation failed for critical divergence.
+        
+        **Options**:
+        {option_list}
+        
+        Please review in session: {session_id}
+```
+
+**Example Slack Message**:
+```
+🚨 Divergence Alert
+
+Type: Factual
+Severity: Critical
+LLMs: Claude, GPT-5
+Issue: Claude says "HIPAA requires encryption at rest", GPT says "HIPAA recommends but doesn't require"
+
+Reconciliation: Authoritative Source
+Winner: Claude
+Status: Resolved (Claude is HIPAA authoritative)
+
+Session: session_2025_11_14_007
+```
+
+#### Integration 2: "GitHub Auto-Commit Integration"
+
+**Goal**: Auto-generate commit messages and stage commits.
+
+**Full Specification**:
+```yaml
+extension:
+  name: "GitHub Auto-Commit"
+  type: cross_model_integration
+  version: "1.0"
+  
+  integration:
+    service: "github"
+    api_token: "${GITHUB_TOKEN}"
+    repo: "cashmy/living-task-framework"
+    branch: "main"
+  
+  rules:
+    - trigger: "codex_code_complete"
+      action: "generate_commit_message"
+      llm: GPT-5
+      template: |
+        Summarize code changes in conventional commit format:
+        
+        type(scope): description
+        
+        [optional body]
+        
+        Code diff:
+        {code_diff}
+    
+    - trigger: "commit_message_ready"
+      action: "stage_commit"
+      config:
+        auto_push: false
+        create_pr: false
+        notify_user: true
+```
+
+**Example Usage**:
+```
+Codex: [Generates CLI argument parser code]
+
+GPT-5 (generates commit message):
+"feat(cli): add argument parser with input validation
+
+- Implemented argparse framework
+- Added validation for required arguments
+- Included help text and examples"
+
+GitHub Integration:
+✅ Code staged for commit
+📝 Commit message ready
+⏸️ Not auto-pushed (review with 'git diff --staged')
+
+Commands: "commit now" to finalize, "edit message" to revise
+```
+
+#### Integration 3: "Jira Task Creation from MO Journal"
+
+**Goal**: Auto-create Jira tasks from orchestration patterns.
+
+**Full Specification**:
+```yaml
+extension:
+  name: "Jira MO Journal Integration"
+  type: cross_model_integration
+  version: "1.0"
+  
+  integration:
+    service: "jira"
+    api_token: "${JIRA_API_TOKEN}"
+    project_key: "LTF"
+    base_url: "https://company.atlassian.net"
+  
+  rules:
+    - trigger: "mo_journal_task_detected"
+      patterns:
+        - "TODO:"
+        - "FIXME:"
+        - "User requested feature:"
+      action: "create_jira_task"
+      config:
+        task_type: "Task"
+        priority: "Medium"
+        assignee: "auto"  # Assign based on LLM (Codex → developer, Claude → architect)
+        labels: ["ai-orchestration", "mo-journal"]
+    
+    - trigger: "task_created"
+      action: "update_mo_journal"
+      config:
+        add_jira_link: true
+        format: "JIRA-123: {task_summary}"
+```
+
+**Example Usage**:
+```
+MO Journal Entry:
+- Task: "Build Python CLI tool"
+- Codex: [Generated code]
+- Note: "TODO: Add unit tests for argument validation"
+
+Jira Integration:
+✅ Jira task created: LTF-456
+📝 Summary: "Add unit tests for CLI argument validation"
+👤 Assigned: developer_alice (Codex task)
+🏷️ Labels: ai-orchestration, mo-journal
+
+MO Journal updated:
+- Note: "TODO: Add unit tests (JIRA LTF-456)"
+```
+
+#### Integration 4: "Email Weekly Digest"
+
+**Goal**: Send weekly summary of orchestration activity.
+
+**Full Specification**:
+```yaml
+extension:
+  name: "Email Weekly Orchestration Digest"
+  type: cross_model_integration
+  version: "1.0"
+  
+  integration:
+    service: "email"
+    smtp_server: "smtp.gmail.com"
+    smtp_port: 587
+    from_address: "ltf-orchestration@company.com"
+    to_address: "${USER_EMAIL}"
+  
+  rules:
+    - trigger: "weekly_schedule"
+      day: "Friday"
+      time: "17:00"
+      action: "send_email_digest"
+      template: |
+        Subject: LTF Orchestration Weekly Digest
+        
+        📊 **This Week's Activity** (Nov 8-14, 2025)
+        
+        **Sessions**: {session_count}
+        **Total Interactions**: {interaction_count}
+        **LLMs Used**: {llm_list}
+        
+        **Top Tasks**:
+        1. {top_task_1} ({count_1} times)
+        2. {top_task_2} ({count_2} times)
+        3. {top_task_3} ({count_3} times)
+        
+        **Divergences**:
+        - Total: {divergence_count}
+        - Auto-reconciled: {auto_reconciled_count} ({auto_reconciled_percent}%)
+        - User escalations: {user_escalation_count}
+        
+        **Performance**:
+        - User satisfaction: {satisfaction_percent}% 👍
+        - Override rate: {override_percent}%
+        
+        **Learning**:
+        - New USM entries: {usm_new_entries}
+        - Updated patterns: {usm_updated_patterns}
+        
+        View full report: {report_link}
+```
+
+**Example Email** (Friday, Nov 14, 2025):
+```
+Subject: LTF Orchestration Weekly Digest
+
+📊 This Week's Activity (Nov 8-14, 2025)
+
+Sessions: 12
+Total Interactions: 156
+LLMs Used: Claude (Coordinator), GPT-5, Codex
+
+Top Tasks:
+1. Code generation (42 times)
+2. Strategic planning (28 times)
+3. Debugging (18 times)
+
+Divergences:
+- Total: 24
+- Auto-reconciled: 21 (88%)
+- User escalations: 3
+
+Performance:
+- User satisfaction: 92% 👍
+- Override rate: 8%
+
+Learning:
+- New USM entries: 5 (code_generation → GPT-5, architecture → Claude)
+- Updated patterns: 3
+
+View full report: https://ltf-dashboard.company.com/weekly/2025-11-14
+```
 
 ---
 
@@ -5395,7 +6421,7 @@ user_state_model:
 ## Upgrade Path from T1/T2
 
 **From T1 to T3** (skipping T2):
-1. Load 04-TIER3-PRIMER.md into ALL orchestrated LLMs
+1. Load T3-CORE-PRIMER-v3.0.md into ALL orchestrated LLMs
 2. Configure orchestration roster (which LLMs for which tasks)
 3. Initialize MO Kernel
 4. Load UMP/USM (or skip to auto-USM after journal builds)
@@ -5403,7 +6429,7 @@ user_state_model:
 
 **From T2 to T3**:
 1. Export T2 CSAC (session state)
-2. Load 04-TIER3-PRIMER.md into ALL orchestrated LLMs
+2. Load T3-CORE-PRIMER-v3.0.md into ALL orchestrated LLMs
 3. Convert T2 CSAC → T3 CSAC (add MO Journal, orchestration metadata)
 4. Configure orchestration roster
 5. Initialize MO Kernel
@@ -5416,7 +6442,7 @@ user_state_model:
 **If T3 orchestration overhead too high** (you only use one LLM primarily):
 
 1. Save T3 CSAC (preserve MO Journal for future use)
-2. Load 03-TIER2-PRIMER.md into primary LLM only
+2. Load T2-CORE-PRIMER-v3.0.md into primary LLM only
 3. Convert T3 CSAC → T2 CSAC (strip orchestration metadata, keep session state)
 4. Resume single-model work
 
@@ -5447,7 +6473,7 @@ A: That's what Divergence Detection and Reconciliation Engine are for. System de
 A: No hard limit, but practical limit is 3-5 LLMs (more = coordination overhead, diminishing returns).
 
 **Q: Do I need to load CORE-PRIMER into every LLM?**
-A: Yes. Every orchestrated LLM must ingest 04-TIER3-PRIMER.md to participate in orchestration.
+A: Yes. Every orchestrated LLM must ingest T3-CORE-PRIMER-v3.0.md to participate in orchestration.
 
 **Q: Can I mix Tier 2 and Tier 3?**
 A: Not recommended. Either use T2 (single-model) or T3 (multi-model). Mixing tiers creates coordination mismatches.
@@ -5469,7 +6495,7 @@ A: Escalate to user. Reconciliation engine tries voting/consensus, but if 2+ LLM
 ## Troubleshooting Cross-Model Issues
 
 **Issue: LLM won't register with MO Kernel**
-- Check: Did you load 04-TIER3-PRIMER.md into that LLM?
+- Check: Did you load T3-CORE-PRIMER-v3.0.md into that LLM?
 - Check: Did CORE-PRIMER activation complete (Rule 0)?
 - Check: Is LLM API accessible (network issues)?
 - Fix: Reload CORE-PRIMER, confirm activation signal, check network

@@ -235,18 +235,21 @@ Users achieve **platform-level mastery**: orchestrating multiple LLMs as a coher
 
 ```
 projects/ltf-cognitive-companion/
-├── 01-CORE-PRIMER.md                           # PRESERVED - v2.4 unified reference
-├── 02-TIER1-PRIMER.md                          # Model-Agnostic Core
-├── 03-TIER2-PRIMER.md                          # Model-Aware Intelligence (with LLM variant sections)
-├── 04-TIER3-PRIMER.md                          # Multi-Model Orchestration Platform
-├── 05-TIER-COMPARISON-MATRIX.md                # Quick reference (model-intelligence comparison)
+├── 01-CORE-PRIMER.md                           # LEGACY - v2.4 unified reference (DO NOT USE for new projects)
+├── T1-CORE-PRIMER-v3.0.md                      # Tier 1: Model-Agnostic Core (standalone)
+├── T2-CORE-PRIMER-v3.0.md                      # Tier 2: Model-Aware Intelligence (standalone, T1 embedded)
+├── T3-CORE-PRIMER-v3.0.md                      # Tier 3: Multi-Model Orchestration (standalone, T1+T2 embedded)
+├── TIER-COMPARISON-MATRIX-v3.0.md              # Quick reference (tier comparison, activation guide)
 ├── PRIMER-REFACTOR-DESIGN.md                   # v1.0 Governance-centric (historical reference)
 └── PRIMER-REFACTOR-v2_MODEL-INTELLIGENCE.md    # v2.0 This document
 ```
 
 **Rationale**:
-- ✅ Preserves 01-CORE-PRIMER.md as v2.4 reference (pre-model-intelligence)
-- ✅ Clear sequential numbering (02/03/04 for T1/T2/T3)
+- ✅ Preserves 01-CORE-PRIMER.md as v2.4 legacy reference (backward compatibility)
+- ✅ Clear T1/T2/T3 naming convention (human-readable, prevents numbering errors)
+- ✅ Version numbers in filenames (v3.0 = model-intelligence architecture)
+- ✅ Each tier standalone (hierarchically built but operationally independent)
+- ✅ Auto-activation on ingestion (Rule 0 prevents race conditions)
 - ✅ Single T2 primer with LLM variant sections (easier maintenance than separate editions)
 - ✅ v1.0 governance design preserved for comparison/cross-check
 - ✅ Clean separation of architectural approaches
@@ -320,15 +323,17 @@ projects/ltf-cognitive-companion/
 **Tasks**:
 1. ✅ Create PRIMER-REFACTOR-v2_MODEL-INTELLIGENCE.md (DONE)
 2. ✅ Design Content Allocation Matrix (DONE)
-3. ⏳ Cross-validate with Claude session tier specifications
-4. ⏳ Finalize T2 variant strategy (single primer vs separate editions)
-5. ⏳ Create 05-TIER-COMPARISON-MATRIX.md (quick reference)
-6. ⏳ User (Cash) approval to proceed
+3. ✅ Cross-validate with Claude session tier specifications
+4. ✅ Finalize T2 variant strategy (single primer with LLM sections - SELECTED)
+5. ✅ Create TIER-COMPARISON-MATRIX-v3.0.md (quick reference)
+6. ✅ User (Cash) approval to proceed
+7. ✅ **November 14, 2025**: Rename files to T1/T2/T3 convention (clear naming, version-aware)
 
 **Deliverables**:
 - [x] PRIMER-REFACTOR-v2_MODEL-INTELLIGENCE.md (this document)
-- [ ] 05-TIER-COMPARISON-MATRIX.md (model-intelligence comparison)
-- [ ] User approval + decision on Open Questions
+- [x] TIER-COMPARISON-MATRIX-v3.0.md (tier comparison with standalone activation guide)
+- [x] File naming convention updated (T1/T2/T3-CORE-PRIMER-v3.0.md)
+- [x] User approval + decision on Open Questions
 
 **Alignment**: CFP Product Roadmap Phase 1 (Finalize Tier Specifications, Publish Feature Matrix)
 
@@ -341,7 +346,7 @@ projects/ltf-cognitive-companion/
 **Objective**: Create pure model-agnostic CFP primer (works with ANY LLM)
 
 **Tasks**:
-1. ✅ Copy 01-CORE-PRIMER.md → 02-TIER1-PRIMER.md
+1. ✅ Copy 01-CORE-PRIMER.md → T1-CORE-PRIMER-v3.0.md (formerly 02-TIER1-PRIMER.md)
 2. ✅ Update header (Tier 1 designation, model-agnostic focus, target users)
 3. ✅ **Strip ALL LLM-specific content**:
    - Remove adaptive Quick Prompts recognition
@@ -357,7 +362,7 @@ projects/ltf-cognitive-companion/
 10. ✅ **Add Activation Protocol** (Rules 0-5: immediate self-activation, activation lock, minimal readiness signal, late-binding, consistency guarantee, CSAC version validation)
 
 **Deliverables**:
-- [x] 02-TIER1-PRIMER.md (complete, model-agnostic, ~1630 lines)
+- [x] T1-CORE-PRIMER-v3.0.md (complete, model-agnostic, ~1630 lines, standalone)
 
 **Alignment**: CFP Product Roadmap Phase 1 (Complete CORE Primer foundations)
 
@@ -375,7 +380,7 @@ projects/ltf-cognitive-companion/
 **Objective**: Create model-aware CFP primer with LLM-specific optimization sections
 
 **Tasks**:
-1. ✅ Copy 02-TIER1-PRIMER.md → 03-TIER2-PRIMER.md (build on T1 base)
+1. ✅ Copy T1-CORE-PRIMER-v3.0.md → T2-CORE-PRIMER-v3.0.md (build on T1 base, formerly 03-TIER2-PRIMER.md)
 2. ✅ Update header (Tier 2 designation, model-aware focus, SMB/professional target)
 3. ✅ **Add LLM-Specific Sections** (single primer with variant sections):
    - ✅ **Claude Safety Frame Section**: NISCL principles, 4-mode system, reframing prevention ✅ **TESTED/VALIDATED**
@@ -393,7 +398,7 @@ projects/ltf-cognitive-companion/
 12. ✅ **Add Activation Protocol** (Rules 0-6: immediate self-activation with LLM detection, activation lock, medium verbosity readiness signals per LLM edition, late-binding, consistency guarantee, CSAC version validation with cross-LLM resume detection, context saturation monitoring for GPT-5 browser/Claude)
 
 **Deliverables**:
-- [x] 03-TIER2-PRIMER.md (complete, with Claude ✅ TESTED/GPT/Codex/Gemini 📝 PLACEHOLDER sections, ~3700 lines)
+- [x] T2-CORE-PRIMER-v3.0.md (complete, with Claude ✅ TESTED/GPT/Codex/Gemini 📝 PLACEHOLDER sections, ~3700 lines, standalone with T1 embedded)
 
 **Alignment**: CFP Product Roadmap Phase 2 (Develop Tier 2 Alignment Modules, Build Model Safety Frames)
 
@@ -411,41 +416,58 @@ projects/ltf-cognitive-companion/
 
 **Objective**: Create multi-model orchestration primer (platform-level intelligence)
 
+**Status**: ✅ **COMPLETE** (November 14, 2025)
+
 **Tasks**:
-1. Copy 03-TIER2-PRIMER.md → 04-TIER3-PRIMER.md (build on T2 base)
-2. Update header (Tier 3 designation, multi-model orchestration focus, enterprise target)
-4. **Add Multi-Model Orchestration Sections**:
-   - **T3 Orchestration Architecture** (tiered complexity):
-     - Base Layer: Sequential orchestration (default)
-     - Advanced Layer: Parallel processing
-     - Expert Layer: Hybrid orchestration (user testing in progress)
-   - Multi-LLM Alignment Modules
-   - Cross-Model Divergence Detection
-   - Reconciliation Engine
-   - Multi-Agent Orchestration (sequential/parallel/hybrid)
-   - Model-Switching Safety Layer
-   - Inter-Model Mode Preservation
-4. **Add Advanced Collaboration Protocols**:
-   - 11-Dimension Multi-Contextual Reflection
-   - AdRP (Adaptive Response Protocol) 4-tier
-   - Unconscious Problem-Solving
-   - Symbiotic Cognitive Rhythm
-5. **Add Enterprise LTF Sections**:
-   - Personalized USM Auto-Population (MO Journal)
-   - Full LTF 3-Tier CSAC (cross-model)
-   - Save-LTFContext v3.0
-   - Resume-LTFContext v2
-   - Multi-User Support
-6. **Add Ecosystem Development** section (Extension API, custom protocols)
-7. Add **LTF Testing Ground** section (multi-model governance extensions, NISCL customization across LLMs)
-8. Validate: Cross-model coordination functional
+1. ✅ Created T3-CORE-PRIMER-v3.0.md from scratch (T3 base structure, ~1100 lines, formerly 04-TIER3-PRIMER.md)
+2. ✅ Updated header (Tier 3 designation, multi-model orchestration focus, enterprise target)
+3. ✅ **Added Multi-Model Orchestration Sections** (~1250 lines):
+   - MO Kernel Architecture (7 components)
+   - Orchestration Roles (Coordinator + Participants)
+   - Task Delegation (4 patterns: sequential, parallel, specialist, consensus)
+   - Session Handoff (automated LLM switching)
+   - Consensus Building (multi-LLM voting)
+4. ✅ **Added Cross-Model Intelligence** (~1200 lines):
+   - Divergence Detection Engine (4 categories: factual, reasoning, implementation, stylistic)
+   - Reconciliation Engine (6 strategies: confidence voting, specialist deference, majority consensus, authoritative source, hybrid synthesis, user escalation)
+   - Ontology normalization, conflict escalation, reconciliation journaling
+5. ✅ **Added Learning Systems** (~1150 lines):
+   - MO Journal (multi-model interaction history)
+   - Auto-USM from MO Journal (MCDL, CSTMs, HABSP, STP auto-population)
+   - Evolutionary Feedback Learning (divergence resolution history, task delegation optimization, user satisfaction signals)
+6. ✅ **Added Advanced Collaboration Protocols** (~1450 lines):
+   - 11-Dimension Multi-Contextual Reflection (enterprise-grade strategic analysis)
+   - AdRP (Adaptive Response Protocol) 4-tier escalation
+   - Unconscious Problem-Solving (symbiotic human-AI incubation)
+   - Symbiotic Cognitive Rhythm (30-60s processing = reflection time)
+7. ✅ **Added Enterprise LTF Sections** (~1750 lines):
+   - Full LTF 3-Tier CSAC (User State > Project CIP > Session Metadata)
+   - Save-LTFContext v3.0 (cross-model state preservation)
+   - Resume-LTFContext v2.0 (cross-model state restoration, roster reconciliation)
+   - Multi-User/Team Support (team collaboration, role-based LLM assignment, shared MO Journal)
+   - Governance Extensions (3-layer governance: Individual/Team/Organizational, HIPAA/SOC 2/GDPR/IRB)
+8. ✅ **Added Ecosystem Development** (~1350 lines):
+   - Extension API (custom protocols, LLM plugins, cross-model integrations)
+   - Custom Protocols (Executive Summary, Visual Thinker, Socratic)
+   - LLM-Specific Plugins (Codex Code Review, Claude Safety, GPT Compression, Gemini Multimodal)
+   - Cross-Model Integrations (Slack, GitHub, Jira, Email)
+9. ✅ User added OS-1 (Output Safety) and DOD-1 (Default Output Density) guardrails
+10. ✅ Validate: Cross-model coordination architecture complete (~9170 lines total)
 
 **Deliverables**:
-- [ ] 04-TIER3-PRIMER.md (complete, multi-model orchestration)
+- ✅ T3-CORE-PRIMER-v3.0.md (complete, multi-model orchestration, ~9170 lines, standalone with T1+T2 embedded)
 
 **Alignment**: CFP Product Roadmap Phase 3 (Integrate Multi-LLM Orchestration Engine, Enable Divergence Detection)
 
-**Testing Checkpoint - T3 Multi-Model Validation**:
+**Implementation Notes**:
+- Built in 8 sequential phases (4.1-4.8) over single session (November 14, 2025)
+- Each phase <1500 lines (manageable chunks, user-approved incremental progression)
+- User's OS-1 and DOD-1 sections preserved without modification
+- All placeholders replaced with comprehensive, production-ready content
+- T3 builds on T1 foundation (inherits UMP, CSAC, DMP, VS Suite, Mode Semantics)
+- T3 standalone from T2 (no T2 dependency, direct T1→T3 activation supported)
+
+**Testing Checkpoint - T3 Multi-Model Validation** (Pending):
 - Load T3 primer into session WITH multi-model access (Claude + GPT + Codex)
 - Validate: Divergence detector identifies reasoning differences between models
 - Validate: Reconciliation engine normalizes ontologies
@@ -461,13 +483,19 @@ projects/ltf-cognitive-companion/
 
 **Objective**: Create quick reference and finalize cross-tier documentation
 
+**Status**: ✅ **COMPLETE** (November 14, 2025)
+
 **Tasks**:
-1. Create 05-TIER-COMPARISON-MATRIX.md:
+1. ✅ Created TIER-COMPARISON-MATRIX-v3.0.md (formerly 05-TIER-COMPARISON-MATRIX.md):
    - Side-by-side feature comparison (T1 vs T2 vs T3)
    - **Model-intelligence progression** column (Universal → Optimized → Orchestrated)
    - **LLM compatibility** column (T1: Any, T2: Specific, T3: Multiple)
    - "Which tier is right for me?" decision tree
-   - Pricing summary (link to CFP-Tiered-Packaging-Architecture.md)
+   - Migration paths (T1→T2, T2→T3, T1→T3)
+   - Learning path recommendations (beginner, advanced, enterprise)
+   - Tier mixing (hybrid approach for different projects)
+   - Technical comparison (complexity, performance, use case fit)
+   - By user type recommendations (solo developer, professional, team, enterprise)
    - Migration path overview (T1→T2→T3)
 2. Update CFP_Feature_Matrix.md (ensure alignment with model-intelligence tiers)
 3. Update CFP-Tiered-Packaging-Architecture.md (cross-reference primers, add model-intelligence rationale)
@@ -517,8 +545,8 @@ projects/ltf-cognitive-companion/
    - Confirm upgrade paths clear
 
 **Deliverables**:
-- [ ] Validated tier primer set (02/03/04-TIER*-PRIMER.md)
-- [ ] Version-tagged 01-CORE-PRIMER.md (preserved reference)
+- [ ] Validated tier primer set (T1/T2/T3-CORE-PRIMER-v3.0.md + TIER-COMPARISON-MATRIX-v3.0.md)
+- [ ] Version-tagged 01-CORE-PRIMER.md (preserved legacy reference)
 - [ ] Multi-LLM collaboration test report
 - [ ] User acceptance sign-off
 
