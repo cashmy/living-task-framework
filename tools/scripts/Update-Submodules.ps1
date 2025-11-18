@@ -21,10 +21,14 @@ param(
 $ErrorActionPreference = "Stop"
 
 function Invoke-InRepo {
-  param([string]$Path, [scriptblock]$Script)
+  param(
+    [string]$Path,
+    [scriptblock]$Script,
+    [string]$BranchName
+  )
   Write-Host "==> $Path" -ForegroundColor Green
   Push-Location $Path
-  try { & $Script } finally { Pop-Location }
+  try { & $Script $BranchName } finally { Pop-Location }
 }
 
 # Ensure we're at repo root (has .git)
@@ -51,9 +55,9 @@ foreach ($p in $submodulePaths) {
     continue
   }
   Invoke-InRepo -Path $p -Script {
+    param($branch)
     git fetch --all
     # If the branch exists, checkout and pull
-    $branch = $using:Branch
     $hasBranch = (& git branch -a) -match "remotes/origin/$branch"
     if ($hasBranch) {
       git checkout $branch 2>$null | Out-Null
@@ -62,7 +66,7 @@ foreach ($p in $submodulePaths) {
       Write-Host "[!] Branch '$branch' not found; pulling default" -ForegroundColor Yellow
       git pull
     }
-  }
+  } -BranchName $Branch
 }
 
 # Update superproject pointers
