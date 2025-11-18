@@ -57,14 +57,49 @@ foreach ($p in $submodulePaths) {
   Invoke-InRepo -Path $p -Script {
     param($branch)
     git fetch --all
-    # If the branch exists, checkout and pull
-    $hasBranch = (& git branch -a) -match "remotes/origin/$branch"
-    if ($hasBranch) {
-      git checkout $branch 2>$null | Out-Null
-      git pull origin $branch
-    } else {
-      Write-Host "[!] Branch '$branch' not found; pulling default" -ForegroundColor Yellow
-      git pull
+
+    # Determine remote default branch (origin/HEAD -> origin/<default>)
+    $originHeadRef = (& git symbolic-ref --short refs/remotes/origin/HEAD 2>$null)
+    $defaultRemoteBranch = if ($originHeadRef) { ($originHeadRef -split '/')[1] } else { 'main' }
+
+    # Helper: does remote have a given branch?
+    function Test-RemoteBranch([string]$b) {
+      return ((& git branch -a) -match "remotes/origin/$b")
+    }
+
+    $requested = $branch
+    $currentBranch = (& git symbolic-ref --short -q HEAD)
+    $isDetached = [string]::IsNullOrEmpty($currentBranch)
+
+    if (Test-RemoteBranch $requested) {
+      git checkout $requested 2>$null | Out-Null
+      git pull origin $requested
+      return
+    }
+
+    # Fallback to remote default branch
+    if ($isDetached) {
+      if (Test-RemoteBranch $defaultRemoteBranch) {
+        Write-Host "[i] Detached HEAD; checking out '$defaultRemoteBranch' tracking origin/$defaultRemoteBranch" -ForegroundColor Cyan
+        git checkout -B $defaultRemoteBranch "origin/$defaultRemoteBranch"
+        git pull origin $defaultRemoteBranch
+      }
+      else {
+        Write-Host "[!] Detached HEAD and no default branch found remotely; skipping pull" -ForegroundColor Yellow
+      }
+    }
+    else {
+      if (Test-RemoteBranch $currentBranch) {
+        git pull origin $currentBranch
+      }
+      elseif (Test-RemoteBranch $defaultRemoteBranch) {
+        Write-Host "[i] Current branch has no remote; pulling default '$defaultRemoteBranch'" -ForegroundColor Cyan
+        git checkout -B $defaultRemoteBranch "origin/$defaultRemoteBranch"
+        git pull origin $defaultRemoteBranch
+      }
+      else {
+        Write-Host "[!] Branch '$requested' not found; and no usable default; skipping" -ForegroundColor Yellow
+      }
     }
   } -BranchName $Branch
 }
@@ -79,6 +114,7 @@ if ($null -ne (git status --porcelain)) {
     if ($current -ne "main") { git branch -M main }
     git push -u origin main
   }
-} else {
+}
+else {
   Write-Host "[=] No submodule changes detected." -ForegroundColor Yellow
 }
