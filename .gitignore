@@ -19,3 +19,5 @@ projects/ai-thought-capture/*
 projects/ehr-consent-platform/*
 # context snapshots are working files, not source code
 context-snapshots/
+
+Temp_CSAC/

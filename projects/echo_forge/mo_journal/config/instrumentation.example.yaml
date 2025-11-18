@@ -1,0 +1,10 @@
+# Copy to instrumentation.yaml to tune EnaC logging without code changes.
+log_level: info # debug | info | warn | error | off
+event_frequency: normal # minimal | normal | verbose
+rollover_strategy: rotate_daily # rotate_daily | size_based | none
+max_file_size_mb: 5
+max_retained_files: 14
+emit_stack_traces: false
+notes: |
+  Increase log_level to debug when investigating capability routing or watcher behavior.
+  Revert to info/minimal once the issue is resolved to conserve disk space and noise.

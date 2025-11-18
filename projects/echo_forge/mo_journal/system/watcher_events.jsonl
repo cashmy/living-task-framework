@@ -1,0 +1,2 @@
+
+{"type": "watcher_ingest", "status": "ok", "source_file": "Ideas\\Inbox\\mo_relocation.wav", "markdown_path": "Ideas\\Processed\\20251115_122736--mo_relocation.md", "original_path": "Ideas\\Processed\\originals\\mo_relocation.wav", "capability": "stt_whisper_api", "capability_tier": "T2", "privacy_mode": "cloud", "duration_seconds": 0.0, "stt_confidence": 0.86, "created_at": "2025-11-15T18:27:36.909200+00:00", "classification": "unknown", "event_id": "wev-f3e3ccb5d2a4", "timestamp": "2025-11-15T18:27:36.911011+00:00"}

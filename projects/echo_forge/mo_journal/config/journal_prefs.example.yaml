@@ -1,0 +1,22 @@
+# Copy to journal_prefs.yaml and customize per user/device.
+journal_storage:
+  include_transcripts: false
+  include_summaries: true
+  include_ai_reflections: true
+  retention_policy: keep_all # keep_all | archive_6_months | delete_30_days
+  share_with_collaborators: false
+
+privacy_defaults:
+  default_privacy_mode: metadata-only # metadata-only | partial | full
+  redact_pii_patterns:
+    - "email"
+    - "phone"
+  prompt_for_consent_on_share: true
+
+instrumentation:
+  allow_system_entries: true
+  attach_system_refs_to_entries: true
+
+notes: |
+  This file governs what data is stored locally and when it can be shared.
+  Update whenever your preferences change and commit if you want the repo to reflect the new defaults.
