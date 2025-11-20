@@ -1,0 +1,3 @@
+# Module Framework Narrative (Descriptive Overview)
+
+This document provides a conceptual explanation of the Module Manifest Framework ...

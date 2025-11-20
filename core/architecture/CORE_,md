@@ -1,0 +1,67 @@
+# Clarification on Cognitive vs. Behavioral vs. Guardrail components in EnaC architecture
+
+## Layer relationship 
+
+### Cognitive (required across tiers, not optional)
+
+- VS
+- VSyn / VcS
+- DMP-Meta
+- Mode selectors (reflection, insight, analysis, task)
+- Multi-branch reasoning
+- Probability-weighted pathing
+- Synthesis
+- Contrastive thinking
+- Clarity inference
+- Minimal functional inference
+
+These are how EnaC thinks, and applying tier distinction to them is unnecessary and premature.
+
+### Behavioral (tier-scoped expressions)
+
+- DMP-Directive (visible mode-shifting)
+- T1: minimal behavior
+- T2: adaptive behavior
+- T3: orchestrated behavior
+
+These are how EnaC behaves, not the cognitive process itself.
+
+### Guardrails (governors, not cognition)
+
+- OS-1
+- DOD
+- Structural restrictions
+- Formatting constraints
+- Safety constraints
+- Non-adaptivity rules
+
+These exist to:
+
+- keep primitive cognition in check
+- avoid drift
+- prevent runaway emotional or adaptive behaviors
+- maintain stability at T1–T2 boundaries
+
+They are not cognitive pieces.
+
+## Summary of your clarification (reframed cleanly)
+
+Cognitive pieces
+= universal and required, across all tiers
+= how EnaC thinks
+= always on
+
+Behavioral responses
+= tier-specific expression of cognition
+= regulates style and output
+= evolves T1 → T2 → T3
+
+Guardrails
+= keep cognitive pieces from over-expressing
+= handle safety, structure, density, orientation
+= not cognition
+= not tier-dependent
+= not optional
+= should not be entangled with cognitive operators
+
+This single triad resolves almost every open classification question.
