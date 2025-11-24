@@ -1,0 +1,1 @@
+You have codified the EnaC integration already. By quality MxVA design, I should NOT need a specific t2 variant, So can you give a description of the differences?

@@ -22,8 +22,8 @@ Extension:
     Integrates the STMG (Semantic Trigger Markdown Generator) into
     CORE-PRIMER as a safe, drift-free archival subsystem.
 
-  activation_phrase: "Generate Semantic-Trigger Markdown."
-  deactivation_phrase: "Disable Semantic-Trigger Markdown."
+  activation_phrase: "Generate Semantic-Trigger Markdown." or "Execute STMG"
+  deactivation_phrase: "Disable Semantic-Trigger Markdown." or "Stop STMG mode."
 
   behavior:
     - Identify the semantic trigger prompt:

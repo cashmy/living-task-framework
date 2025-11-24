@@ -1,0 +1,8 @@
+Manifesto Type,Purpose,Layer Alignment (ECL),Examples,Usage in PW
+Essence Manifesto,"Defines the identity, core nature, and existential boundaries of a concept or framework.",CORE / SKY,Essence Manifesto Template,Defines identity boundaries for PW ecosystem components.
+Framework Manifesto,"Sets governance, purpose, and high-level principles for a conceptual framework.",SKY / CORE,"ECL Manifesto, MxVA Manifesto",Provides framework-level reasoning anchors for PW.
+System Manifesto,Provides guiding philosophy and intent for an entire system or subsystem.,SKY / CORE,Phoenix Workbench Manifesto,Governs system-level intent and alignment for PW subsystems.
+Method Manifesto,"Governs behavioral patterns, workflows, and execution norms.",BASE / CORE,"STMG Manifesto, Method Manifesto Template",Provides execution doctrine for PW procedures and workflows.
+Tool Manifesto,"Defines operational philosophy, boundaries, and interoperability for tools/modules.",CORE,Tool Manifesto Template,Guides module/tool integration rules within PW.
+Architecture Manifesto,Captures structural doctrine for major architectural models.,SKY / CORE,Spin-Up Architecture Manifesto,Structures PW’s top-level architecture constraints.
+Role Manifesto,Establishes behavioral boundaries and tier expectations for AI roles.,CORE,"Coding LLM Role Manifesto, Architect Role Manifesto",Defines PW agent roles and operational constraints.

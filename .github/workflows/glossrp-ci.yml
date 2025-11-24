@@ -1,0 +1,43 @@
+name: GlossRP CI
+
+on:
+  push:
+    paths:
+      - "dev-apps-services/GlossRP/**"
+  pull_request:
+    paths:
+      - "dev-apps-services/GlossRP/**"
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: pytest (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+
+    defaults:
+      run:
+        working-directory: dev-apps-services/GlossRP
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Sync dependencies via uv
+        run: uv sync --frozen
+
+      - name: Run unit tests
+        run: uv run pytest tests/unit

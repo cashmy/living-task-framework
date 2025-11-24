@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package glossrp.v1;
+
+service GlossRP {
+  rpc GetTerm (GetTermRequest) returns (GetTermResponse);
+}
+
+message GetTermRequest {
+  string term_id = 1;
+}
+
+message GetTermResponse {
+  string term_id = 1;
+  string status = 2;
+}

@@ -18,8 +18,8 @@ OS-1:
   name: Semantic Trigger Markdown Generator
   type: Output-Structure
   intent: "Generate a markdown file containing (1) the semantic trigger prompt and (2) the assistant’s previous response."
-  activation_phrase: "Generate Semantic-Trigger Markdown."
-  deactivation_phrase: "Disable Semantic-Trigger Markdown."
+  activation_phrase: "Generate Semantic-Trigger Markdown." or "Execute STMG"
+  deactivation_phrase: "Disable Semantic-Trigger Markdown." or "Stop STMG mode."
   behavior:
     - Identify semantic-trigger prompt (ignore meta-instructions such as “generate file…”).
     - Pair semantic-trigger prompt with previous assistant response.

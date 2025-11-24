@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+.env
+.venv/
+.poetry/
+.poetry-cache/
+poetry.lock
+*.log
+.mypy_cache/
+.pytest_cache/
+.idea/
+.vscode/
+.DS_Store
+termspec-staging/**
+!termspec-staging/.gitkeep
+!termspec-staging/README.md

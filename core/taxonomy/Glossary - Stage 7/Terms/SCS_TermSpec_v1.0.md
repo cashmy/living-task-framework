@@ -1,7 +1,7 @@
-# Semantic Compiler — Term Specification v1.0
+# Semantic Compiler (System) — Term Specification v1.0
 
 ## 0. Metadata
-- **Term ID:** semantic-compiler
+- **Term ID:** semantic-compiler or semantic_compiler_system
 - **Version:** v1.0
 - **Status:** Active
 - **Last Updated:** 2025-11-16
